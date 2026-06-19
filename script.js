@@ -70,17 +70,3 @@ document.querySelectorAll('.play-btn').forEach(btn => {
   });
 });
 
-// Contact form
-document.getElementById('contactForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = 'Message envoyé ✓';
-  btn.style.background = '#4caf50';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Envoyer le message';
-    btn.style.background = '';
-    btn.disabled = false;
-    e.target.reset();
-  }, 3000);
-});

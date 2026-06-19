@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Guillot — Sound Designer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <span class="nav-logo">MG</span>
+    <ul class="nav-links">
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-label">Sound Designer · Game Audio</p>
+      <h1 class="hero-title">Max<br />Guillot</h1>
+      <p class="hero-sub">Je crée des univers sonores immersifs pour les jeux vidéo — des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="waveform-container">
+        <div class="hero-player" id="heroPlayer">
+          <div class="hero-player-top">
+            <div class="hero-player-info">
+              <span class="hero-player-tag">// en écoute</span>
+              <a id="scTrackLink" href="#" target="_blank" rel="noopener" class="hero-player-title">Chargement…</a>
+            </div>
+            <button class="hero-player-play" id="heroPlayBtn" aria-label="Lecture / Pause">
+              <svg id="heroPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="heroPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+            </button>
+          </div>
+          <div class="hero-player-bar" id="heroBar">
+            <div class="hero-player-fill" id="heroFill"></div>
+          </div>
+          <div class="hero-player-bottom">
+            <span class="hero-player-time" id="heroTime">0:00</span>
+            <div class="hero-player-volume">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              <input type="range" id="heroVolume" min="0" max="100" step="1" value="100" aria-label="Volume" />
+            </div>
+            <span class="hero-player-sc">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
+              SoundCloud
+            </span>
+          </div>
+        </div>
+        <!-- iframe caché pour le Widget API -->
+        <iframe id="scIframe" scrolling="no" frameborder="no" allow="autoplay"
+          style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      const tracks = [
+        { url: 'https://soundcloud.com/user-585795485/pluvio',               label: 'Pluvio' },
+        { url: 'https://soundcloud.com/user-585795485/lfec',                 label: 'LFEC' },
+        { url: 'https://soundcloud.com/user-585795485/tension',              label: 'Tension' },
+        { url: 'https://soundcloud.com/user-585795485/veilbound-magellan-1', label: 'Veilbound — Magellan' },
+      ];
+
+      // Shuffle function
+      function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      // Build a queue ensuring all tracks play before repeat
+      // First track is random, rest are shuffled excluding first
+      let queue = [];
+      let queueIndex = 0;
+
+      function buildQueue(excludeFirst) {
+        const pool = excludeFirst !== undefined
+          ? tracks.filter((_, i) => i !== excludeFirst)
+          : tracks.slice();
+        return shuffle(pool);
+      }
+
+      // Pick random starting track
+      const startIdx = Math.floor(Math.random() * tracks.length);
+      queue = [tracks[startIdx], ...buildQueue(startIdx)];
+      queueIndex = 0;
+
+      const iframe    = document.getElementById('scIframe');
+      const trackLink = document.getElementById('scTrackLink');
+      const playBtn   = document.getElementById('heroPlayBtn');
+      const playIcon  = document.getElementById('heroPlayIcon');
+      const pauseIcon = document.getElementById('heroPauseIcon');
+      const fill      = document.getElementById('heroFill');
+      const bar       = document.getElementById('heroBar');
+      const timeEl    = document.getElementById('heroTime');
+
+      function loadTrack(index) {
+        const pick = queue[index];
+        trackLink.textContent = pick.label;
+        trackLink.href        = pick.url;
+        fill.style.width      = '0%';
+        timeEl.textContent    = '0:00';
+        iframe.src = 'https://w.soundcloud.com/player/?url='
+          + encodeURIComponent(pick.url)
+          + '&auto_play=false&hide_related=true&show_comments=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_playcount=false&show_user=false';
+      }
+
+      loadTrack(queueIndex);
+
+      function fmt(ms) {
+        const s = Math.floor(ms / 1000);
+        return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://w.soundcloud.com/player/api.js';
+      script.onload = function() {
+        const widget = SC.Widget(iframe);
+        let duration = 0;
+
+        function updateTrackUI(index) {
+          const pick = queue[index];
+          trackLink.textContent = pick.label;
+          trackLink.href        = pick.url;
+          fill.style.width      = '0%';
+          timeEl.textContent    = '0:00';
+          playIcon.style.display  = '';
+          pauseIcon.style.display = 'none';
+        }
+
+        function loadNext(autoplay) {
+          queueIndex++;
+          if (queueIndex >= queue.length) {
+            const lastUrl = queue[queue.length - 1].url;
+            const lastIdx = tracks.findIndex(t => t.url === lastUrl);
+            queue = buildQueue(lastIdx);
+            queueIndex = 0;
+          }
+          const next = queue[queueIndex];
+          updateTrackUI(queueIndex);
+          widget.load(next.url + (autoplay ? '&auto_play=true' : ''), {
+            auto_play: autoplay,
+            callback: function() {
+              widget.getDuration(function(d) { duration = d; });
+            }
+          });
+        }
+
+        widget.bind(SC.Widget.Events.READY, function() {
+          widget.getDuration(function(d) { duration = d; });
+        });
+
+        widget.bind(SC.Widget.Events.PLAY, function() {
+          playIcon.style.display  = 'none';
+          pauseIcon.style.display = '';
+        });
+
+        widget.bind(SC.Widget.Events.PAUSE, function() {
+          playIcon.style.display  = '';
+          pauseIcon.style.display = 'none';
+        });
+
+        widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+          if (duration) fill.style.width = (e.currentPosition / duration * 100) + '%';
+          timeEl.textContent = fmt(e.currentPosition);
+        });
+
+        widget.bind(SC.Widget.Events.FINISH, function() {
+          fill.style.width = '100%';
+          loadNext(true);
+        });
+
+        playBtn.addEventListener('click', function() { widget.toggle(); });
+
+        document.getElementById('heroVolume').addEventListener('input', function() {
+          widget.setVolume(parseInt(this.value));
+        });
+
+        bar.addEventListener('click', function(e) {
+          if (!duration) return;
+          const rect = bar.getBoundingClientRect();
+          const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+          widget.seekTo(pct * duration);
+        });
+      };
+      document.head.appendChild(script);
+    })();
+  </script>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-tag">Portfolio</span>
+      <h2>Projets</h2>
+      <p>Une sélection de projets de sound design pour le jeu vidéo.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- GASLIGHTERS -->
+      <article class="project-card project-card--expandable" id="gashlighterCard">
+        <div class="project-thumb" data-accent="#e8564a">
+          <span class="project-icon">⚡</span>
+          <span class="project-genre">Action / Thriller · Indépendant</span>
+        </div>
+        <div class="project-body">
+          <h3>Gaslighters</h3>
+          <p>Composition de l'intégralité de la bande originale et sound design de la radio, mécanique narrative centrale du jeu.</p>
+          <div class="project-tags">
+            <span>Distorsion</span><span>Tension</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
+          </div>
+          <button class="expand-btn project-expand-btn" data-target="gashlighterExpanded" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            Voir le projet complet
+          </button>
+        </div>
+      </article>
+
+      <!-- SMASH BROS -->
+      <article class="project-card project-card--expandable" id="smashCard">
+        <div class="project-thumb" data-accent="#e8a600">
+          <span class="project-icon">✦</span>
+          <span class="project-genre">Fighting / Nintendo</span>
+        </div>
+        <div class="project-body">
+          <h3>Super Smash Bros — Ken &amp; Incineroar Reveal Trailer</h3>
+          <p>Proposition d'un sound design du trailer de révélation — sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.</p>
+          <div class="project-tags">
+            <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
+          </div>
+          <button class="expand-btn project-expand-btn" style="color:#e8a600;background:rgba(232,166,0,0.08);border-color:rgba(232,166,0,0.3);" data-target="smashExpanded" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            Voir le projet complet
+          </button>
+        </div>
+      </article>
+
+      <!-- VIKING VILLAGE -->
+      <article class="project-card project-card--expandable" id="vikingCard">
+        <div class="project-thumb" data-accent="#7ab3e8">
+          <span class="project-icon">⚔</span>
+          <span class="project-genre">Unity / 3D Integration</span>
+        </div>
+        <div class="project-body">
+          <h3>Unity Integration — Viking Village Sound Design</h3>
+          <p>Sound design complet d'un environnement 3D sur Unity — sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
+          <div class="project-tags">
+            <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
+          </div>
+          <button class="expand-btn project-expand-btn" style="color:#7ab3e8;background:rgba(122,179,232,0.08);border-color:rgba(122,179,232,0.3);" data-target="vikingExpanded" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            Voir le projet complet
+          </button>
+        </div>
+      </article>
+
+      <!-- VEILBOUND -->
+      <article class="project-card project-card--expandable" id="veilboundCard">
+        <div class="project-thumb" data-accent="#9b6ee8">
+          <span class="project-icon">✧</span>
+          <span class="project-genre">Dark Fantasy / Rogue-lite</span>
+        </div>
+        <div class="project-body">
+          <h3>Veilbound</h3>
+          <p>Sound design et musique adaptative pour un rogue-lite dark fantasy — gestion de troupe, combats auto-battler et univers riche en légendes.</p>
+          <div class="project-tags">
+            <span>Dark Fantasy</span><span>Rogue-lite</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptive</span>
+          </div>
+          <button class="expand-btn project-expand-btn" style="color:#9b6ee8;background:rgba(155,110,232,0.08);border-color:rgba(155,110,232,0.3);" data-target="veilboundExpanded" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            Voir le projet complet
+          </button>
+        </div>
+      </article>
+
+      <!-- VEILBOUND EXPANDED -->
+      <article class="project-card project-card--veilbound project-expanded-panel" id="veilboundExpanded" style="display:none;grid-column:1/-1;">
+
+        <div class="veilbound-header veilbound-header--split">
+          <div class="veilbound-header-text">
+            <div class="project-featured-meta">
+              <span class="project-genre" style="color:#9b6ee8;">Dark Fantasy · Rogue-lite</span>
+              <span class="project-icon" style="color:#9b6ee8;">✧</span>
+            </div>
+            <h3>Veilbound</h3>
+            <p>Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers à travers un monde dark fantasy riche en histoires et en légendes. Le gameplay mêle gestion stratégique et combats de type auto-battler.</p>
+            <div class="project-tags">
+              <span>Dark Fantasy</span><span>Rogue-lite</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptative</span><span class="tag-wip">En développement</span>
+            </div>
+          </div>
+          <div class="veilbound-header-video">
+            <div class="project-video-wrapper" style="cursor:default;">
+              <video id="veilboundPreviewVideo" class="project-video" preload="metadata" playsinline>
+                <source src="veilbound_preview.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" id="veilboundPreviewOverlay">
+                <button class="video-play-btn" id="veilboundPreviewPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+              <button class="vc-btn" id="vbPrPlay">
+                <svg id="vbPrPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="vbPrPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+              </button>
+              <div class="vc-progress" id="vbPrProgress"><div class="vc-progress-fill" id="vbPrFill" style="background:#9b6ee8;"></div></div>
+              <span class="vc-time" id="vbPrTime">0:00</span>
+              <div class="vc-volume">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                <input type="range" id="vbPrVolume" min="0" max="1" step="0.01" value="1" />
+              </div>
+              <button class="vc-btn" id="vbPrFullscreen">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Musique adaptative -->
+        <div class="veilbound-section">
+          <div class="veilbound-section-header">
+            <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Système FMOD</span>
+            <h4>Musique adaptative</h4>
+          </div>
+
+          <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+            <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+              <div class="fmod-main-video">
+                <div class="project-video-wrapper" style="cursor:default;">
+                  <video id="veilboundAdaptVideo" class="project-video" preload="metadata" playsinline>
+                    <source src="Musiqueadapt.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-overlay" id="veilboundAdaptOverlay">
+                    <button class="video-play-btn" id="veilboundAdaptPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                  <button class="vc-btn" id="vbPlay">
+                    <svg id="vbPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                    <svg id="vbPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                  </button>
+                  <div class="vc-progress" id="vbProgress"><div class="vc-progress-fill" id="vbFill" style="background:#9b6ee8;"></div></div>
+                  <span class="vc-time" id="vbTime">0:00</span>
+                  <div class="vc-volume">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                    <input type="range" id="vbVolume" min="0" max="1" step="0.01" value="1" />
+                  </div>
+                  <button class="vc-btn" id="vbFullscreen">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="fmod-description">
+              <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
+              <p>Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique.</p>
+              <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition — visibles en vert sur la timeline — chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
+              <p class="fmod-note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Menu Sound Design -->
+        <div class="veilbound-section">
+          <div class="veilbound-section-header">
+            <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Sound Design</span>
+            <h4>Menu Sound Design</h4>
+          </div>
+          <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+            <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+              <div class="fmod-main-video">
+                <div class="project-video-wrapper" style="cursor:default;">
+                  <video id="veilboundShopVideo" class="project-video" preload="metadata" playsinline>
+                    <source src="shop.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-overlay" id="veilboundShopOverlay">
+                    <button class="video-play-btn" id="veilboundShopPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                  <button class="vc-btn" id="vbShPlay">
+                    <svg id="vbShPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                    <svg id="vbShPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                  </button>
+                  <div class="vc-progress" id="vbShProgress"><div class="vc-progress-fill" id="vbShFill" style="background:#9b6ee8;"></div></div>
+                  <span class="vc-time" id="vbShTime">0:00</span>
+                  <div class="vc-volume">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                    <input type="range" id="vbShVolume" min="0" max="1" step="0.01" value="1" />
+                  </div>
+                  <button class="vc-btn" id="vbShFullscreen">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="fmod-description">
+              <h5 style="color:#9b6ee8;">Conception</h5>
+              <p>Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</p>
+              <p class="fmod-note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge — havre de paix dans un monde sombre et hostile.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Bande originale -->
+        <div class="veilbound-section">
+          <div class="veilbound-section-header">
+            <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Bande originale</span>
+            <a href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="gaslighters-sc-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
+              Voir sur SoundCloud
+            </a>
+          </div>
+          <div class="gaslighters-playlist" style="border-top:none;">
+            <div class="gaslighters-playlist-player" id="vbPlayerWrap">
+              <div class="hero-player" style="border-color:rgba(155,110,232,0.25);box-shadow:0 0 20px rgba(155,110,232,0.05);">
+                <div class="hero-player-top">
+                  <div class="hero-player-info">
+                    <span class="hero-player-tag" style="color:#9b6ee8;">// en écoute</span>
+                    <a id="vbTrackLink" href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="hero-player-title">Chargement…</a>
+                  </div>
+                  <button class="hero-player-play" id="vbPlPlayBtn" style="color:#9b6ee8;background:rgba(155,110,232,0.12);border-color:rgba(155,110,232,0.4);">
+                    <svg id="vbPlPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
+                    <svg id="vbPlPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                  </button>
+                </div>
+                <div class="hero-player-bar" id="vbPlBar">
+                  <div class="hero-player-fill" id="vbPlFill" style="background:#9b6ee8;"></div>
+                </div>
+                <div class="hero-player-bottom">
+                  <span class="hero-player-time" id="vbPlTime">0:00</span>
+                  <div class="hero-player-volume">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                    <input type="range" id="vbPlVolume" min="0" max="100" step="1" value="100" />
+                  </div>
+                  <div class="gl-track-nav">
+                    <button class="gl-nav-btn" id="vbPlPrev" title="Précédent">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                    </button>
+                    <span class="gl-track-index" id="vbPlTrackIndex">1 / —</span>
+                    <button class="gl-nav-btn" id="vbPlNext" title="Suivant">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <iframe id="vbPlIframe" scrolling="no" frameborder="no" allow="autoplay"
+              style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-585795485/sets/veilbound-steam-2026&auto_play=false&hide_related=true&show_comments=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_playcount=false&show_user=false">
+            </iframe>
+          </div>
+        </div>
+
+      </article>
+
+      <article class="project-card project-card--featured project-card--expanded project-expanded-panel" id="gashlighterExpanded" style="display:none;grid-column:1/-1;">
+        <div class="project-featured-header" style="border-left: 3px solid #e8564a;">
+          <div class="project-featured-meta">
+            <span class="project-genre" style="color:#e8564a;">Action / Thriller · Indépendant</span>
+            <span class="project-icon" style="color:#e8564a;">⚡</span>
+          </div>
+          <h3>Gaslighters</h3>
+          <p>Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio — mécanique narrative centrale de Gaslighters — en lui apportant une attention particulière pour renforcer l'immersion.</p>
+          <div class="project-tags">
+            <span>Distorsion</span><span>Tension</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
+          </div>
+          <div class="gashlighter-steam-info">
+            <div class="steam-info-row">
+              <span class="steam-info-label">Développeur</span>
+              <span class="steam-info-value">Of Passage</span>
+            </div>
+            <div class="steam-info-row">
+              <span class="steam-info-label">Sortie</span>
+              <span class="steam-info-value">20 juin 2025</span>
+            </div>
+            <div class="steam-info-row">
+              <span class="steam-info-label">Genres</span>
+              <span class="steam-info-value">Aventure, Fiction interactive, Psychologique, Mystère</span>
+            </div>
+            <div class="steam-info-row">
+              <span class="steam-info-label">Plateforme</span>
+              <span class="steam-info-value">Windows (Steam)</span>
+            </div>
+          </div>
+          <a href="https://store.steampowered.com/app/3628610/Gaslighters/" target="_blank" rel="noopener" class="steam-link-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Voir sur Steam
+          </a>
+        </div>
+        <div class="project-video-column">
+          <div class="project-video-wrapper" style="cursor:default; aspect-ratio:16/9; background:#000;">
+            <video
+              id="gashlighterVideo"
+              class="project-video"
+              preload="none"
+              playsinline
+              poster="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3628610/890bc444b0f184bb1dfb90cd1e5c1e2ad306683d/capsule_616x353.jpg?t=1750421869"
+            >
+              <source src="trailer_gaslighters.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay" id="gashlighterOverlay">
+              <button class="video-play-btn" id="gashlighterPlayBtn" aria-label="Lire le trailer" style="background:rgba(232,86,74,0.9);">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-controls" style="border-top-color:rgba(232,86,74,0.2);">
+            <button class="vc-btn" id="gVcPlay" aria-label="Lecture / Pause">
+              <svg id="gVcPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="gVcPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+            </button>
+            <div class="vc-progress" id="gVcProgress">
+              <div class="vc-progress-fill" id="gVcProgressFill" style="background:#e8564a;"></div>
+            </div>
+            <span class="vc-time" id="gVcTime">0:00</span>
+            <div class="vc-volume">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              <input type="range" id="gVcVolume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+            </div>
+            <button class="vc-btn" id="gVcFullscreen" aria-label="Plein écran">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Playlist SoundCloud -->
+        <div class="gaslighters-playlist">
+          <div class="gaslighters-playlist-header">
+            <span class="fmod-subsection-tag" style="color:#e8564a;background:rgba(232,86,74,0.1);border-color:rgba(232,86,74,0.2);">Bande originale</span>
+            <a href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="gaslighters-sc-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
+              Voir sur SoundCloud
+            </a>
+          </div>
+          <div class="gaslighters-playlist-player" id="glPlayerWrap">
+            <div class="hero-player" style="border-color:rgba(232,86,74,0.25);box-shadow:0 0 20px rgba(232,86,74,0.05);">
+              <div class="hero-player-top">
+                <div class="hero-player-info">
+                  <span class="hero-player-tag" style="color:#e8564a;">// en écoute</span>
+                  <a id="glTrackLink" href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="hero-player-title" style="color:#f0f0f0;">Chargement…</a>
+                </div>
+                <button class="hero-player-play" id="glPlayBtn" style="color:#e8564a;background:rgba(232,86,74,0.12);border-color:rgba(232,86,74,0.4);">
+                  <svg id="glPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
+                  <svg id="glPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                </button>
+              </div>
+              <div class="hero-player-bar" id="glBar">
+                <div class="hero-player-fill" id="glFill" style="background:#e8564a;"></div>
+              </div>
+              <div class="hero-player-bottom">
+                <span class="hero-player-time" id="glTime">0:00</span>
+                <div class="hero-player-volume">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  <input type="range" id="glVolume" min="0" max="100" step="1" value="100" />
+                </div>
+                <div class="gl-track-nav">
+                  <button class="gl-nav-btn" id="glPrev" title="Précédent">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                  </button>
+                  <span class="gl-track-index" id="glTrackIndex">1 / —</span>
+                  <button class="gl-nav-btn" id="glNext" title="Suivant">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <iframe id="glIframe" scrolling="no" frameborder="no" allow="autoplay"
+            style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-585795485/sets/gaslighters&auto_play=false&hide_related=true&show_comments=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_playcount=false&show_user=false">
+          </iframe>
+        </div>
+
+      </article>
+
+      <!-- VIKING VILLAGE EXPANDED -->
+      <article class="project-card project-card--viking project-expanded-panel" id="vikingExpanded" style="display:none;grid-column:1/-1;">
+        <div class="viking-header">
+          <div class="project-featured-meta">
+            <span class="project-genre" style="color:#7ab3e8;">Unity / 3D Integration</span>
+            <span class="project-icon" style="color:#7ab3e8;">⚔</span>
+          </div>
+          <h3>Unity Integration — Viking Village Sound Design</h3>
+          <div class="project-tags">
+            <span>Unity</span><span>3D</span><span>Ambiances</span><span>Game Feel</span><span>FMOD</span><span>Ableton Live</span>
+          </div>
+        </div>
+
+        <!-- Vidéo principale (trailervol) -->
+        <div class="viking-main-video">
+          <div class="project-video-wrapper" style="cursor:default;">
+            <video id="vikingVolVideo" class="project-video" preload="metadata" playsinline>
+              <source src="trailervol.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay" id="vikingVolOverlay">
+              <button class="video-play-btn" id="vikingVolPlayBtn" aria-label="Lire" style="background:rgba(122,179,232,0.9);">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
+            <button class="vc-btn" id="vv1Play">
+              <svg id="vv1PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="vv1PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+            </button>
+            <div class="vc-progress" id="vv1Progress"><div class="vc-progress-fill" id="vv1Fill" style="background:#7ab3e8;"></div></div>
+            <span class="vc-time" id="vv1Time">0:00</span>
+            <div class="vc-volume">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              <input type="range" id="vv1Volume" min="0" max="1" step="0.01" value="1" />
+            </div>
+            <button class="vc-btn" id="vv1Fullscreen">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Rangée basse : vidéo secondaire + texte -->
+        <div class="viking-bottom-row">
+          <div class="viking-secondary-video">
+            <div class="project-video-wrapper" style="cursor:default;">
+              <video id="vikingMarcheVideo" class="project-video" preload="metadata" playsinline>
+                <source src="trailermarche.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" id="vikingMarcheOverlay">
+                <button class="video-play-btn" id="vikingMarchePlayBtn" aria-label="Lire" style="background:rgba(122,179,232,0.9); width:52px; height:52px;">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
+              <button class="vc-btn" id="vv2Play">
+                <svg id="vv2PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="vv2PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+              </button>
+              <div class="vc-progress" id="vv2Progress"><div class="vc-progress-fill" id="vv2Fill" style="background:#7ab3e8;"></div></div>
+              <span class="vc-time" id="vv2Time">0:00</span>
+              <div class="vc-volume">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                <input type="range" id="vv2Volume" min="0" max="1" step="0.01" value="1" />
+              </div>
+              <button class="vc-btn" id="vv2Fullscreen">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="viking-description">
+            <h4 style="color:#7ab3e8; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">En savoir plus</h4>
+            <p>Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity — avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.</p>
+            <p>Les sons ont été enregistrés et traités dans Ableton Live, puis spatialisés et intégrés à Unity via FMOD. Des paramètres globaux et locaux ont été mis en place pour adapter le sound design aux interactions et aux déplacements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intègre également des transitions musicales en fonction de la position du joueur.</p>
+            <p>Ce travail a été réalisé sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140?srsltid=AfmBOoq7EKvyyr4kE5qg1nAqPznvH7wDu3SPajT8ytGhGXsOQqD_pwP7" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a>, disponible sur l'Unity Asset Store.</p>
+          </div>
+        </div>
+
+        <!-- Bouton Projet FMOD -->
+        <div class="viking-fmod-trigger">
+          <button class="fmod-expand-btn" id="fmodExpandBtn" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            Projet FMOD — Voir le détail
+          </button>
+        </div>
+
+        <!-- Section FMOD déroulante -->
+        <div class="viking-fmod-section" id="fmodSection" style="display:none;">
+
+          <!-- Footsteps subsection -->
+          <div class="fmod-subsection">
+            <button class="fmod-subsection-toggle" id="footstepsToggle" aria-expanded="false">
+              <div class="fmod-subsection-header">
+                <span class="fmod-subsection-tag">Event FMOD</span>
+                <h4>Footsteps</h4>
+              </div>
+              <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+
+            <div class="fmod-subsection-body collapsed" id="footstepsBody">
+              <div class="fmod-top-row">
+                <div class="fmod-left-column">
+                  <div class="fmod-main-video">
+                    <div class="project-video-wrapper" style="cursor:default;">
+                      <video id="fmodFootVideo" class="project-video" preload="metadata" playsinline>
+                        <source src="presfootstep.mp4" type="video/mp4" />
+                      </video>
+                      <div class="video-overlay" id="fmodFootOverlay">
+                        <button class="video-play-btn" id="fmodFootPlayBtn" aria-label="Lire" style="background:rgba(122,179,232,0.9);">
+                          <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
+                      <button class="vc-btn" id="ffPlay">
+                        <svg id="ffPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="ffPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                      </button>
+                      <div class="vc-progress" id="ffProgress"><div class="vc-progress-fill" id="ffFill" style="background:#7ab3e8;"></div></div>
+                      <span class="vc-time" id="ffTime">0:00</span>
+                      <div class="vc-volume">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                        <input type="range" id="ffVolume" min="0" max="1" step="0.01" value="1" />
+                      </div>
+                      <button class="vc-btn" id="ffFullscreen">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="fmod-screenshot">
+                    <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps — paramètres playerspeed, IsGrounded, groundcheck" />
+                  </div>
+                </div>
+                <div class="fmod-right-column">
+                  <div class="fmod-description fmod-description--half">
+                    <h5>Fonctionnement de l'event</h5>
+                    <p>L'event Footsteps repose sur un système de Loop Regions — visibles en bleu dans la timeline — qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
+                    <p>Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition — visible en vert dans la timeline — redirige la lecture vers la bonne région.</p>
+                    <p class="fmod-note">Ce mode de fonctionnement permet à chaque sample de se lire en entier avant de se couper, évitant une interruption dérangeante du son.</p>
+                  </div>
+                  <div class="fmod-description fmod-description--half fmod-description--border-top">
+                    <h6 class="fmod-remarque">Remarque :</h6>
+                    <p>Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch — simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ambiance Sound subsection -->
+          <div class="fmod-subsection fmod-subsection--border-top">
+            <button class="fmod-subsection-toggle" id="ambianceToggle" aria-expanded="false">
+              <div class="fmod-subsection-header">
+                <span class="fmod-subsection-tag">Event FMOD</span>
+                <h4>Ambiance Sound</h4>
+              </div>
+              <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+
+            <div class="fmod-subsection-body collapsed" id="ambianceBody">
+              <div class="fmod-top-row">
+                <div class="fmod-left-column">
+                  <div class="fmod-screenshot fmod-screenshot--half">
+                    <img src="unityscreensoundzone.PNG" alt="Unity — zone d'ambiance sonore avec émetteur FMOD" />
+                  </div>
+                  <div class="fmod-screenshot fmod-screenshot--half" style="border-top: 1px solid rgba(122,179,232,0.1);">
+                    <img src="unityscreensoundzone2.PNG" alt="Script AmbienceSound C#" style="object-position: right center;" />
+                  </div>
+                </div>
+                <div class="fmod-description">
+                  <h5>Fonctionnement de l'event</h5>
+                  <p>Pour les sons d'ambiance, chaque émetteur est confiné dans une zone délimitée — représentée par les pavés verts —. Grâce au script <code>AmbienceSound</code>, l'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.</p>
+                  <p>Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone — plus il s'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.</p>
+                </div>
+              </div>
+              <div class="fmod-top-row" style="border-top: 1px solid rgba(122,179,232,0.1);">
+                <div class="fmod-left-column">
+                  <div class="fmod-screenshot">
+                    <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# — déplacement de l'émetteur" />
+                  </div>
+                </div>
+                <div class="fmod-description">
+                  <h6 class="fmod-remarque">Ambiance Sound Script</h6>
+                  <p>Ce script gère le déplacement de l'émetteur vers le point d'une zone définie le plus proche du joueur. Il est issu de <a href="https://www.youtube.com/watch?v=8-SnHgtXV3k" target="_blank" rel="noopener" class="viking-asset-link">cette vidéo</a>, qui m'a inspiré dans la conception de ce système.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="viking-fmod-trigger">
+            <button class="fmod-expand-btn fmod-collapse-btn" id="fmodCollapseBtn" style="display:none;">
+            </button>
+          </div>
+        </div>
+
+        <!-- Section Téléchargement -->
+        <div class="viking-fmod-trigger viking-dl-trigger">
+          <button class="fmod-expand-btn viking-dl-btn" id="dlExpandBtn" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Téléchargements — Voir
+          </button>
+        </div>
+
+        <div class="viking-fmod-section viking-dl-section" id="dlSection" style="display:none;">
+          <div class="viking-dl-inner">
+            <span class="fmod-subsection-tag viking-dl-tag">Exécutable</span>
+            <a href="VikingVillage_Executable.zip" download class="viking-dl-item">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Téléchargement de l'exécutable
+            </a>
+            <p class="viking-dl-text">Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez télécharger l'exécutable de la scène ci-contre.</p>
+          </div>
+        </div>
+
+      </article>
+
+      <article class="project-card project-card--featured project-expanded-panel" id="smashExpanded" style="display:none;grid-column:1/-1;">
+        <div class="project-featured-header">
+          <div class="project-featured-meta">
+            <span class="project-genre">Fighting / Nintendo</span>
+            <span class="project-icon">✦</span>
+          </div>
+          <h3>Super Smash Bros — Ken &amp; Incineroar Reveal Trailer</h3>
+          <p>Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate — sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.</p>
+          <div class="project-tags">
+            <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
+          </div>
+        </div>
+        <div class="project-video-column">
+          <div class="project-video-wrapper" id="videoContainer">
+          <video
+            id="smashVideo"
+            class="project-video"
+            preload="metadata"
+            playsinline
+          >
+            <source src="Smash_scene_60.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+          <div class="video-overlay" id="videoOverlay">
+            <button class="video-play-btn" id="videoPlayBtn" aria-label="Lire la vidéo">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="video-controls" id="videoControls">
+          <button class="vc-btn" id="vcPlay" aria-label="Lecture / Pause">
+            <svg id="vcPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="vcPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+          </button>
+          <div class="vc-progress" id="vcProgress">
+            <div class="vc-progress-fill" id="vcProgressFill"></div>
+          </div>
+          <span class="vc-time" id="vcTime">0:00</span>
+          <div class="vc-volume" title="Volume">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            <input type="range" id="vcVolume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+          </div>
+          <button class="vc-btn" id="vcFullscreen" aria-label="Plein écran">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          </button>
+        </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-tag">À propos</span>
+        <h2>Son, jeu,<br />immersion.</h2>
+        <p>Sound designer spécialisé dans le jeu vidéo, je travaille à la jonction entre la narration sonore et le game feel. Mon objectif : créer des expériences où le son renforce chaque émotion, chaque action, chaque monde.</p>
+        <p>Issu d'une formation en acoustique du bâtiment, j'ai développé mon expertise en sound design pour le jeu vidéo en autodidacte, motivé par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.</p>
+        <a href="#contact" class="btn btn-primary">Voir mon contact</a>
+      </div>
+      <div class="about-skills">
+        <div class="skills-block">
+          <h4>Compétences</h4>
+          <ul class="skills-list">
+            <li>
+              <span>Prise de son</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+            </li>
+            <li>
+              <span>Intégration Wwise / FMOD</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+            </li>
+            <li>
+              <span>Composition musicale</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+            </li>
+            <li>
+              <span>Créations d'ambiances</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+            </li>
+            <li>
+              <span>Traitement du son</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+            </li>
+          </ul>
+        </div>
+        <div class="skills-block">
+          <h4>Outils</h4>
+          <div class="tools-grid">
+            <span class="tool-chip">Reaper</span>
+            <span class="tool-chip">Wwise</span>
+            <span class="tool-chip">FMOD</span>
+            <span class="tool-chip">Pro Tools</span>
+            <span class="tool-chip">Ableton Live</span>
+            <span class="tool-chip">Unity</span>
+            <span class="tool-chip">Godot</span>
+            <span class="tool-chip">Serum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="section-tag">Contact</span>
+      <h2>Disponible</h2>
+      <p class="contact-intro">Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.</p>
+      <div class="contact-cards">
+        <a href="mailto:max.guillot13@gmail.com" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="contact-card-body">
+            <span class="contact-card-label">Email</span>
+            <span class="contact-card-value">max.guillot13@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/max-guillot-b68724219/" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="contact-card-body">
+            <span class="contact-card-label">Réseau professionnel</span>
+            <span class="contact-card-value">LinkedIn</span>
+          </div>
+        </a>
+        <a href="https://soundcloud.com/user-585795485" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
+          </div>
+          <div class="contact-card-body">
+            <span class="contact-card-label">Musique</span>
+            <span class="contact-card-value">SoundCloud</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Max Guillot</span>
+    <span>Sound Designer · Game Audio</span>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <style>
+    /* ── Featured project card (full-width) ── */
+    .project-card--featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(232,166,0,0.25);
+      box-shadow: 0 0 40px rgba(232,166,0,0.08);
+    }
+
+    .project-featured-header {
+      padding: 2rem 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #0d0d0d;
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+
+    .project-video-column {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+
+    .project-featured-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-featured-meta .project-genre {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e8a600;
+      font-weight: 600;
+    }
+
+    .project-featured-meta .project-icon {
+      font-size: 1.4rem;
+      color: #e8a600;
+    }
+
+    .project-featured-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #f0f0f0;
+      margin: 0;
+    }
+
+    .project-featured-header p {
+      font-size: 0.88rem;
+      color: #888;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Video wrapper ── */
+    .project-video-wrapper {
+      position: relative;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .project-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      transition: opacity 0.25s;
+    }
+
+    .video-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(232,166,0,0.9);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .video-play-btn:hover {
+      transform: scale(1.1);
+      background: #e8a600;
+    }
+
+    /* ── Custom controls bar ── */
+    .video-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1rem;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(232,166,0,0.15);
+    }
+
+    .vc-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .vc-btn:hover { color: #e8a600; }
+
+    .vc-progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vc-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #e8a600;
+      border-radius: 2px;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    .vc-time {
+      font-size: 0.75rem;
+      color: #888;
+      min-width: 36px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .vc-volume {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #888;
+    }
+
+    .vc-volume input[type="range"] {
+      -webkit-appearance: none;
+      width: 70px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      accent-color: #e8a600;
+    }
+
+    @media (max-width: 768px) {
+      .project-card--featured {
+        grid-template-columns: 1fr;
+      }
+      .project-featured-header {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+      }
+      .project-video-column {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+      }
+    }
+
+    /* ── Viking Village card ── */
+    .project-card--viking {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(122,179,232,0.25);
+      box-shadow: 0 0 40px rgba(122,179,232,0.06);
+    }
+    .viking-header {
+      padding: 1.5rem 2rem 1rem;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .viking-main-video {
+      display: flex;
+      flex-direction: column;
+    }
+    .viking-main-video .project-video-wrapper {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .viking-bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(122,179,232,0.1);
+    }
+    .viking-secondary-video {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(122,179,232,0.1);
+    }
+    .viking-secondary-video .project-video-wrapper {
+      aspect-ratio: 16 / 9;
+    }
+    .viking-description {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      background: #0d0d0d;
+    }
+    .viking-description p {
+      font-size: 0.88rem;
+      color: #999;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .viking-asset-link {
+      color: #7ab3e8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .viking-asset-link:hover { color: #aad0f5; }
+
+    @media (max-width: 768px) {
+      .viking-bottom-row {
+        grid-template-columns: 1fr;
+      }
+      .viking-secondary-video {
+        border-right: none;
+        border-bottom: 1px solid rgba(122,179,232,0.1);
+      }
+    }
+
+    /* ── Projet FMOD section ── */
+    .viking-fmod-trigger {
+      padding: 1rem 2rem;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(122,179,232,0.1);
+    }
+    .fmod-expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #7ab3e8;
+      background: rgba(122,179,232,0.07);
+      border: 1px solid rgba(122,179,232,0.25);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .fmod-expand-btn:hover { background: rgba(122,179,232,0.15); border-color: rgba(122,179,232,0.5); }
+    .fmod-collapse-btn { color: #666; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
+    .fmod-collapse-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: #aaa; }
+    .viking-fmod-section {
+      border-top: 1px solid rgba(122,179,232,0.15);
+      animation: expandIn 0.3s ease;
+    }
+    .fmod-subsection { display: flex; flex-direction: column; }
+    .fmod-subsection-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2rem 0.75rem;
+      background: #0d0d0d;
+    }
+    .fmod-subsection-tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7ab3e8;
+      font-weight: 600;
+      background: rgba(122,179,232,0.1);
+      border: 1px solid rgba(122,179,232,0.2);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+    }
+    .fmod-subsection-header h4 { margin: 0; font-size: 1rem; font-weight: 700; color: #eee; }
+    .fmod-main-video { display: flex; flex-direction: column; }
+    .fmod-main-video .project-video-wrapper { aspect-ratio: 16 / 9; width: 100%; }
+    .fmod-top-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-top: 1px solid rgba(122,179,232,0.1);
+    }
+    .fmod-left-column {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(122,179,232,0.1);
+    }
+    .fmod-left-column .fmod-screenshot {
+      border-top: 1px solid rgba(122,179,232,0.1);
+      flex: 1;
+    }
+    .fmod-top-row .fmod-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .fmod-bottom-row {
+      display: none;
+    }
+    .fmod-screenshot {
+      border-right: 1px solid rgba(122,179,232,0.1);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .fmod-screenshot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .fmod-description {
+      padding: 1.75rem;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      justify-content: center;
+    }
+    .fmod-description h5 { margin: 0; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7ab3e8; }
+    .fmod-description p { margin: 0; font-size: 0.85rem; color: #999; line-height: 1.7; }
+    .fmod-description code {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #7ab3e8;
+      background: rgba(122,179,232,0.08);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+    .fmod-note {
+      font-style: italic;
+      color: #777 !important;
+      border-left: 2px solid rgba(122,179,232,0.3);
+      padding-left: 0.75rem !important;
+    }
+    /* ── Download section (orange) ── */
+    .viking-dl-trigger {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(232,140,60,0.12);
+    }
+    .viking-dl-btn {
+      color: #e88c3c;
+      background: rgba(232,140,60,0.07);
+      border-color: rgba(232,140,60,0.25);
+    }
+    .viking-dl-btn:hover { background: rgba(232,140,60,0.15); border-color: rgba(232,140,60,0.5); }
+    .viking-dl-section {
+      border-top: 1px solid rgba(232,140,60,0.15);
+      animation: expandIn 0.3s ease;
+    }
+    .viking-dl-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 2rem;
+      background: #0d0d0d;
+    }
+    .viking-dl-tag {
+      color: #e88c3c !important;
+      background: rgba(232,140,60,0.1) !important;
+      border-color: rgba(232,140,60,0.2) !important;
+      white-space: nowrap;
+    }
+    .viking-dl-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #e88c3c;
+      background: rgba(232,140,60,0.08);
+      border: 1px solid rgba(232,140,60,0.3);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .viking-dl-item:hover { background: rgba(232,140,60,0.18); border-color: rgba(232,140,60,0.6); }
+    .viking-dl-text {
+      font-size: 0.82rem;
+      color: #777;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 320px;
+      font-style: italic;
+    }
+
+    /* ── Hero custom player ── */
+    .hero-player {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      backdrop-filter: blur(8px);
+    }
+    .hero-player-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .hero-player-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 0;
+    }
+    .hero-player-tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #555;
+      font-family: monospace;
+    }
+    .hero-player-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #eee;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+    .hero-player-title:hover { color: #e8a600; }
+    .hero-player-play {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(232,166,0,0.12);
+      border: 1px solid rgba(232,166,0,0.4);
+      color: #e8a600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-player-play:hover { background: rgba(232,166,0,0.25); transform: scale(1.05); }
+    .hero-player-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    .hero-player-fill {
+      height: 100%;
+      width: 0%;
+      background: #e8a600;
+      border-radius: 2px;
+      transition: width 0.3s linear;
+      pointer-events: none;
+    }
+    .hero-player-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-player-time {
+      font-size: 0.72rem;
+      color: #555;
+      font-variant-numeric: tabular-nums;
+      font-family: monospace;
+    }
+    .hero-player-sc {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.68rem;
+      color: #444;
+    }
+    .hero-player-volume {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #555;
+    }
+    .hero-player-volume input[type="range"] {
+      -webkit-appearance: none;
+      width: 70px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      accent-color: #e8a600;
+    }
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 480px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateX(4px);
+    }
+    .contact-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      flex-shrink: 0;
+    }
+    .contact-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .contact-card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #555;
+      font-weight: 600;
+    }
+    .contact-card-value {
+      font-size: 0.9rem;
+      color: #ccc;
+      font-weight: 500;
+    }
+      margin: 0 0 0.4rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .fmod-subsection-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem 0 0;
+      background: #0d0d0d;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      outline: none;
+    }
+    .fmod-subsection { background: #0d0d0d; }
+    .fmod-subsection-toggle:hover .fmod-subsection-header h4 { color: #7ab3e8; }
+    .fmod-toggle-arrow {
+      color: #555;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .fmod-subsection-toggle[aria-expanded="false"] .fmod-toggle-arrow {
+      transform: rotate(-90deg);
+    }
+    .fmod-subsection-body {
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+      max-height: 2000px;
+      opacity: 1;
+    }
+    .fmod-subsection-body.collapsed {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Right column split into two halves */
+    .fmod-right-column {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(122,179,232,0.1);
+    }
+    .fmod-description--half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .fmod-description--border-top {
+      border-top: 1px solid rgba(122,179,232,0.1);
+    }
+
+    /* Screenshot halves for Ambiance Sound */
+    .fmod-screenshot--half {
+      flex: 1;
+      min-height: 0;
+    }
+    .fmod-left-column .fmod-screenshot--half img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .veilbound-header--split {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0;
+      padding: 0;
+    }
+    .veilbound-header-text {
+      padding: 1.5rem 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .veilbound-header-video {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(155,110,232,0.15);
+    }
+    .veilbound-header-video .project-video-wrapper {
+      aspect-ratio: 16 / 9;
+      flex: 1;
+    }
+    .tag-wip {
+      background: rgba(155,110,232,0.15) !important;
+      color: #9b6ee8 !important;
+      border: 1px solid rgba(155,110,232,0.4) !important;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .veilbound-header--split { grid-template-columns: 1fr; }
+      .veilbound-header-video { border-left: none; border-top: 1px solid rgba(155,110,232,0.15); }
+    }
+    .project-card--veilbound {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(155,110,232,0.25);
+      box-shadow: 0 0 40px rgba(155,110,232,0.06);
+    }
+    .veilbound-header {
+      padding: 1.5rem 2rem 1rem;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .veilbound-section {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(155,110,232,0.12);
+    }
+    .veilbound-section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2rem 0.75rem;
+      background: #0d0d0d;
+    }
+    .veilbound-section-header h4 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #eee;
+    }
+
+    /* ── Gaslighters playlist ── */
+    .gaslighters-playlist {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      background: #0d0d0d;
+      border-top: 1px solid rgba(232,86,74,0.15);
+    }
+    .gaslighters-playlist-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .gaslighters-sc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .gaslighters-sc-link:hover { color: #e8564a; }
+    .gaslighters-playlist-player { max-width: 480px; }
+    .gl-track-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .gl-nav-btn {
+      background: none;
+      border: none;
+      color: #555;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      transition: color 0.15s;
+    }
+    .gl-nav-btn:hover { color: #e8564a; }
+    .gl-track-index {
+      font-size: 0.7rem;
+      color: #444;
+      font-variant-numeric: tabular-nums;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #e8564a;
+      background: rgba(232, 86, 74, 0.08);
+      border: 1px solid rgba(232, 86, 74, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .expand-btn:hover {
+      background: rgba(232, 86, 74, 0.18);
+      border-color: rgba(232, 86, 74, 0.6);
+    }
+    .expand-btn--collapse {
+      color: #888;
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      margin-top: 0;
+    }
+    .expand-btn--collapse:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    /* ── Gashlighter expanded placeholder ── */
+    .gashlighter-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      border: 2px dashed rgba(232,86,74,0.25);
+      cursor: default;
+      aspect-ratio: 16 / 9;
+    }
+    .placeholder-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: #555;
+      text-align: center;
+      padding: 2rem;
+    }
+    .placeholder-icon { font-size: 2.5rem; color: rgba(232,86,74,0.25); }
+    .placeholder-inner p { font-size: 0.85rem; margin: 0; }
+    .placeholder-filename { font-size: 0.72rem; color: #444; font-family: monospace; }
+
+    .project-card--expanded {
+      animation: expandIn 0.35s ease;
+    }
+    @keyframes expandIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Steam info block ── */
+    .gashlighter-steam-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+    }
+    .steam-info-row {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+    }
+    .steam-info-label {
+      color: #555;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+    .steam-info-value {
+      color: #aaa;
+    }
+    .steam-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #aaa;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .steam-link-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+  </style>
+
+  <script>
+    (function () {
+      const video          = document.getElementById('smashVideo');
+      const overlay        = document.getElementById('videoOverlay');
+      const bigBtn         = document.getElementById('videoPlayBtn');
+      const vcPlay         = document.getElementById('vcPlay');
+      const vcPlayIcon     = document.getElementById('vcPlayIcon');
+      const vcPauseIcon    = document.getElementById('vcPauseIcon');
+      const vcProgressFill = document.getElementById('vcProgressFill');
+      const vcProgress     = document.getElementById('vcProgress');
+      const vcTime         = document.getElementById('vcTime');
+      const vcVolume       = document.getElementById('vcVolume');
+      const vcFullscreen   = document.getElementById('vcFullscreen');
+
+      if (!video) return;
+
+      video.volume = 1.0;
+
+      function fmt(s) {
+        const m   = Math.floor(s / 60);
+        const sec = Math.floor(s % 60).toString().padStart(2, '0');
+        return m + ':' + sec;
+      }
+
+      function togglePlay() {
+        video.paused ? video.play() : video.pause();
+      }
+
+      function onPlay() {
+        overlay.classList.add('hidden');
+        vcPlayIcon.style.display  = 'none';
+        vcPauseIcon.style.display = '';
+      }
+
+      function onPause() {
+        overlay.classList.remove('hidden');
+        vcPlayIcon.style.display  = '';
+        vcPauseIcon.style.display = 'none';
+      }
+
+      function onTimeUpdate() {
+        if (!video.duration) return;
+        const pct = (video.currentTime / video.duration) * 100;
+        vcProgressFill.style.width = pct + '%';
+        vcTime.textContent = fmt(video.currentTime);
+      }
+
+      function onProgressClick(e) {
+        const rect = vcProgress.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        video.currentTime = pct * video.duration;
+      }
+
+      bigBtn.addEventListener('click', togglePlay);
+      document.getElementById('videoOverlay').addEventListener('click', togglePlay);
+      vcPlay.addEventListener('click', togglePlay);
+      video.addEventListener('play',       onPlay);
+      video.addEventListener('pause',      onPause);
+      video.addEventListener('ended',      onPause);
+      video.addEventListener('timeupdate', onTimeUpdate);
+      vcProgress.addEventListener('click', onProgressClick);
+
+      vcVolume.addEventListener('input', function () {
+        video.volume = parseFloat(this.value);
+        video.muted  = (this.value === '0');
+      });
+
+      vcFullscreen.addEventListener('click', function () {
+        const col = video.closest('.project-video-column');
+        document.fullscreenElement
+          ? document.exitFullscreen()
+          : col.requestFullscreen && col.requestFullscreen();
+      });
+    })();
+  </script>
+
+  <script>
+    // ── Viking Village video players ──
+    (function() {
+      function makePlayer(videoId, overlayId, bigBtnId, playBtnId, playIconId, pauseIconId, progressId, fillId, timeId, volumeId, fullBtnId) {
+        const video    = document.getElementById(videoId);
+        const overlay  = document.getElementById(overlayId);
+        const bigBtn   = document.getElementById(bigBtnId);
+        const playBtn  = document.getElementById(playBtnId);
+        const playIcon  = document.getElementById(playIconId);
+        const pauseIcon = document.getElementById(pauseIconId);
+        const progress = document.getElementById(progressId);
+        const fill     = document.getElementById(fillId);
+        const time     = document.getElementById(timeId);
+        const volume   = document.getElementById(volumeId);
+        const fullBtn  = document.getElementById(fullBtnId);
+        if (!video) return;
+
+        function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+        function togglePlay() { video.paused ? video.play() : video.pause(); }
+
+        video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+        video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+        video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+        video.addEventListener('timeupdate', () => {
+          if (!video.duration) return;
+          fill.style.width = (video.currentTime / video.duration * 100) + '%';
+          time.textContent = fmt(video.currentTime);
+        });
+        progress.addEventListener('click', e => {
+          const r = progress.getBoundingClientRect();
+          video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+        });
+        volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+        fullBtn.addEventListener('click', () => {
+          const col = video.closest('.viking-main-video, .viking-secondary-video');
+          document.fullscreenElement ? document.exitFullscreen() : col && col.requestFullscreen && col.requestFullscreen();
+        });
+        bigBtn.addEventListener('click', togglePlay);
+        overlay.addEventListener('click', togglePlay);
+        playBtn.addEventListener('click', togglePlay);
+      }
+
+      makePlayer('vikingVolVideo','vikingVolOverlay','vikingVolPlayBtn','vv1Play','vv1PlayIcon','vv1PauseIcon','vv1Progress','vv1Fill','vv1Time','vv1Volume','vv1Fullscreen');
+      makePlayer('vikingMarcheVideo','vikingMarcheOverlay','vikingMarchePlayBtn','vv2Play','vv2PlayIcon','vv2PauseIcon','vv2Progress','vv2Fill','vv2Time','vv2Volume','vv2Fullscreen');
+    })();
+
+    // ── Gashlighter video player ──
+    (function () {
+      const video    = document.getElementById('gashlighterVideo');
+      const overlay  = document.getElementById('gashlighterOverlay');
+      const bigBtn   = document.getElementById('gashlighterPlayBtn');
+      const vcPlay   = document.getElementById('gVcPlay');
+      const playIcon  = document.getElementById('gVcPlayIcon');
+      const pauseIcon = document.getElementById('gVcPauseIcon');
+      const progressFill = document.getElementById('gVcProgressFill');
+      const progress = document.getElementById('gVcProgress');
+      const time     = document.getElementById('gVcTime');
+      const volume   = document.getElementById('gVcVolume');
+      const fullBtn  = document.getElementById('gVcFullscreen');
+      if (!video) return;
+
+      function fmt(s) {
+        const m = Math.floor(s / 60);
+        return m + ':' + Math.floor(s % 60).toString().padStart(2, '0');
+      }
+      function togglePlay() { video.paused ? video.play() : video.pause(); }
+
+      video.addEventListener('play', () => {
+        overlay.classList.add('hidden');
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = '';
+      });
+      video.addEventListener('pause', () => {
+        overlay.classList.remove('hidden');
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
+      });
+      video.addEventListener('ended', () => {
+        overlay.classList.remove('hidden');
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
+      });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        progressFill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const rect = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() {
+        video.volume = parseFloat(this.value);
+        video.muted = (this.value === '0');
+      });
+      fullBtn.addEventListener('click', () => {
+        const col = video.closest('.project-video-column');
+        document.fullscreenElement ? document.exitFullscreen() : col.requestFullscreen && col.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', togglePlay);
+      overlay.addEventListener('click', togglePlay);
+      vcPlay.addEventListener('click', togglePlay);
+    })();
+  </script>
+
+  <script>
+    // ── Veilbound preview video player ──
+    (function() {
+      const video     = document.getElementById('veilboundPreviewVideo');
+      const overlay   = document.getElementById('veilboundPreviewOverlay');
+      const bigBtn    = document.getElementById('veilboundPreviewPlayBtn');
+      const playBtn   = document.getElementById('vbPrPlay');
+      const playIcon  = document.getElementById('vbPrPlayIcon');
+      const pauseIcon = document.getElementById('vbPrPauseIcon');
+      const progress  = document.getElementById('vbPrProgress');
+      const fill      = document.getElementById('vbPrFill');
+      const time      = document.getElementById('vbPrTime');
+      const volume    = document.getElementById('vbPrVolume');
+      const fullBtn   = document.getElementById('vbPrFullscreen');
+      if (!video) return;
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.veilbound-header-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', togglePlay);
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+    })();
+
+    // ── Veilbound shop video player ──
+    (function() {
+      const video     = document.getElementById('veilboundShopVideo');
+      const overlay   = document.getElementById('veilboundShopOverlay');
+      const bigBtn    = document.getElementById('veilboundShopPlayBtn');
+      const playBtn   = document.getElementById('vbShPlay');
+      const playIcon  = document.getElementById('vbShPlayIcon');
+      const pauseIcon = document.getElementById('vbShPauseIcon');
+      const progress  = document.getElementById('vbShProgress');
+      const fill      = document.getElementById('vbShFill');
+      const time      = document.getElementById('vbShTime');
+      const volume    = document.getElementById('vbShVolume');
+      const fullBtn   = document.getElementById('vbShFullscreen');
+      if (!video) return;
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.fmod-main-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', togglePlay);
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+    })();
+
+    // ── Veilbound adaptive music video player ──
+    (function() {
+      const video     = document.getElementById('veilboundAdaptVideo');
+      const overlay   = document.getElementById('veilboundAdaptOverlay');
+      const bigBtn    = document.getElementById('veilboundAdaptPlayBtn');
+      const playBtn   = document.getElementById('vbPlay');
+      const playIcon  = document.getElementById('vbPlayIcon');
+      const pauseIcon = document.getElementById('vbPauseIcon');
+      const progress  = document.getElementById('vbProgress');
+      const fill      = document.getElementById('vbFill');
+      const time      = document.getElementById('vbTime');
+      const volume    = document.getElementById('vbVolume');
+      const fullBtn   = document.getElementById('vbFullscreen');
+      if (!video) return;
+      video.volume = 0.3;
+      if (volume) volume.value = 0.3;
+
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() { video.paused ? video.play() : video.pause(); }
+
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.fmod-main-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', togglePlay);
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+    })();
+
+    // ── Veilbound playlist player ──
+    (function() {
+      const iframe    = document.getElementById('vbPlIframe');
+      const playBtn   = document.getElementById('vbPlPlayBtn');
+      const playIcon  = document.getElementById('vbPlPlayIcon');
+      const pauseIcon = document.getElementById('vbPlPauseIcon');
+      const fill      = document.getElementById('vbPlFill');
+      const bar       = document.getElementById('vbPlBar');
+      const timeEl    = document.getElementById('vbPlTime');
+      const volumeEl  = document.getElementById('vbPlVolume');
+      const trackLink = document.getElementById('vbTrackLink');
+      const trackIdx  = document.getElementById('vbPlTrackIndex');
+      const prevBtn   = document.getElementById('vbPlPrev');
+      const nextBtn   = document.getElementById('vbPlNext');
+      if (!iframe) return;
+
+      function fmt(ms) {
+        const s = Math.floor(ms / 1000);
+        return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+      }
+
+      function initVbWidget() {
+        if (typeof SC === 'undefined') { setTimeout(initVbWidget, 300); return; }
+        const widget = SC.Widget(iframe);
+        let duration = 0;
+        let totalTracks = 0;
+        let currentTrack = 1;
+
+        widget.bind(SC.Widget.Events.READY, function() {
+          widget.getDuration(function(d) { duration = d; });
+          widget.getSounds(function(sounds) {
+            totalTracks = sounds.length;
+            if (sounds[0]) {
+              trackLink.textContent = sounds[0].title;
+              trackLink.href        = sounds[0].permalink_url;
+              trackIdx.textContent  = '1 / ' + totalTracks;
+            }
+          });
+        });
+
+        widget.bind(SC.Widget.Events.PLAY, function() {
+          playIcon.style.display  = 'none';
+          pauseIcon.style.display = '';
+          widget.getCurrentSound(function(sound) {
+            if (sound) { trackLink.textContent = sound.title; trackLink.href = sound.permalink_url; }
+          });
+          widget.getCurrentSoundIndex(function(i) {
+            currentTrack = i + 1;
+            trackIdx.textContent = currentTrack + ' / ' + totalTracks;
+          });
+          widget.getDuration(function(d) { duration = d; });
+        });
+
+        widget.bind(SC.Widget.Events.PAUSE, function() {
+          playIcon.style.display  = '';
+          pauseIcon.style.display = 'none';
+        });
+
+        widget.bind(SC.Widget.Events.FINISH, function() {
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+
+        widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+          if (duration) fill.style.width = (e.currentPosition / duration * 100) + '%';
+          timeEl.textContent = fmt(e.currentPosition);
+        });
+
+        playBtn.addEventListener('click', function() { widget.toggle(); });
+
+        bar.addEventListener('click', function(e) {
+          if (!duration) return;
+          const rect = bar.getBoundingClientRect();
+          widget.seekTo(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * duration);
+        });
+
+        volumeEl.addEventListener('input', function() { widget.setVolume(parseInt(this.value)); });
+
+        prevBtn.addEventListener('click', function() {
+          widget.prev();
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+
+        nextBtn.addEventListener('click', function() {
+          widget.next();
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+      }
+
+      initVbWidget();
+    })();
+
+    // ── Gaslighters playlist player ──
+    (function() {
+      const iframe    = document.getElementById('glIframe');
+      const playBtn   = document.getElementById('glPlayBtn');
+      const playIcon  = document.getElementById('glPlayIcon');
+      const pauseIcon = document.getElementById('glPauseIcon');
+      const fill      = document.getElementById('glFill');
+      const bar       = document.getElementById('glBar');
+      const timeEl    = document.getElementById('glTime');
+      const volumeEl  = document.getElementById('glVolume');
+      const trackLink = document.getElementById('glTrackLink');
+      const trackIdx  = document.getElementById('glTrackIndex');
+      const prevBtn   = document.getElementById('glPrev');
+      const nextBtn   = document.getElementById('glNext');
+      if (!iframe) return;
+
+      function fmt(ms) {
+        const s = Math.floor(ms / 1000);
+        return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+      }
+
+      // Wait for SC Widget API (already loaded by hero player)
+      function initGlWidget() {
+        if (typeof SC === 'undefined') { setTimeout(initGlWidget, 300); return; }
+        const widget   = SC.Widget(iframe);
+        let duration   = 0;
+        let totalTracks = 0;
+        let currentTrack = 1;
+
+        widget.bind(SC.Widget.Events.READY, function() {
+          widget.getDuration(function(d) { duration = d; });
+          widget.getSounds(function(sounds) {
+            totalTracks = sounds.length;
+            if (sounds[0]) {
+              trackLink.textContent = sounds[0].title;
+              trackLink.href        = sounds[0].permalink_url;
+              trackIdx.textContent  = '1 / ' + totalTracks;
+            }
+          });
+        });
+
+        widget.bind(SC.Widget.Events.PLAY, function() {
+          playIcon.style.display  = 'none';
+          pauseIcon.style.display = '';
+          widget.getCurrentSound(function(sound) {
+            if (sound) {
+              trackLink.textContent = sound.title;
+              trackLink.href        = sound.permalink_url;
+            }
+          });
+          widget.getCurrentSoundIndex(function(i) {
+            currentTrack = i + 1;
+            trackIdx.textContent = currentTrack + ' / ' + totalTracks;
+          });
+        });
+
+        widget.bind(SC.Widget.Events.PAUSE, function() {
+          playIcon.style.display  = '';
+          pauseIcon.style.display = 'none';
+        });
+
+        widget.bind(SC.Widget.Events.FINISH, function() {
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+
+        widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+          if (duration) fill.style.width = (e.currentPosition / duration * 100) + '%';
+          timeEl.textContent = fmt(e.currentPosition);
+        });
+
+        widget.bind(SC.Widget.Events.SEEK, function() {
+          widget.getDuration(function(d) { duration = d; });
+        });
+
+        playBtn.addEventListener('click', function() { widget.toggle(); });
+
+        bar.addEventListener('click', function(e) {
+          if (!duration) return;
+          const rect = bar.getBoundingClientRect();
+          widget.seekTo(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * duration);
+        });
+
+        volumeEl.addEventListener('input', function() {
+          widget.setVolume(parseInt(this.value));
+        });
+
+        prevBtn.addEventListener('click', function() {
+          widget.prev();
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+
+        nextBtn.addEventListener('click', function() {
+          widget.next();
+          fill.style.width = '0%';
+          timeEl.textContent = '0:00';
+        });
+      }
+
+      initGlWidget();
+    })();
+
+    // ── Project accordion (one open at a time) ──
+    document.addEventListener('DOMContentLoaded', function() {
+      const configs = [
+        { panelId: 'gashlighterExpanded', videos: ['gashlighterVideo'],                                    displayVal: 'grid'  },
+        { panelId: 'smashExpanded',       videos: ['smashVideo'],                                          displayVal: 'grid'  },
+        { panelId: 'vikingExpanded',      videos: ['vikingVolVideo','vikingMarcheVideo','fmodFootVideo'],   displayVal: 'flex'  },
+        { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundShopVideo','veilboundPreviewVideo'],            displayVal: 'flex'  },
+      ];
+
+      function closeAll() {
+        configs.forEach(function(c) {
+          const panel = document.getElementById(c.panelId);
+          const btn   = document.querySelector('[data-target="' + c.panelId + '"]');
+          if (panel) panel.style.display = 'none';
+          if (btn)   btn.setAttribute('aria-expanded', 'false');
+          c.videos.forEach(function(vid) {
+            const v = document.getElementById(vid);
+            if (v) { try { v.pause(); } catch(e) {} }
+          });
+        });
+      }
+
+      document.querySelectorAll('.project-expand-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const targetId = btn.dataset.target;
+          const isOpen   = btn.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!isOpen) {
+            const panel  = document.getElementById(targetId);
+            const config = configs.find(function(c) { return c.panelId === targetId; });
+            if (panel && config) {
+              panel.style.display = config.displayVal;
+              btn.setAttribute('aria-expanded', 'true');
+              if (targetId === 'gashlighterExpanded') {
+                const v = document.getElementById('gashlighterVideo');
+                if (v) v.load();
+              }
+              setTimeout(function() {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }, 50);
+            }
+          }
+        });
+      });
+    });
+
+    // ── Download section toggle ──
+    (function() {
+      const btn     = document.getElementById('dlExpandBtn');
+      const section = document.getElementById('dlSection');
+      if (!btn || !section) return;
+      btn.addEventListener('click', function() {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        section.style.display = isOpen ? 'none' : '';
+        if (!isOpen) section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+
+    // ── FMOD subsection toggles ──
+    (function() {
+      [
+        { btnId: 'footstepsToggle', bodyId: 'footstepsBody' },
+        { btnId: 'ambianceToggle',  bodyId: 'ambianceBody'  },
+      ].forEach(function({ btnId, bodyId }) {
+        const btn  = document.getElementById(btnId);
+        const body = document.getElementById(bodyId);
+        if (!btn || !body) return;
+        btn.addEventListener('click', function() {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+          body.classList.toggle('collapsed', isExpanded);
+        });
+      });
+    })();
+
+    // ── FMOD section toggle ──
+    (function() {
+      const btn     = document.getElementById('fmodExpandBtn');
+      const section = document.getElementById('fmodSection');
+      if (!btn || !section) return;
+      btn.addEventListener('click', function() {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        section.style.display = isOpen ? 'none' : '';
+        if (!isOpen) {
+          const video = document.getElementById('fmodFootVideo');
+          if (video) video.load();
+          section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    })();
+
+    // ── FMOD Footstep video player ──
+    (function() {
+      const video     = document.getElementById('fmodFootVideo');
+      const overlay   = document.getElementById('fmodFootOverlay');
+      const bigBtn    = document.getElementById('fmodFootPlayBtn');
+      const playBtn   = document.getElementById('ffPlay');
+      const playIcon  = document.getElementById('ffPlayIcon');
+      const pauseIcon = document.getElementById('ffPauseIcon');
+      const progress  = document.getElementById('ffProgress');
+      const fill      = document.getElementById('ffFill');
+      const time      = document.getElementById('ffTime');
+      const volume    = document.getElementById('ffVolume');
+      const fullBtn   = document.getElementById('ffFullscreen');
+      if (!video) return;
+
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() { video.paused ? video.play() : video.pause(); }
+
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.fmod-main-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', togglePlay);
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+    })();
+  </script>
+</body>
+</html>
