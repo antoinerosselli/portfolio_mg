@@ -15,7 +15,9 @@
       "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"Smash_scene_60.mp4\")",
       "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"veilbound_preview.mp4\")",
       "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"VikingVillage_Executable.zip\")",
-      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release view v1.0-assets --json assets --jq \".assets[].url\")"
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release view v1.0-assets --json assets --jq \".assets[].url\")",
+      "Bash(claude auth *)",
+      "PowerShell(claude auth logout)"
     ]
   }
 }
