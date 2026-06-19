@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(gh pr *)",
-      "Bash(git lfs *)"
+      "Bash(git lfs *)",
+      "Bash(git push *)",
+      "Bash(gh release *)",
+      "PowerShell(gh --version)",
+      "PowerShell(winget install GitHub.cli --accept-package-agreements --accept-source-agreements)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"User\"\\); gh auth status)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release create v1.0-assets --title \"Media Assets\" --notes \"Video and binary assets for the portfolio site\" --latest=false)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"presfootstep.mp4\" \"shop.mp4\" \"Musiqueadapt.mp4\" \"trailer_gaslighters.mp4\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"Smash_scen.mp4\" \"trailervol.mp4\" \"trailermarche.mp4\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"Smash_scene_60.mp4\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"veilbound_preview.mp4\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release upload v1.0-assets \"VikingVillage_Executable.zip\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" release view v1.0-assets --json assets --jq \".assets[].url\")"
     ]
   }
 }
