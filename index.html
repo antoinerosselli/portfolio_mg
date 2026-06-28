@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max Guillot — Sound Designer</title>
+  <title>Max Guillot - Sound Designer</title>
   <script src="bfcache-fix.js"></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,10 +26,14 @@
     <div class="hero-content">
       <p class="hero-label">Sound Designer · Game Audio</p>
       <h1 class="hero-title">Max<br />Guillot</h1>
-      <p class="hero-sub">Je crée des univers sonores immersifs pour les jeux vidéo — des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.</p>
+      <p class="hero-sub">Je crée des univers sonores immersifs pour les jeux vidéo - des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Voir mes projets</a>
         <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        <a href="CV_Max_Guillot.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          Voir mon CV
+        </a>
       </div>
     </div>
     <div class="hero-visual">
@@ -54,15 +58,24 @@
               <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
               <input type="range" id="heroVolume" min="0" max="100" step="1" value="100" aria-label="Volume" />
             </div>
-            <span class="hero-player-sc">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
-              SoundCloud
-            </span>
+            <div class="gl-track-nav">
+              <button class="gl-nav-btn" id="heroPrev" title="Précédent">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+              </button>
+              <button class="gl-nav-btn" id="heroNext" title="Suivant">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg>
+              </button>
+            </div>
           </div>
         </div>
-        <!-- iframe caché pour le Widget API -->
+        <!-- iframe caché pour le Widget API : taille réelle (300x166,
+             format standard SoundCloud) mais positionnée hors écran.
+             Compresser l'iframe à 0 ou 1px fait planter le rendu canvas
+             interne du widget (createPattern sur un canvas de taille
+             nulle) - on la garde donc à taille normale et on la sort
+             simplement du champ visuel. -->
         <iframe id="scIframe" scrolling="no" frameborder="no" allow="autoplay"
-          style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"></iframe>
+          style="width:300px;height:166px;position:absolute;left:-9999px;top:-9999px;pointer-events:none;"></iframe>
       </div>
     </div>
   </section>
@@ -71,7 +84,7 @@
     (function() {
       // URL de la playlist SoundCloud publique "site-boucle" (9 pistes).
       // On charge cette playlist UNE SEULE FOIS dans l'iframe, puis on
-      // navigue entre les pistes avec widget.skip(index) — contrairement
+      // navigue entre les pistes avec widget.skip(index) - contrairement
       // à widget.load(url) (utilisé avant), skip() ne recharge PAS
       // l'iframe. Cela évite : la création d'une entrée d'historique de
       // navigation à chaque morceau (on pouvait "revenir en arrière" dans
@@ -86,9 +99,8 @@
         'Pluvio': 'Pluvio',
         'LFEC': 'LFEC',
         'Tension': 'Tension',
-        'Veilbound — Magellan': 'Veilbound — Magellan',
-        'Veilbound - Magellan': 'Veilbound — Magellan',
-        'veilbound-magellan-1': 'Veilbound — Magellan'
+        'Veilbound - Magellan': 'Veilbound - Magellan',
+        'veilbound-magellan-1': 'Veilbound - Magellan'
       };
 
       function shuffle(arr) {
@@ -125,6 +137,13 @@
       let order = [];         // ordre de lecture mélangé (indices dans `sounds`)
       let orderPos = 0;       // position courante dans `order`
       let bound = false;
+      // Le widget SoundCloud peut, rarement, démarrer une lecture de
+      // quelques instants tout seul juste après son premier READY, même
+      // avec auto_play=false (comportement instable côté widget, pas
+      // déclenché par notre code). Tant que la personne n'a pas
+      // explicitement cliqué play, on traite tout PLAY inattendu comme
+      // un faux déclenchement et on le coupe immédiatement.
+      let userInteracted = false;
 
       function labelFor(sound) {
         if (!sound) return '';
@@ -135,6 +154,26 @@
         if (!sound) return;
         trackLink.textContent = labelFor(sound);
         trackLink.href        = sound.permalink_url;
+      }
+
+      // Pour certaines pistes, le widget répond parfois à getCurrentSound()
+      // avec un titre encore vide juste après un skip() - les métadonnées
+      // de cette piste précise n'ont pas fini de se charger côté widget.
+      // On réessaie automatiquement (quelques fois, avec un court délai)
+      // jusqu'à obtenir un titre non vide, plutôt que d'afficher un champ
+      // blanc définitivement.
+      function applyCurrentSoundRetry(attemptsLeft) {
+        widget.getCurrentSound(function(sound) {
+          if (sound && sound.title) {
+            applySoundToUI(sound);
+          } else if (attemptsLeft > 0) {
+            setTimeout(() => applyCurrentSoundRetry(attemptsLeft - 1), 250);
+          } else if (sound) {
+            // Dernier recours : afficher ce qu'on a, même incomplet,
+            // plutôt que de laisser "Chargement…" indéfiniment.
+            applySoundToUI(sound);
+          }
+        });
       }
 
       // Construit un ordre aléatoire de lecture sur les indices de la
@@ -156,9 +195,9 @@
         // manquant) tant qu'une piste n'a pas été chargée individuellement.
         // getCurrentSound(), interrogé juste après skip(), retourne
         // toujours les métadonnées complètes de la piste qui vient d'être
-        // chargée — c'est donc la source fiable pour le titre affiché.
-        widget.getCurrentSound(applySoundToUI);
-        if (autoplay) widget.play();
+        // chargée - c'est donc la source fiable pour le titre affiché.
+        applyCurrentSoundRetry(4);
+        if (autoplay) { userInteracted = true; widget.play(); }
       }
 
       function playNext(autoplay) {
@@ -168,6 +207,16 @@
           order = buildOrder(lastSoundIndex);
           orderPos = 0;
         }
+        playAtOrderPos(orderPos, autoplay);
+      }
+
+      // Revient au morceau précédent dans l'historique RÉEL d'écoute
+      // (order[orderPos - 1]), pas un nouveau tirage aléatoire - c'est
+      // la différence avec playNext, qui avance vers un morceau aléatoire
+      // inédit. Si on est déjà au tout début de l'historique, on relance
+      // simplement le morceau courant depuis 0 plutôt que de ne rien faire.
+      function playPrev(autoplay) {
+        if (orderPos > 0) orderPos--;
         playAtOrderPos(orderPos, autoplay);
       }
 
@@ -186,15 +235,22 @@
 
             widget.getDuration(function(d) { duration = d; });
             widget.skip(startIdx);
-            widget.getCurrentSound(applySoundToUI);
+            applyCurrentSoundRetry(4);
           });
         });
 
         widget.bind(SC.Widget.Events.PLAY, function() {
+          if (!userInteracted) {
+            // Démarrage de lecture jamais demandé par la personne : on
+            // considère que c'est le faux déclenchement occasionnel du
+            // widget, on coupe immédiatement et on ignore le reste.
+            widget.pause();
+            return;
+          }
           playIcon.style.display  = 'none';
           pauseIcon.style.display = '';
           widget.getDuration(function(d) { duration = d; });
-          widget.getCurrentSound(applySoundToUI);
+          applyCurrentSoundRetry(4);
         });
 
         widget.bind(SC.Widget.Events.PAUSE, function() {
@@ -213,7 +269,7 @@
         });
 
         if (!bound) {
-          playBtn.addEventListener('click', function() { widget.toggle(); });
+          playBtn.addEventListener('click', function() { userInteracted = true; widget.toggle(); });
 
           document.getElementById('heroVolume').addEventListener('input', function() {
             widget.setVolume(parseInt(this.value));
@@ -221,9 +277,20 @@
 
           bar.addEventListener('click', function(e) {
             if (!duration) return;
+            userInteracted = true;
             const rect = bar.getBoundingClientRect();
             const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
             widget.seekTo(pct * duration);
+          });
+
+          document.getElementById('heroNext').addEventListener('click', function() {
+            userInteracted = true;
+            playNext(true);
+          });
+
+          document.getElementById('heroPrev').addEventListener('click', function() {
+            userInteracted = true;
+            playPrev(true);
           });
 
           bound = true;
@@ -259,7 +326,7 @@
             if (duration) fill.style.width = (pos / duration * 100) + '%';
             timeEl.textContent = fmt(pos);
           });
-          widget.getCurrentSound(applySoundToUI);
+          applyCurrentSoundRetry(4);
         }
       });
     })();
@@ -301,8 +368,8 @@
           <span class="project-genre">Fighting / Nintendo</span>
         </div>
         <div class="project-body">
-          <h3>Super Smash Bros — Ken &amp; Incineroar Reveal Trailer</h3>
-          <p>Proposition d'un sound design du trailer de révélation — sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.</p>
+          <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
+          <p>Proposition d'un sound design du trailer de révélation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.</p>
           <div class="project-tags">
             <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
@@ -320,8 +387,8 @@
           <span class="project-genre">Unity / 3D Integration</span>
         </div>
         <div class="project-body">
-          <h3>Unity Integration — Viking Village Sound Design</h3>
-          <p>Sound design complet d'un environnement 3D sur Unity — sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
+          <h3>Unity Integration - Viking Village Sound Design</h3>
+          <p>Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
           <div class="project-tags">
             <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
           </div>
@@ -340,9 +407,9 @@
         </div>
         <div class="project-body">
           <h3>Veilbound</h3>
-          <p>Sound design et musique adaptative pour un rogue-lite dark fantasy — gestion de troupe, combats auto-battler et univers riche en légendes.</p>
+          <p>Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en légendes.</p>
           <div class="project-tags">
-            <span>Dark Fantasy</span><span>Rogue-lite</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptive</span>
+            <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptive</span>
           </div>
           <button class="expand-btn project-expand-btn" style="color:#9b6ee8;background:rgba(155,110,232,0.08);border-color:rgba(155,110,232,0.3);" data-target="veilboundExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
@@ -356,14 +423,15 @@
 
         <div class="veilbound-header veilbound-header--split">
           <div class="veilbound-header-text">
-            <div class="project-featured-meta">
+            <div class="project-featured-meta veilbound-meta-top">
               <span class="project-genre" style="color:#9b6ee8;">Dark Fantasy · Rogue-lite</span>
               <span class="project-icon" style="color:#9b6ee8;">✧</span>
             </div>
             <h3>Veilbound</h3>
             <p>Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers à travers un monde dark fantasy riche en histoires et en légendes. Le gameplay mêle gestion stratégique et combats de type auto-battler.</p>
+            <p>Je suis en charge de l'intégralité du sound design du projet : composition des musiques, conception des ambiances sonores, création des effets sonores et implémentation technique complète dans le moteur de jeu.</p>
             <div class="project-tags">
-              <span>Dark Fantasy</span><span>Rogue-lite</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptative</span><span class="tag-wip">En développement</span>
+              <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptative</span><span class="tag-wip">En développement</span>
             </div>
           </div>
           <div class="veilbound-header-video">
@@ -440,7 +508,7 @@
             <div class="fmod-description">
               <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
               <p>Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique.</p>
-              <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition — visibles en vert sur la timeline — chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
+              <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
               <p class="fmod-note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</p>
             </div>
           </div>
@@ -491,7 +559,7 @@
             <div class="fmod-description">
               <h5 style="color:#9b6ee8;">Conception</h5>
               <p>Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</p>
-              <p class="fmod-note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge — havre de paix dans un monde sombre et hostile.</p>
+              <p class="fmod-note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.</p>
             </div>
           </div>
           </div>
@@ -537,7 +605,7 @@
                     <button class="gl-nav-btn" id="vbPlPrev" title="Précédent">
                       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
                     </button>
-                    <span class="gl-track-index" id="vbPlTrackIndex">1 / —</span>
+                    <span class="gl-track-index" id="vbPlTrackIndex">1 / -</span>
                     <button class="gl-nav-btn" id="vbPlNext" title="Suivant">
                       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg>
                     </button>
@@ -546,7 +614,7 @@
               </div>
             </div>
             <iframe id="vbPlIframe" scrolling="no" frameborder="no" allow="autoplay"
-              style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"
+              style="width:300px;height:166px;position:absolute;left:-9999px;top:-9999px;pointer-events:none;"
               src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-585795485/sets/veilbound-steam-2026&auto_play=false&hide_related=true&show_comments=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_playcount=false&show_user=false">
             </iframe>
           </div>
@@ -562,7 +630,7 @@
             <span class="project-icon" style="color:#e8564a;">⚡</span>
           </div>
           <h3>Gaslighters</h3>
-          <p>Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio — mécanique narrative centrale de Gaslighters — en lui apportant une attention particulière pour renforcer l'immersion.</p>
+          <p>Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio - mécanique narrative centrale de Gaslighters - en lui apportant une attention particulière pour renforcer l'immersion.</p>
           <div class="project-tags">
             <span>Distorsion</span><span>Tension</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
           </div>
@@ -659,7 +727,7 @@
                   <button class="gl-nav-btn" id="glPrev" title="Précédent">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
                   </button>
-                  <span class="gl-track-index" id="glTrackIndex">1 / —</span>
+                  <span class="gl-track-index" id="glTrackIndex">1 / -</span>
                   <button class="gl-nav-btn" id="glNext" title="Suivant">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg>
                   </button>
@@ -668,7 +736,7 @@
             </div>
           </div>
           <iframe id="glIframe" scrolling="no" frameborder="no" allow="autoplay"
-            style="width:0;height:0;position:absolute;pointer-events:none;opacity:0;"
+            style="width:300px;height:166px;position:absolute;left:-9999px;top:-9999px;pointer-events:none;"
             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-585795485/sets/gaslighters&auto_play=false&hide_related=true&show_comments=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_playcount=false&show_user=false">
           </iframe>
         </div>
@@ -677,20 +745,20 @@
 
       <!-- VIKING VILLAGE EXPANDED -->
       <article class="project-card project-card--viking project-expanded-panel" id="vikingExpanded" style="display:none;grid-column:1/-1;">
-        <div class="viking-header">
-          <div class="project-featured-meta">
+        <div class="viking-top-row">
+        <div class="project-featured-header" style="border-left: 3px solid #7ab3e8;">
+          <div class="project-featured-meta viking-meta-top">
             <span class="project-genre" style="color:#7ab3e8;">Unity / 3D Integration</span>
             <span class="project-icon" style="color:#7ab3e8;">⚔</span>
           </div>
-          <h3>Unity Integration — Viking Village Sound Design</h3>
+          <h3>Unity Integration - Viking Village Sound Design</h3>
+          <p>Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
           <div class="project-tags">
-            <span>Unity</span><span>3D</span><span>Ambiances</span><span>Game Feel</span><span>FMOD</span><span>Ableton Live</span>
+            <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
           </div>
         </div>
-
-        <!-- Vidéo principale (trailervol) -->
-        <div class="viking-main-video">
-          <div class="project-video-wrapper" style="cursor:default;">
+        <div class="project-video-column">
+          <div class="project-video-wrapper" style="cursor:default; aspect-ratio:16/9; background:#000;">
             <video id="vikingVolVideo" class="project-video" preload="metadata" playsinline>
               <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/trailervol.mp4" type="video/mp4" />
             </video>
@@ -715,6 +783,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
             </button>
           </div>
+        </div>
         </div>
 
         <!-- Rangée basse : vidéo secondaire + texte -->
@@ -749,7 +818,7 @@
 
           <div class="viking-description">
             <h4 style="color:#7ab3e8; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">En savoir plus</h4>
-            <p>Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity — avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.</p>
+            <p>Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.</p>
             <p>Les sons ont été enregistrés et traités dans Ableton Live, puis spatialisés et intégrés à Unity via FMOD. Des paramètres globaux et locaux ont été mis en place pour adapter le sound design aux interactions et aux déplacements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intègre également des transitions musicales en fonction de la position du joueur.</p>
             <p>Ce travail a été réalisé sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140?srsltid=AfmBOoq7EKvyyr4kE5qg1nAqPznvH7wDu3SPajT8ytGhGXsOQqD_pwP7" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a>, disponible sur l'Unity Asset Store.</p>
           </div>
@@ -759,7 +828,7 @@
         <div class="viking-fmod-trigger">
           <button class="fmod-expand-btn" id="fmodExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Projet FMOD — Voir le détail
+            Projet FMOD - Voir le détail
           </button>
         </div>
 
@@ -807,19 +876,19 @@
                     </div>
                   </div>
                   <div class="fmod-screenshot">
-                    <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps — paramètres playerspeed, IsGrounded, groundcheck" />
+                    <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps - paramètres playerspeed, IsGrounded, groundcheck" />
                   </div>
                 </div>
                 <div class="fmod-right-column">
                   <div class="fmod-description fmod-description--half">
                     <h5>Fonctionnement de l'event</h5>
-                    <p>L'event Footsteps repose sur un système de Loop Regions — visibles en bleu dans la timeline — qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
-                    <p>Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition — visible en vert dans la timeline — redirige la lecture vers la bonne région.</p>
+                    <p>L'event Footsteps repose sur un système de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
+                    <p>Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne région.</p>
                     <p class="fmod-note">Ce mode de fonctionnement permet à chaque sample de se lire en entier avant de se couper, évitant une interruption dérangeante du son.</p>
                   </div>
                   <div class="fmod-description fmod-description--half fmod-description--border-top">
                     <h6 class="fmod-remarque">Remarque :</h6>
-                    <p>Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch — simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.</p>
+                    <p>Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch - simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.</p>
                   </div>
                 </div>
               </div>
@@ -840,7 +909,7 @@
               <div class="fmod-top-row">
                 <div class="fmod-left-column">
                   <div class="fmod-screenshot fmod-screenshot--half">
-                    <img src="unityscreensoundzone.PNG" alt="Unity — zone d'ambiance sonore avec émetteur FMOD" />
+                    <img src="unityscreensoundzone.PNG" alt="Unity - zone d'ambiance sonore avec émetteur FMOD" />
                   </div>
                   <div class="fmod-screenshot fmod-screenshot--half" style="border-top: 1px solid rgba(122,179,232,0.1);">
                     <img src="unityscreensoundzone2.PNG" alt="Script AmbienceSound C#" style="object-position: right center;" />
@@ -848,14 +917,14 @@
                 </div>
                 <div class="fmod-description">
                   <h5>Fonctionnement de l'event</h5>
-                  <p>Pour les sons d'ambiance, chaque émetteur est confiné dans une zone délimitée — représentée par les pavés verts —. Grâce au script <code>AmbienceSound</code>, l'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.</p>
-                  <p>Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone — plus il s'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.</p>
+                  <p>Pour les sons d'ambiance, chaque émetteur est confiné dans une zone délimitée - représentée par les pavés verts -. Grâce au script <code>AmbienceSound</code>, l'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.</p>
+                  <p>Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone - plus il s'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.</p>
                 </div>
               </div>
               <div class="fmod-top-row" style="border-top: 1px solid rgba(122,179,232,0.1);">
                 <div class="fmod-left-column">
                   <div class="fmod-screenshot">
-                    <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# — déplacement de l'émetteur" />
+                    <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# - déplacement de l'émetteur" />
                   </div>
                 </div>
                 <div class="fmod-description">
@@ -876,7 +945,7 @@
         <div class="viking-fmod-trigger viking-dl-trigger">
           <button class="fmod-expand-btn viking-dl-btn" id="dlExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Téléchargements — Voir
+            Téléchargements - Voir
           </button>
         </div>
 
@@ -899,8 +968,8 @@
             <span class="project-genre">Fighting / Nintendo</span>
             <span class="project-icon">✦</span>
           </div>
-          <h3>Super Smash Bros — Ken &amp; Incineroar Reveal Trailer</h3>
-          <p>Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate — sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.</p>
+          <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
+          <p>Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.</p>
           <div class="project-tags">
             <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
@@ -1033,6 +1102,13 @@
           </div>
         </a>
       </div>
+
+      <div class="contact-cv-action">
+        <a href="CV_Max_Guillot.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          Voir mon CV
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1045,6 +1121,12 @@
   <script src="script.js"></script>
 
   <style>
+    .contact-cv-action {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
     /* ── Featured project card (full-width) ── */
     .project-card--featured {
       grid-column: 1 / -1;
@@ -1254,6 +1336,39 @@
       background: #111;
       border: 1px solid rgba(122,179,232,0.25);
       box-shadow: 0 0 40px rgba(122,179,232,0.06);
+    }
+    .viking-top-row {
+      display: flex;
+      align-items: stretch;
+    }
+    .viking-top-row .project-featured-header {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2rem 2rem 1.5rem;
+      background: #0d0d0d;
+      position: relative;
+    }
+    .viking-meta-top {
+      position: absolute;
+      top: 1.25rem;
+      left: 2rem;
+    }
+    .viking-top-row .project-featured-header h3 {
+      margin-top: 1.5rem;
+    }
+    .viking-top-row .project-video-column {
+      flex: 1.6;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+    @media (max-width: 768px) {
+      .viking-top-row {
+        flex-direction: column;
+      }
     }
     .viking-header {
       padding: 1.5rem 2rem 1rem;
@@ -1700,7 +1815,7 @@
       height: 100%;
       object-fit: cover;
     }
-    .veilbound-header--split {
+    .veilbound-header.veilbound-header--split {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
       gap: 0;
@@ -1712,6 +1827,15 @@
       flex-direction: column;
       gap: 0.6rem;
       justify-content: center;
+      position: relative;
+    }
+    .veilbound-meta-top {
+      position: absolute;
+      top: 1.25rem;
+      left: 2rem;
+    }
+    .veilbound-header-text h3 {
+      margin-top: 1.5rem;
     }
     .veilbound-header-video {
       display: flex;
@@ -1849,6 +1973,7 @@
       transition: color 0.15s;
     }
     .gl-nav-btn:hover { color: #e8564a; }
+    .hero-player .gl-nav-btn:hover { color: #e8a600; }
     .gl-track-index {
       font-size: 0.7rem;
       color: #444;
@@ -1988,8 +2113,28 @@
         return m + ':' + sec;
       }
 
+      // video.play() est asynchrone : sa Promise ne se résout qu'une fois
+      // la lecture réellement démarrée, et video.paused ne repasse à
+      // false qu'à ce moment-là. Si togglePlay() est rappelé entre-temps
+      // (double clic, clic + bubbling résiduel, etc.), pause() peut
+      // interrompre un play() encore en attente, ce qui annule la
+      // lecture silencieusement. On ignore donc tout nouvel appel tant
+      // qu'un play() précédent n'est pas résolu ou rejeté.
+      let playPending = false;
       function togglePlay() {
-        video.paused ? video.play() : video.pause();
+        if (playPending) return;
+        if (video.paused) {
+          playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { playPending = false; })
+             .catch(() => { playPending = false; });
+          } else {
+            playPending = false;
+          }
+        } else {
+          video.pause();
+        }
       }
 
       function onPlay() {
@@ -2017,9 +2162,12 @@
         video.currentTime = pct * video.duration;
       }
 
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       document.getElementById('videoOverlay').addEventListener('click', togglePlay);
       vcPlay.addEventListener('click', togglePlay);
+      // Permet aussi de mettre en pause en cliquant directement sur la
+      // vidéo pendant sa lecture (l'overlay, lui, est caché à ce moment).
+      video.addEventListener('click', togglePlay);
       video.addEventListener('play',       onPlay);
       video.addEventListener('pause',      onPause);
       video.addEventListener('ended',      onPause);
@@ -2058,7 +2206,21 @@
         if (!video) return;
 
         function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
-        function togglePlay() { video.paused ? video.play() : video.pause(); }
+        function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
 
         video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
         video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
@@ -2074,12 +2236,15 @@
         });
         volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
         fullBtn.addEventListener('click', () => {
-          const col = video.closest('.viking-main-video, .viking-secondary-video');
+          const col = video.closest('.viking-main-video, .viking-secondary-video, .project-video-column');
           document.fullscreenElement ? document.exitFullscreen() : col && col.requestFullscreen && col.requestFullscreen();
         });
-        bigBtn.addEventListener('click', togglePlay);
+        bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
         overlay.addEventListener('click', togglePlay);
         playBtn.addEventListener('click', togglePlay);
+        // Permet de mettre en pause en cliquant directement sur la vidéo
+        // pendant la lecture (overlay caché à ce moment-là).
+        video.addEventListener('click', togglePlay);
       }
 
       makePlayer('vikingVolVideo','vikingVolOverlay','vikingVolPlayBtn','vv1Play','vv1PlayIcon','vv1PauseIcon','vv1Progress','vv1Fill','vv1Time','vv1Volume','vv1Fullscreen');
@@ -2105,7 +2270,21 @@
         const m = Math.floor(s / 60);
         return m + ':' + Math.floor(s % 60).toString().padStart(2, '0');
       }
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
 
       video.addEventListener('play', () => {
         overlay.classList.add('hidden');
@@ -2139,9 +2318,10 @@
         const col = video.closest('.project-video-column');
         document.fullscreenElement ? document.exitFullscreen() : col.requestFullscreen && col.requestFullscreen();
       });
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       overlay.addEventListener('click', togglePlay);
       vcPlay.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
     })();
   </script>
 
@@ -2161,7 +2341,21 @@
       const fullBtn   = document.getElementById('vbPrFullscreen');
       if (!video) return;
       function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
       video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
       video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
       video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
@@ -2179,9 +2373,10 @@
         const wrapper = video.closest('.veilbound-header-video');
         document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
       });
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       overlay.addEventListener('click', togglePlay);
       playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
     })();
 
     // ── Veilbound shop video player ──
@@ -2199,7 +2394,21 @@
       const fullBtn   = document.getElementById('vbShFullscreen');
       if (!video) return;
       function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
       video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
       video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
       video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
@@ -2217,9 +2426,10 @@
         const wrapper = video.closest('.fmod-main-video');
         document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
       });
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       overlay.addEventListener('click', togglePlay);
       playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
     })();
 
     // ── Veilbound adaptive music video player ──
@@ -2240,7 +2450,21 @@
       if (volume) volume.value = 0.3;
 
       function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
 
       video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
       video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
@@ -2259,9 +2483,10 @@
         const wrapper = video.closest('.fmod-main-video');
         document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
       });
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       overlay.addEventListener('click', togglePlay);
       playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
     })();
 
     // ── Veilbound playlist player ──
@@ -2471,7 +2696,7 @@
       ];
 
       // Met en pause un lecteur SoundCloud (widget playlist Veilbound /
-      // Gaslighters) en repassant par SC.Widget(iframe) — l'API renvoie
+      // Gaslighters) en repassant par SC.Widget(iframe) - l'API renvoie
       // la même instance déjà initialisée ailleurs, pas besoin d'exposer
       // de variable supplémentaire depuis ces IIFE.
       function pauseSoundCloudIframe(iframeId) {
@@ -2605,7 +2830,21 @@
       if (!video) return;
 
       function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
 
       video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
       video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
@@ -2624,9 +2863,10 @@
         const wrapper = video.closest('.fmod-main-video');
         document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
       });
-      bigBtn.addEventListener('click', togglePlay);
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
       overlay.addEventListener('click', togglePlay);
       playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
     })();
   </script>
 </body>
