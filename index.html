@@ -474,44 +474,97 @@
           </button>
 
           <div class="fmod-subsection-body collapsed" id="vbAdaptBody">
-          <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
-            <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
-              <div class="fmod-main-video">
-                <div class="project-video-wrapper" style="cursor:default;">
-                  <video id="veilboundAdaptVideo" class="project-video" preload="metadata" playsinline>
-                    <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Musiqueadapt.mp4" type="video/mp4" />
-                  </video>
-                  <div class="video-overlay" id="veilboundAdaptOverlay">
-                    <button class="video-play-btn" id="veilboundAdaptPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
-                      <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+
+            <!-- Nouveau contenu principal -->
+            <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+              <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+                <div class="fmod-main-video">
+                  <div class="project-video-wrapper" style="cursor:default;">
+                    <video id="veilboundAdaptVideo" class="project-video" preload="metadata" playsinline>
+                      <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/musiqueadapt2.mp4" type="video/mp4" />
+                    </video>
+                    <div class="video-overlay" id="veilboundAdaptOverlay">
+                      <button class="video-play-btn" id="veilboundAdaptPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                    <button class="vc-btn" id="vbPlay">
+                      <svg id="vbPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                      <svg id="vbPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                    </button>
+                    <div class="vc-progress" id="vbProgress"><div class="vc-progress-fill" id="vbFill" style="background:#9b6ee8;"></div></div>
+                    <span class="vc-time" id="vbTime">0:00</span>
+                    <div class="vc-volume">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                      <input type="range" id="vbVolume" min="0" max="1" step="0.01" value="1" />
+                    </div>
+                    <button class="vc-btn" id="vbFullscreen">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                     </button>
                   </div>
                 </div>
-                <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
-                  <button class="vc-btn" id="vbPlay">
-                    <svg id="vbPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-                    <svg id="vbPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-                  </button>
-                  <div class="vc-progress" id="vbProgress"><div class="vc-progress-fill" id="vbFill" style="background:#9b6ee8;"></div></div>
-                  <span class="vc-time" id="vbTime">0:00</span>
-                  <div class="vc-volume">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                    <input type="range" id="vbVolume" min="0" max="1" step="0.01" value="1" />
-                  </div>
-                  <button class="vc-btn" id="vbFullscreen">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                  </button>
-                </div>
+              </div>
+
+              <div class="fmod-description">
+                <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
+                <p>Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique.</p>
+                <p>Dans cette nouvelle itération du système de musique adaptative de combat, l'ensemble de l'écoute tient en une seule boucle. Les transitions sont gérées au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrôlant l'entrée et la sortie des pistes. Cette approche permet aux transitions de s'opérer à n'importe quel instant de la lecture, sans dépendre d'un trigger temporel comme c'était le cas dans la version précédente.</p>
               </div>
             </div>
 
-            <div class="fmod-description">
-              <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
-              <p>Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique.</p>
-              <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
-              <p class="fmod-note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</p>
+            <!-- Sous-section Ancienne(s) version(s) -->
+            <div class="fmod-subsection fmod-subsection--border-top">
+              <button class="fmod-subsection-toggle" id="vbAdaptOldToggle" aria-expanded="false">
+                <div class="fmod-subsection-header">
+                  <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Système FMOD</span>
+                  <h4>Ancienne(s) version(s)</h4>
+                </div>
+                <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+              </button>
+
+              <div class="fmod-subsection-body collapsed" id="vbAdaptOldBody">
+              <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+                <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+                  <div class="fmod-main-video">
+                    <div class="project-video-wrapper" style="cursor:default;">
+                      <video id="veilboundAdaptOldVideo" class="project-video" preload="metadata" playsinline>
+                        <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Musiqueadapt.mp4" type="video/mp4" />
+                      </video>
+                      <div class="video-overlay" id="veilboundAdaptOldOverlay">
+                        <button class="video-play-btn" id="veilboundAdaptOldPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                          <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                      <button class="vc-btn" id="vbOldPlay">
+                        <svg id="vbOldPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="vbOldPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                      </button>
+                      <div class="vc-progress" id="vbOldProgress"><div class="vc-progress-fill" id="vbOldFill" style="background:#9b6ee8;"></div></div>
+                      <span class="vc-time" id="vbOldTime">0:00</span>
+                      <div class="vc-volume">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                        <input type="range" id="vbOldVolume" min="0" max="1" step="0.01" value="1" />
+                      </div>
+                      <button class="vc-btn" id="vbOldFullscreen">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="fmod-description">
+                  <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
+                  <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
+                  <p class="fmod-note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</p>
+                </div>
+              </div>
+              </div>
             </div>
-          </div>
+
           </div>
         </div>
 
@@ -2489,6 +2542,61 @@
       video.addEventListener('click', togglePlay);
     })();
 
+    // ── Veilbound adaptive music OLD version player ──
+    (function() {
+      const video     = document.getElementById('veilboundAdaptOldVideo');
+      const overlay   = document.getElementById('veilboundAdaptOldOverlay');
+      const bigBtn    = document.getElementById('veilboundAdaptOldPlayBtn');
+      const playBtn   = document.getElementById('vbOldPlay');
+      const playIcon  = document.getElementById('vbOldPlayIcon');
+      const pauseIcon = document.getElementById('vbOldPauseIcon');
+      const progress  = document.getElementById('vbOldProgress');
+      const fill      = document.getElementById('vbOldFill');
+      const time      = document.getElementById('vbOldTime');
+      const volume    = document.getElementById('vbOldVolume');
+      const fullBtn   = document.getElementById('vbOldFullscreen');
+      if (!video) return;
+
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
+
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.fmod-main-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+    })();
+
     // ── Veilbound playlist player ──
     (function() {
       const iframe    = document.getElementById('vbPlIframe');
@@ -2692,7 +2800,7 @@
         { panelId: 'gashlighterExpanded', videos: ['gashlighterVideo'],                                    iframes: ['glIframe'], displayVal: 'grid'  },
         { panelId: 'smashExpanded',       videos: ['smashVideo'],                                          iframes: [],           displayVal: 'grid'  },
         { panelId: 'vikingExpanded',      videos: ['vikingVolVideo','vikingMarcheVideo','fmodFootVideo'],   iframes: [],           displayVal: 'flex'  },
-        { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundShopVideo','veilboundPreviewVideo'], iframes: ['vbPlIframe'], displayVal: 'flex'  },
+        { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundAdaptOldVideo','veilboundShopVideo','veilboundPreviewVideo'], iframes: ['vbPlIframe'], displayVal: 'flex'  },
       ];
 
       // Met en pause un lecteur SoundCloud (widget playlist Veilbound /
@@ -2779,7 +2887,8 @@
       [
         { btnId: 'footstepsToggle', bodyId: 'footstepsBody', videos: ['fmodFootVideo'] },
         { btnId: 'ambianceToggle',  bodyId: 'ambianceBody',  videos: [] },
-        { btnId: 'vbAdaptToggle',   bodyId: 'vbAdaptBody',   videos: ['veilboundAdaptVideo'] },
+        { btnId: 'vbAdaptToggle',   bodyId: 'vbAdaptBody',   videos: ['veilboundAdaptVideo', 'veilboundAdaptOldVideo'] },
+        { btnId: 'vbAdaptOldToggle', bodyId: 'vbAdaptOldBody', videos: ['veilboundAdaptOldVideo'] },
         { btnId: 'vbShopToggle',    bodyId: 'vbShopBody',    videos: ['veilboundShopVideo'] },
         { btnId: 'vbOstToggle',     bodyId: 'vbOstBody',     videos: [], iframes: ['vbPlIframe'] },
       ].forEach(function(cfg) {
