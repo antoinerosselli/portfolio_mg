@@ -15,24 +15,25 @@
   <nav id="navbar">
     <span class="nav-logo">MG</span>
     <ul class="nav-links">
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+      <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <button id="lang-toggle" onclick="toggleLang()" title="Switch language" style="background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.35);cursor:pointer;font-size:1rem;padding:4px 10px;line-height:1;display:flex;align-items:center;gap:6px;border-radius:6px;color:var(--accent);font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.18)';this.style.borderColor='rgba(200,169,110,0.6)'" onmouseout="this.style.background='rgba(200,169,110,0.08)';this.style.borderColor='rgba(200,169,110,0.35)'">🇺🇸 EN</button>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-content">
-      <p class="hero-label">Sound Designer · Game Audio</p>
+      <p class="hero-label" data-i18n="hero_label">Sound Designer · Game Audio</p>
       <h1 class="hero-title">Max<br />Guillot</h1>
-      <p class="hero-sub">Je crée des univers sonores immersifs pour les jeux vidéo - des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Je crée des univers sonores immersifs pour les jeux vidéo - des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.</p>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn-ghost">Me contacter</a>
-        <a href="CV_Max_Guillot.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+        <a href="#projects" class="btn btn-primary"><span data-i18n="btn_projects">Voir mes projets</span></a>
+        <a href="#contact" class="btn btn-ghost"><span data-i18n="btn_contact">Me contacter</span></a>
+        <a href="Max guillot - CV FR.pdf" id="cv-link-1" target="_blank" rel="noopener" class="btn btn-ghost">
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-          Voir mon CV
+          <span data-i18n="btn_cv">Voir mon CV</span>
         </a>
       </div>
     </div>
@@ -41,8 +42,8 @@
         <div class="hero-player" id="heroPlayer">
           <div class="hero-player-top">
             <div class="hero-player-info">
-              <span class="hero-player-tag">// en écoute</span>
-              <a id="scTrackLink" href="#" target="_blank" rel="noopener" class="hero-player-title">Chargement…</a>
+              <span class="hero-player-tag"><span data-i18n="player_listening">// en écoute</span></span>
+              <a id="scTrackLink" href="#" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargement…</span></a>
             </div>
             <button class="hero-player-play" id="heroPlayBtn" aria-label="Lecture / Pause">
               <svg id="heroPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -337,7 +338,7 @@
     <div class="section-header">
       <span class="section-tag">Portfolio</span>
       <h2>Projets</h2>
-      <p>Une sélection de projets de sound design pour le jeu vidéo.</p>
+      <p data-i18n="projects_sub_short">Une sélection de projets de sound design pour le jeu vidéo.</p>
     </div>
 
     <div class="projects-grid">
@@ -346,17 +347,17 @@
       <article class="project-card project-card--expandable" id="gashlighterCard">
         <div class="project-thumb" data-accent="#e8564a">
           <span class="project-icon">⚡</span>
-          <span class="project-genre">Action / Thriller · Indépendant</span>
+          <span class="project-genre"><span data-i18n="gl_genre">Action / Thriller · Indépendant</span></span>
         </div>
         <div class="project-body">
           <h3>Gaslighters</h3>
-          <p>Composition de l'intégralité de la bande originale et sound design de la radio, mécanique narrative centrale du jeu.</p>
+          <p data-i18n="gl_card_desc">Composition de l'intégralité de la bande originale et sound design de la radio, mécanique narrative centrale du jeu.</p>
           <div class="project-tags">
-            <span>Distorsion</span><span>Tension</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
+            <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
           </div>
           <button class="expand-btn project-expand-btn" data-target="gashlighterExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Voir le projet complet
+            <span data-i18n="btn_see_project">Voir le projet complet</span>
           </button>
         </div>
       </article>
@@ -369,13 +370,13 @@
         </div>
         <div class="project-body">
           <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
-          <p>Proposition d'un sound design du trailer de révélation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.</p>
+          <p><span data-i18n="card_sm">Proposition d'un sound design du trailer de révélation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.</span></p>
           <div class="project-tags">
-            <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
+            <span>Trailer</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
           <button class="expand-btn project-expand-btn" style="color:#e8a600;background:rgba(232,166,0,0.08);border-color:rgba(232,166,0,0.3);" data-target="smashExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Voir le projet complet
+            <span data-i18n="btn_see_project">Voir le projet complet</span>
           </button>
         </div>
       </article>
@@ -388,13 +389,13 @@
         </div>
         <div class="project-body">
           <h3>Unity Integration - Viking Village Sound Design</h3>
-          <p>Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
+          <p><span data-i18n="card_vk">Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.</span></p>
           <div class="project-tags">
             <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
           </div>
           <button class="expand-btn project-expand-btn" style="color:#7ab3e8;background:rgba(122,179,232,0.08);border-color:rgba(122,179,232,0.3);" data-target="vikingExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Voir le projet complet
+            <span data-i18n="btn_see_project">Voir le projet complet</span>
           </button>
         </div>
       </article>
@@ -407,13 +408,13 @@
         </div>
         <div class="project-body">
           <h3>Veilbound</h3>
-          <p>Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en légendes.</p>
+          <p><span data-i18n="card_vb">Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en légendes.</span></p>
           <div class="project-tags">
-            <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptive</span>
+            <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span>Musique adaptive</span>
           </div>
           <button class="expand-btn project-expand-btn" style="color:#9b6ee8;background:rgba(155,110,232,0.08);border-color:rgba(155,110,232,0.3);" data-target="veilboundExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Voir le projet complet
+            <span data-i18n="btn_see_project">Voir le projet complet</span>
           </button>
         </div>
       </article>
@@ -428,10 +429,10 @@
               <span class="project-icon" style="color:#9b6ee8;">✧</span>
             </div>
             <h3>Veilbound</h3>
-            <p>Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers à travers un monde dark fantasy riche en histoires et en légendes. Le gameplay mêle gestion stratégique et combats de type auto-battler.</p>
-            <p>Je suis en charge de l'intégralité du sound design du projet : composition des musiques, conception des ambiances sonores, création des effets sonores et implémentation technique complète dans le moteur de jeu.</p>
+            <p><span data-i18n="vb_intro">Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers à travers un monde dark fantasy riche en histoires et en légendes. Le gameplay mêle gestion stratégique et combats de type auto-battler.</span></p>
+            <p><span data-i18n="vb_role">Je suis en charge de l'intégralité du sound design du projet : composition des musiques, conception des ambiances sonores, création des effets sonores et implémentation technique complète dans le moteur de jeu.</span></p>
             <div class="project-tags">
-              <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Ableton Live</span><span>Musique adaptative</span><span class="tag-wip">En développement</span>
+              <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span><span data-i18n="vb_adapt_title">Musique adaptative</span></span><span class="tag-wip"><span data-i18n="tag_wip">En développement</span></span>
             </div>
           </div>
           <div class="veilbound-header-video">
@@ -468,14 +469,14 @@
           <button class="fmod-subsection-toggle veilbound-subsection-toggle" id="vbAdaptToggle" aria-expanded="false">
             <div class="veilbound-section-header fmod-subsection-header">
               <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Système FMOD</span>
-              <h4>Musique adaptative</h4>
+              <h4><span data-i18n="vb_adapt_title">Musique adaptative</span></h4>
             </div>
             <svg class="fmod-toggle-arrow veilbound-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
           </button>
 
           <div class="fmod-subsection-body collapsed" id="vbAdaptBody">
 
-            <!-- Nouveau contenu principal -->
+            <!-- Contenu principal : nouvelle version musiqueadapt2.mp4 -->
             <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
               <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
                 <div class="fmod-main-video">
@@ -484,7 +485,7 @@
                       <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/musiqueadapt2.mp4" type="video/mp4" />
                     </video>
                     <div class="video-overlay" id="veilboundAdaptOverlay">
-                      <button class="video-play-btn" id="veilboundAdaptPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
+                      <button class="video-play-btn" id="veilboundAdaptPlayBtn" aria-label="Play" style="background:rgba(155,110,232,0.9);">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
                       </button>
                     </div>
@@ -506,62 +507,60 @@
                   </div>
                 </div>
               </div>
-
               <div class="fmod-description">
-                <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
-                <p>Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique.</p>
-                <p>Dans cette nouvelle itération du système de musique adaptative de combat, l'ensemble de l'écoute tient en une seule boucle. Les transitions sont gérées au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrôlant l'entrée et la sortie des pistes. Cette approche permet aux transitions de s'opérer à n'importe quel instant de la lecture, sans dépendre d'un trigger temporel comme c'était le cas dans la version précédente.</p>
+                <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du système</span></h5>
+                <p><span data-i18n="vb_adapt_p1">Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique. Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat.</span></p>
+                <p><span data-i18n="vb_adapt_p2">Dans cette nouvelle itération du système de musique adaptative de combat, l'ensemble de l'écoute tient en une seule boucle. Les transitions sont gérées au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrôlant l'entrée et la sortie des pistes. Cette approche permet aux transitions de s'opérer à n'importe quel instant de la lecture, sans dépendre d'un trigger temporel comme c'était le cas dans la version précédente.</span></p>
               </div>
             </div>
 
             <!-- Sous-section Ancienne(s) version(s) -->
             <div class="fmod-subsection fmod-subsection--border-top">
-              <button class="fmod-subsection-toggle" id="vbAdaptOldToggle" aria-expanded="false">
+              <button class="fmod-subsection-toggle" id="vbAdaptOldToggle" aria-expanded="false" style="background:transparent;border-top:1px dashed rgba(155,110,232,0.2);opacity:0.65;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.65">
                 <div class="fmod-subsection-header">
-                  <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Système FMOD</span>
-                  <h4>Ancienne(s) version(s)</h4>
+                  <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);font-size:10px;letter-spacing:0.08em;">Système FMOD</span>
+                  <h4 style="font-size:0.85rem;font-weight:500;font-style:italic;color:#888;"><span data-i18n="vb_old_title">Ancienne(s) version(s)</span></h4>
                 </div>
-                <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+                <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="color:#444;"><path d="M7 10l5 5 5-5z"/></svg>
               </button>
 
               <div class="fmod-subsection-body collapsed" id="vbAdaptOldBody">
-              <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
-                <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
-                  <div class="fmod-main-video">
-                    <div class="project-video-wrapper" style="cursor:default;">
-                      <video id="veilboundAdaptOldVideo" class="project-video" preload="metadata" playsinline>
-                        <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Musiqueadapt.mp4" type="video/mp4" />
-                      </video>
-                      <div class="video-overlay" id="veilboundAdaptOldOverlay">
-                        <button class="video-play-btn" id="veilboundAdaptOldPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
-                          <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+                  <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+                    <div class="fmod-main-video">
+                      <div class="project-video-wrapper" style="cursor:default;">
+                        <video id="veilboundAdaptOldVideo" class="project-video" preload="metadata" playsinline>
+                          <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Musiqueadapt.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-overlay" id="veilboundAdaptOldOverlay">
+                          <button class="video-play-btn" id="veilboundAdaptOldPlayBtn" aria-label="Play" style="background:rgba(155,110,232,0.9);">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                        <button class="vc-btn" id="vbOldPlay">
+                          <svg id="vbOldPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                          <svg id="vbOldPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                        </button>
+                        <div class="vc-progress" id="vbOldProgress"><div class="vc-progress-fill" id="vbOldFill" style="background:#9b6ee8;"></div></div>
+                        <span class="vc-time" id="vbOldTime">0:00</span>
+                        <div class="vc-volume">
+                          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                          <input type="range" id="vbOldVolume" min="0" max="1" step="0.01" value="1" />
+                        </div>
+                        <button class="vc-btn" id="vbOldFullscreen">
+                          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                         </button>
                       </div>
                     </div>
-                    <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
-                      <button class="vc-btn" id="vbOldPlay">
-                        <svg id="vbOldPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-                        <svg id="vbOldPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-                      </button>
-                      <div class="vc-progress" id="vbOldProgress"><div class="vc-progress-fill" id="vbOldFill" style="background:#9b6ee8;"></div></div>
-                      <span class="vc-time" id="vbOldTime">0:00</span>
-                      <div class="vc-volume">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                        <input type="range" id="vbOldVolume" min="0" max="1" step="0.01" value="1" />
-                      </div>
-                      <button class="vc-btn" id="vbOldFullscreen">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                      </button>
-                    </div>
+                  </div>
+                  <div class="fmod-description">
+                    <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du système</span></h5>
+                    <p><span data-i18n="vb_old_p1">À partir du paramètre <code>%écart</code>, de nombreux points de transition ont été définis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</span></p>
+                    <p class="fmod-note"><span data-i18n="vb_old_note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</span></p>
                   </div>
                 </div>
-
-                <div class="fmod-description">
-                  <h5 style="color:#9b6ee8;">Fonctionnement du système</h5>
-                  <p>Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat. C'est à partir de ce paramètre qu'ont été définis de nombreux points de transition - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des états possibles du combat.</p>
-                  <p class="fmod-note">Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.</p>
-                </div>
-              </div>
               </div>
             </div>
 
@@ -573,7 +572,7 @@
           <button class="fmod-subsection-toggle veilbound-subsection-toggle" id="vbShopToggle" aria-expanded="false">
             <div class="veilbound-section-header fmod-subsection-header">
               <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Sound Design</span>
-              <h4>Menu Sound Design</h4>
+              <h4><span data-i18n="vb_shop_title">Menu Sound Design</span></h4>
             </div>
             <svg class="fmod-toggle-arrow veilbound-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
           </button>
@@ -610,9 +609,9 @@
               </div>
             </div>
             <div class="fmod-description">
-              <h5 style="color:#9b6ee8;">Conception</h5>
-              <p>Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</p>
-              <p class="fmod-note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.</p>
+              <h5 style="color:#9b6ee8;"><span data-i18n="vb_shop_design_title">Conception</span></h5>
+              <p><span data-i18n="vb_shop_p1">Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</span></p>
+              <p class="fmod-note"><span data-i18n="vb_shop_note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.</span></p>
             </div>
           </div>
           </div>
@@ -622,12 +621,12 @@
         <div class="veilbound-section fmod-subsection fmod-subsection--border-top">
           <div class="veilbound-section-header fmod-subsection-header veilbound-section-header--with-toggle">
             <button class="fmod-subsection-toggle veilbound-subsection-toggle veilbound-subsection-toggle--inline" id="vbOstToggle" aria-expanded="false">
-              <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Bande originale</span>
+              <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);"><span data-i18n="vb_ost_title">Bande originale</span></span>
               <svg class="fmod-toggle-arrow veilbound-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
             <a href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="gaslighters-sc-link">
               <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
-              Voir sur SoundCloud
+              <span data-i18n="btn_soundcloud">Voir sur SoundCloud</span>
             </a>
           </div>
 
@@ -637,8 +636,8 @@
               <div class="hero-player" style="border-color:rgba(155,110,232,0.25);box-shadow:0 0 20px rgba(155,110,232,0.05);">
                 <div class="hero-player-top">
                   <div class="hero-player-info">
-                    <span class="hero-player-tag" style="color:#9b6ee8;">// en écoute</span>
-                    <a id="vbTrackLink" href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="hero-player-title">Chargement…</a>
+                    <span class="hero-player-tag" style="color:#9b6ee8;"><span data-i18n="player_listening">// en écoute</span></span>
+                    <a id="vbTrackLink" href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargement…</span></a>
                   </div>
                   <button class="hero-player-play" id="vbPlPlayBtn" style="color:#9b6ee8;background:rgba(155,110,232,0.12);border-color:rgba(155,110,232,0.4);">
                     <svg id="vbPlPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -679,29 +678,28 @@
       <article class="project-card project-card--featured project-card--expanded project-expanded-panel" id="gashlighterExpanded" style="display:none;grid-column:1/-1;">
         <div class="project-featured-header" style="border-left: 3px solid #e8564a;">
           <div class="project-featured-meta">
-            <span class="project-genre" style="color:#e8564a;">Action / Thriller · Indépendant</span>
-            <span class="project-icon" style="color:#e8564a;">⚡</span>
+            <span class="project-genre" style="color:#e8564a;"><span data-i18n="gl_genre">Action / Thriller · Indépendant</span></span>
           </div>
           <h3>Gaslighters</h3>
-          <p>Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio - mécanique narrative centrale de Gaslighters - en lui apportant une attention particulière pour renforcer l'immersion.</p>
+          <p><span data-i18n="gl_desc">Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio - mécanique narrative centrale de Gaslighters - en lui apportant une attention particulière pour renforcer l'immersion.</span></p>
           <div class="project-tags">
-            <span>Distorsion</span><span>Tension</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
+            <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
           </div>
           <div class="gashlighter-steam-info">
             <div class="steam-info-row">
-              <span class="steam-info-label">Développeur</span>
+              <span class="steam-info-label"><span data-i18n="gl_dev_label">Développeur</span></span>
               <span class="steam-info-value">Of Passage</span>
             </div>
             <div class="steam-info-row">
-              <span class="steam-info-label">Sortie</span>
-              <span class="steam-info-value">20 juin 2025</span>
+              <span class="steam-info-label"><span data-i18n="gl_release_label">Sortie</span></span>
+              <span class="steam-info-value"><span data-i18n="gl_release_date">20 juin 2025</span></span>
             </div>
             <div class="steam-info-row">
-              <span class="steam-info-label">Genres</span>
-              <span class="steam-info-value">Aventure, Fiction interactive, Psychologique, Mystère</span>
+              <span class="steam-info-label"><span data-i18n="gl_genres_label">Genres</span></span>
+              <span class="steam-info-value"><span data-i18n="gl_genres">Aventure, Fiction interactive, Psychologique, Mystère</span></span>
             </div>
             <div class="steam-info-row">
-              <span class="steam-info-label">Plateforme</span>
+              <span class="steam-info-label"><span data-i18n="gl_platform_label">Plateforme</span></span>
               <span class="steam-info-value">Windows (Steam)</span>
             </div>
           </div>
@@ -749,18 +747,18 @@
         <!-- Playlist SoundCloud -->
         <div class="gaslighters-playlist">
           <div class="gaslighters-playlist-header">
-            <span class="fmod-subsection-tag" style="color:#e8564a;background:rgba(232,86,74,0.1);border-color:rgba(232,86,74,0.2);">Bande originale</span>
+            <span class="fmod-subsection-tag" style="color:#e8564a;background:rgba(232,86,74,0.1);border-color:rgba(232,86,74,0.2);"><span data-i18n="vb_ost_title">Bande originale</span></span>
             <a href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="gaslighters-sc-link">
               <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
-              Voir sur SoundCloud
+              <span data-i18n="btn_soundcloud">Voir sur SoundCloud</span>
             </a>
           </div>
           <div class="gaslighters-playlist-player" id="glPlayerWrap">
             <div class="hero-player" style="border-color:rgba(232,86,74,0.25);box-shadow:0 0 20px rgba(232,86,74,0.05);">
               <div class="hero-player-top">
                 <div class="hero-player-info">
-                  <span class="hero-player-tag" style="color:#e8564a;">// en écoute</span>
-                  <a id="glTrackLink" href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="hero-player-title" style="color:#f0f0f0;">Chargement…</a>
+                  <span class="hero-player-tag" style="color:#e8564a;"><span data-i18n="player_listening">// en écoute</span></span>
+                  <a id="glTrackLink" href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="hero-player-title" style="color:#f0f0f0;"><span data-i18n="player_loading">Chargement…</span></a>
                 </div>
                 <button class="hero-player-play" id="glPlayBtn" style="color:#e8564a;background:rgba(232,86,74,0.12);border-color:rgba(232,86,74,0.4);">
                   <svg id="glPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -798,82 +796,92 @@
 
       <!-- VIKING VILLAGE EXPANDED -->
       <article class="project-card project-card--viking project-expanded-panel" id="vikingExpanded" style="display:none;grid-column:1/-1;">
-        <div class="viking-top-row">
-        <div class="project-featured-header" style="border-left: 3px solid #7ab3e8;">
+
+        <!-- En-tête compact avec titre et tags -->
+        <div class="viking-header">
           <div class="project-featured-meta viking-meta-top">
             <span class="project-genre" style="color:#7ab3e8;">Unity / 3D Integration</span>
             <span class="project-icon" style="color:#7ab3e8;">⚔</span>
           </div>
-          <h3>Unity Integration - Viking Village Sound Design</h3>
-          <p>Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.</p>
-          <div class="project-tags">
+          <h3 style="margin-top:1.5rem;">Unity Integration - Viking Village Sound Design</h3>
+          <div class="project-tags" style="margin-top:0.5rem;">
             <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
           </div>
         </div>
-        <div class="project-video-column">
-          <div class="project-video-wrapper" style="cursor:default; aspect-ratio:16/9; background:#000;">
-            <video id="vikingVolVideo" class="project-video" preload="metadata" playsinline>
-              <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/trailervol.mp4" type="video/mp4" />
-            </video>
-            <div class="video-overlay" id="vikingVolOverlay">
-              <button class="video-play-btn" id="vikingVolPlayBtn" aria-label="Lire" style="background:rgba(122,179,232,0.9);">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
-              </button>
-            </div>
-          </div>
-          <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
-            <button class="vc-btn" id="vv1Play">
-              <svg id="vv1PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-              <svg id="vv1PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-            </button>
-            <div class="vc-progress" id="vv1Progress"><div class="vc-progress-fill" id="vv1Fill" style="background:#7ab3e8;"></div></div>
-            <span class="vc-time" id="vv1Time">0:00</span>
-            <div class="vc-volume">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-              <input type="range" id="vv1Volume" min="0" max="1" step="0.01" value="1" />
-            </div>
-            <button class="vc-btn" id="vv1Fullscreen">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            </button>
-          </div>
-        </div>
-        </div>
 
-        <!-- Rangée basse : vidéo secondaire + texte -->
-        <div class="viking-bottom-row">
-          <div class="viking-secondary-video">
-            <div class="project-video-wrapper" style="cursor:default;">
-              <video id="vikingMarcheVideo" class="project-video" preload="metadata" playsinline>
-                <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/trailermarche.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" id="vikingMarcheOverlay">
-                <button class="video-play-btn" id="vikingMarchePlayBtn" aria-label="Lire" style="background:rgba(122,179,232,0.9); width:52px; height:52px;">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+        <!-- Rangée 1 : vidéo vol + description générale -->
+        <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.12);">
+          <div class="fmod-left-column" style="border-right:1px solid rgba(122,179,232,0.1);">
+            <div class="fmod-main-video">
+              <div class="project-video-wrapper" style="cursor:default;">
+                <video id="vikingVolVideo" class="project-video" preload="metadata" playsinline>
+                  <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/trailervol.mp4" type="video/mp4" />
+                </video>
+                <div class="video-overlay" id="vikingVolOverlay">
+                  <button class="video-play-btn" id="vikingVolPlayBtn" aria-label="Play" style="background:rgba(122,179,232,0.9);">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
+                <button class="vc-btn" id="vv1Play">
+                  <svg id="vv1PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                  <svg id="vv1PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                </button>
+                <div class="vc-progress" id="vv1Progress"><div class="vc-progress-fill" id="vv1Fill" style="background:#7ab3e8;"></div></div>
+                <span class="vc-time" id="vv1Time">0:00</span>
+                <div class="vc-volume">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  <input type="range" id="vv1Volume" min="0" max="1" step="0.01" value="1" />
+                </div>
+                <button class="vc-btn" id="vv1Fullscreen">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                 </button>
               </div>
             </div>
-            <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
-              <button class="vc-btn" id="vv2Play">
-                <svg id="vv2PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-                <svg id="vv2PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-              </button>
-              <div class="vc-progress" id="vv2Progress"><div class="vc-progress-fill" id="vv2Fill" style="background:#7ab3e8;"></div></div>
-              <span class="vc-time" id="vv2Time">0:00</span>
-              <div class="vc-volume">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                <input type="range" id="vv2Volume" min="0" max="1" step="0.01" value="1" />
+          </div>
+          <div class="fmod-description">
+            <h5 style="color:#7ab3e8;"><span data-i18n="vk_learn_more">En savoir plus</span></h5>
+            <p><span data-i18n="vk_desc">Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.</span></p>
+            <p><span data-i18n="vk_p2">Les sons ont été enregistrés et traités dans Ableton Live, puis spatialisés et intégrés à Unity via FMOD. Des paramètres globaux et locaux ont été mis en place pour adapter le sound design aux interactions et aux déplacements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intègre également des transitions musicales en fonction de la position du joueur.</span></p>
+            <p><span data-i18n="vk_asset_pre">Ce travail a été réalisé sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset</span> <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a><span data-i18n="vk_asset_post">, disponible sur l'Unity Asset Store.</span></p>
+          </div>
+        </div>
+
+        <!-- Rangée 2 : vidéo marche + contexte gameplay -->
+        <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.08);">
+          <div class="fmod-left-column" style="border-right:1px solid rgba(122,179,232,0.1);">
+            <div class="fmod-main-video">
+              <div class="project-video-wrapper" style="cursor:default;">
+                <video id="vikingMarcheVideo" class="project-video" preload="metadata" playsinline>
+                  <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/trailermarche.mp4" type="video/mp4" />
+                </video>
+                <div class="video-overlay" id="vikingMarcheOverlay">
+                  <button class="video-play-btn" id="vikingMarchePlayBtn" aria-label="Play" style="background:rgba(122,179,232,0.9);">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                </div>
               </div>
-              <button class="vc-btn" id="vv2Fullscreen">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-              </button>
+              <div class="video-controls" style="border-top-color:rgba(122,179,232,0.2);">
+                <button class="vc-btn" id="vv2Play">
+                  <svg id="vv2PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                  <svg id="vv2PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                </button>
+                <div class="vc-progress" id="vv2Progress"><div class="vc-progress-fill" id="vv2Fill" style="background:#7ab3e8;"></div></div>
+                <span class="vc-time" id="vv2Time">0:00</span>
+                <div class="vc-volume">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  <input type="range" id="vv2Volume" min="0" max="1" step="0.01" value="1" />
+                </div>
+                <button class="vc-btn" id="vv2Fullscreen">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                </button>
+              </div>
             </div>
           </div>
-
-          <div class="viking-description">
-            <h4 style="color:#7ab3e8; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">En savoir plus</h4>
-            <p>Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.</p>
-            <p>Les sons ont été enregistrés et traités dans Ableton Live, puis spatialisés et intégrés à Unity via FMOD. Des paramètres globaux et locaux ont été mis en place pour adapter le sound design aux interactions et aux déplacements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intègre également des transitions musicales en fonction de la position du joueur.</p>
-            <p>Ce travail a été réalisé sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140?srsltid=AfmBOoq7EKvyyr4kE5qg1nAqPznvH7wDu3SPajT8ytGhGXsOQqD_pwP7" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a>, disponible sur l'Unity Asset Store.</p>
+          <div class="fmod-description">
+            <h5 style="color:#7ab3e8;" data-i18n="vk_gameplay_title">Gameplay &amp; déplacements</h5>
+            <p data-i18n="vk_gameplay_desc">Cette vidéo illustre le rendu sonore du point de vue du joueur en déplacement dans l'environnement. On y perçoit les transitions entre les zones d'ambiance, les effets de game feel liés aux mouvements, et l'ensemble du sound design spatial en conditions réelles.</p>
           </div>
         </div>
 
@@ -889,7 +897,7 @@
         <div class="viking-fmod-section" id="fmodSection" style="display:none;">
 
           <!-- Footsteps subsection -->
-          <div class="fmod-subsection">
+          <div class="fmod-subsection" style="background:#0d0d0d;">
             <button class="fmod-subsection-toggle" id="footstepsToggle" aria-expanded="false">
               <div class="fmod-subsection-header">
                 <span class="fmod-subsection-tag">Event FMOD</span>
@@ -899,9 +907,9 @@
             </button>
 
             <div class="fmod-subsection-body collapsed" id="footstepsBody">
-              <div class="fmod-top-row">
-                <div class="fmod-left-column">
-                  <div class="fmod-main-video">
+              <div class="fmod-top-row" style="background:#0d0d0d;">
+                <div class="fmod-left-column" style="background:#0d0d0d;">
+                  <div class="fmod-main-video" style="background:#0d0d0d;">
                     <div class="project-video-wrapper" style="cursor:default;">
                       <video id="fmodFootVideo" class="project-video" preload="metadata" playsinline>
                         <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/presfootstep.mp4" type="video/mp4" />
@@ -932,16 +940,16 @@
                     <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps - paramètres playerspeed, IsGrounded, groundcheck" />
                   </div>
                 </div>
-                <div class="fmod-right-column">
-                  <div class="fmod-description fmod-description--half">
-                    <h5>Fonctionnement de l'event</h5>
-                    <p>L'event Footsteps repose sur un système de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
-                    <p>Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne région.</p>
-                    <p class="fmod-note">Ce mode de fonctionnement permet à chaque sample de se lire en entier avant de se couper, évitant une interruption dérangeante du son.</p>
+                <div class="fmod-right-column" style="background:#0d0d0d;">
+                  <div class="fmod-description fmod-description--half" style="background:#0d0d0d;">
+                    <h5><span data-i18n="vk_event_title">Fonctionnement de l'event</span></h5>
+                    <p data-i18n="vk_footsteps_p1">L'event Footsteps repose sur un système de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
+                    <p data-i18n="vk_footsteps_p2">Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne région.</p>
+                    <p class="fmod-note"><span data-i18n="vk_footsteps_p3">Ce mode de fonctionnement permet à chaque sample de se lire en entier avant de se couper, évitant une interruption dérangeante du son.</span></p>
                   </div>
-                  <div class="fmod-description fmod-description--half fmod-description--border-top">
-                    <h6 class="fmod-remarque">Remarque :</h6>
-                    <p>Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch - simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.</p>
+                  <div class="fmod-description fmod-description--half fmod-description--border-top" style="background:#0d0d0d;">
+                    <h6 class="fmod-remarque" data-i18n="vk_remark_title">Remarque :</h6>
+                    <p data-i18n="vk_footsteps_note_text">Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch - simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.</p>
                   </div>
                 </div>
               </div>
@@ -949,19 +957,19 @@
           </div>
 
           <!-- Ambiance Sound subsection -->
-          <div class="fmod-subsection fmod-subsection--border-top">
+          <div class="fmod-subsection fmod-subsection--border-top" style="background:#0d0d0d;">
             <button class="fmod-subsection-toggle" id="ambianceToggle" aria-expanded="false">
               <div class="fmod-subsection-header">
                 <span class="fmod-subsection-tag">Event FMOD</span>
-                <h4>Ambiance Sound</h4>
+                <h4 data-i18n="vk_ambiance_title">Ambiance Sound</h4>
               </div>
               <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
 
             <div class="fmod-subsection-body collapsed" id="ambianceBody">
-              <div class="fmod-top-row">
-                <div class="fmod-left-column">
-                  <div class="fmod-screenshot fmod-screenshot--half">
+              <div class="fmod-top-row" style="background:#0d0d0d;">
+                <div class="fmod-left-column" style="background:#0d0d0d;">
+                  <div class="fmod-screenshot fmod-screenshot--half" style="background:#0d0d0d;">
                     <img src="unityscreensoundzone.PNG" alt="Unity - zone d'ambiance sonore avec émetteur FMOD" />
                   </div>
                   <div class="fmod-screenshot fmod-screenshot--half" style="border-top: 1px solid rgba(122,179,232,0.1);">
@@ -969,20 +977,20 @@
                   </div>
                 </div>
                 <div class="fmod-description">
-                  <h5>Fonctionnement de l'event</h5>
-                  <p>Pour les sons d'ambiance, chaque émetteur est confiné dans une zone délimitée - représentée par les pavés verts -. Grâce au script <code>AmbienceSound</code>, l'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.</p>
-                  <p>Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone - plus il s'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.</p>
+                  <h5 data-i18n="vk_event_title">Fonctionnement de l'event</h5>
+                  <p data-i18n="vk_ambience_p1_new">Pour les sons d'ambiance, chaque émetteur est confiné dans une zone délimitée - représentée par les pavés verts -. Grâce au script <code>AmbienceSound</code>, l'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.</p>
+                  <p data-i18n="vk_ambience_p2_new">Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone - plus il s'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.</p>
                 </div>
               </div>
-              <div class="fmod-top-row" style="border-top: 1px solid rgba(122,179,232,0.1);">
-                <div class="fmod-left-column">
-                  <div class="fmod-screenshot">
+              <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.1);background:#0d0d0d;">
+                <div class="fmod-left-column" style="background:#0d0d0d;">
+                  <div class="fmod-screenshot" style="background:#0d0d0d;">
                     <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# - déplacement de l'émetteur" />
                   </div>
                 </div>
                 <div class="fmod-description">
-                  <h6 class="fmod-remarque">Ambiance Sound Script</h6>
-                  <p>Ce script gère le déplacement de l'émetteur vers le point d'une zone définie le plus proche du joueur. Il est issu de <a href="https://www.youtube.com/watch?v=8-SnHgtXV3k" target="_blank" rel="noopener" class="viking-asset-link">cette vidéo</a>, qui m'a inspiré dans la conception de ce système.</p>
+                  <h6 class="fmod-remarque" data-i18n="vk_ambiance_script_title">Ambiance Sound Script</h6>
+                  <p><span data-i18n="vk_script_desc_pre">Ce script gère le déplacement de l'émetteur vers le point d'une zone définie le plus proche du joueur. Il est issu de</span> <a href="https://www.youtube.com/watch?v=8-SnHgtXV3k" target="_blank" rel="noopener" class="viking-asset-link" data-i18n="vk_this_video">cette vidéo</a><span data-i18n="vk_script_desc_post">, qui m'a inspiré dans la conception de ce système.</span></p>
                 </div>
               </div>
             </div>
@@ -998,18 +1006,18 @@
         <div class="viking-fmod-trigger viking-dl-trigger">
           <button class="fmod-expand-btn viking-dl-btn" id="dlExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Téléchargements - Voir
+            <span data-i18n="vk_dl_btn">Téléchargements - Voir</span>
           </button>
         </div>
 
         <div class="viking-fmod-section viking-dl-section" id="dlSection" style="display:none;">
           <div class="viking-dl-inner">
-            <span class="fmod-subsection-tag viking-dl-tag">Exécutable</span>
+            <span class="fmod-subsection-tag viking-dl-tag"><span data-i18n="vk_exec_title">Exécutable</span></span>
             <a href="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/VikingVillage_Executable.zip" download class="viking-dl-item">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Téléchargement de l'exécutable
+              <span data-i18n="vk_dl_title">Téléchargement de l'exécutable</span>
             </a>
-            <p class="viking-dl-text">Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez télécharger l'exécutable de la scène ci-contre.</p>
+            <p class="viking-dl-text"><span data-i18n="vk_dl_desc">Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez télécharger l'exécutable de la scène ci-contre.</span></p>
           </div>
         </div>
 
@@ -1019,48 +1027,42 @@
         <div class="project-featured-header">
           <div class="project-featured-meta">
             <span class="project-genre">Fighting / Nintendo</span>
-            <span class="project-icon">✦</span>
           </div>
           <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
-          <p>Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.</p>
+          <p><span data-i18n="sm_desc">Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.</span></p>
           <div class="project-tags">
-            <span>Trailer</span><span>SFX</span><span>Fight</span><span>Nintendo</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
+            <span>Trailer</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
         </div>
         <div class="project-video-column">
           <div class="project-video-wrapper" id="videoContainer">
-          <video
-            id="smashVideo"
-            class="project-video"
-            preload="metadata"
-            playsinline
-          >
-            <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Smash_scene_60.mp4" type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture vidéo.
-          </video>
-          <div class="video-overlay" id="videoOverlay">
-            <button class="video-play-btn" id="videoPlayBtn" aria-label="Lire la vidéo">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+            <video id="smashVideo" class="project-video" preload="metadata" playsinline>
+              <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Smash_scene_60.mp4" type="video/mp4" />
+              <span data-i18n="browser_no_video">Votre navigateur ne supporte pas la lecture vidéo.</span>
+            </video>
+            <div class="video-overlay" id="videoOverlay">
+              <button class="video-play-btn" id="videoPlayBtn" aria-label="Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-controls" id="videoControls">
+            <button class="vc-btn" id="vcPlay" aria-label="Play / Pause">
+              <svg id="vcPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="vcPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+            </button>
+            <div class="vc-progress" id="vcProgress">
+              <div class="vc-progress-fill" id="vcProgressFill"></div>
+            </div>
+            <span class="vc-time" id="vcTime">0:00</span>
+            <div class="vc-volume">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              <input type="range" id="vcVolume" min="0" max="1" step="0.01" value="1" />
+            </div>
+            <button class="vc-btn" id="vcFullscreen">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
             </button>
           </div>
-        </div>
-        <div class="video-controls" id="videoControls">
-          <button class="vc-btn" id="vcPlay" aria-label="Lecture / Pause">
-            <svg id="vcPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-            <svg id="vcPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-          </button>
-          <div class="vc-progress" id="vcProgress">
-            <div class="vc-progress-fill" id="vcProgressFill"></div>
-          </div>
-          <span class="vc-time" id="vcTime">0:00</span>
-          <div class="vc-volume" title="Volume">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-            <input type="range" id="vcVolume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
-          </div>
-          <button class="vc-btn" id="vcFullscreen" aria-label="Plein écran">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-          </button>
-        </div>
         </div>
       </article>
 
@@ -1071,45 +1073,43 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-text">
-        <span class="section-tag">À propos</span>
-        <h2>Son, jeu,<br />immersion.</h2>
-        <p>Sound designer spécialisé dans le jeu vidéo, je travaille à la jonction entre la narration sonore et le game feel. Mon objectif : créer des expériences où le son renforce chaque émotion, chaque action, chaque monde.</p>
-        <p>Issu d'une formation en acoustique du bâtiment, j'ai développé mon expertise en sound design pour le jeu vidéo en autodidacte, motivé par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.</p>
-        <a href="#contact" class="btn btn-primary">Voir mon contact</a>
+        <span class="section-tag" data-i18n="nav_about">À propos</span>
+        <h2><span data-i18n="about_title"><span data-i18n="about_title">Son, jeu,<br />immersion.</span></span></h2>
+        <p><span data-i18n="about_p1">Sound designer spécialisé dans le jeu vidéo, je travaille à la jonction entre la narration sonore et le game feel. Mon objectif : créer des expériences où le son renforce chaque émotion, chaque action, chaque monde.</span></p>
+        <p><span data-i18n="about_p2">Issu d'une formation en acoustique du bâtiment, j'ai développé mon expertise en sound design pour le jeu vidéo en autodidacte, motivé par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.</span></p>
+        <a href="#contact" class="btn btn-primary"><span data-i18n="btn_see_contact"><span data-i18n="btn_see_contact">Voir mon contact</span></span></a>
       </div>
       <div class="about-skills">
         <div class="skills-block">
-          <h4>Compétences</h4>
+          <h4><span data-i18n="about_skills_title">Compétences</span></h4>
           <ul class="skills-list">
             <li>
-              <span>Prise de son</span>
+              <span><span data-i18n="skill_recording">Prise de son</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
             </li>
             <li>
-              <span>Intégration Wwise / FMOD</span>
+              <span><span data-i18n="skill_wwise">Intégration FMOD</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
             </li>
             <li>
-              <span>Composition musicale</span>
+              <span><span data-i18n="skill_composition">Composition musicale</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
             </li>
             <li>
-              <span>Créations d'ambiances</span>
+              <span><span data-i18n="skill_ambience">Créations d'ambiances</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
             </li>
             <li>
-              <span>Traitement du son</span>
+              <span><span data-i18n="skill_processing">Traitement du son</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
             </li>
           </ul>
         </div>
         <div class="skills-block">
-          <h4>Outils</h4>
+          <h4><span data-i18n="about_tools_title">Outils</span></h4>
           <div class="tools-grid">
             <span class="tool-chip">Reaper</span>
-            <span class="tool-chip">Wwise</span>
             <span class="tool-chip">FMOD</span>
-            <span class="tool-chip">Pro Tools</span>
             <span class="tool-chip">Ableton Live</span>
             <span class="tool-chip">Unity</span>
             <span class="tool-chip">Godot</span>
@@ -1124,8 +1124,8 @@
   <section id="contact">
     <div class="contact-inner">
       <span class="section-tag">Contact</span>
-      <h2>Disponible</h2>
-      <p class="contact-intro">Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.</p>
+      <h2><span data-i18n="ct_available"><span data-i18n="ct_available">Disponible</span></span></h2>
+      <p class="contact-intro"><span data-i18n="ct_desc">Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.</span></p>
       <div class="contact-cards">
         <a href="mailto:max.guillot13@gmail.com" class="contact-card">
           <div class="contact-card-icon">
@@ -1141,7 +1141,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </div>
           <div class="contact-card-body">
-            <span class="contact-card-label">Réseau professionnel</span>
+            <span class="contact-card-label"><span data-i18n="ct_network"><span data-i18n="ct_network">Réseau professionnel</span></span></span>
             <span class="contact-card-value">LinkedIn</span>
           </div>
         </a>
@@ -1150,16 +1150,16 @@
             <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M1.175 12.225c-.015 0-.023.01-.023.025l-.323 2.056.323 2.013c0 .016.008.025.023.025s.024-.01.024-.025l.367-2.013-.367-2.056c0-.015-.01-.025-.024-.025zm.936-.217c-.016 0-.027.011-.027.028L1.79 14.306l.294 1.97c0 .017.011.028.027.028s.028-.011.028-.028l.334-1.97-.334-2.27c0-.017-.012-.028-.028-.028zm.976-.149c-.019 0-.034.015-.034.035l-.285 2.411.285 1.93c0 .02.015.035.034.035s.034-.015.034-.035l.324-1.93-.324-2.411c0-.02-.015-.035-.034-.035zm5.41-3.804c-.194 0-.38.036-.553.1C7.7 5.774 6.355 4.5 4.74 4.5c-.414 0-.81.083-1.166.23-.134.053-.17.107-.171.155v9.165c.001.05.04.09.09.096h7.656c.05-.006.09-.046.09-.096v-5.43c0-.05-.04-.09-.09-.096-.224-.034-.457-.034-.653-.034zm5.01-.34c-.185 0-.37.034-.542.1-.182-2.076-1.927-3.699-4.065-3.699-.55 0-1.079.112-1.556.314-.185.077-.234.155-.236.226v9.338c.002.073.062.132.135.132h6.264c.073 0 .133-.059.133-.132V8.05c-.001-.073-.061-.132-.133-.132zm4.5.898c-.057 0-.113.005-.168.014C17.682 7.11 16.5 5.978 15.075 5.978c-.073 0-.146.004-.218.012v8.474c.072.008.146.012.218.012h2.432c.073 0 .133-.059.133-.132V8.813c0-.073-.06-.132-.133-.132zm1.978 1.24c-.073 0-.133.059-.133.132v6.02c0 .073.06.132.133.132h.41c.073 0 .133-.059.133-.132V10.185c0-.073-.06-.132-.133-.132h-.41z"/></svg>
           </div>
           <div class="contact-card-body">
-            <span class="contact-card-label">Musique</span>
+            <span class="contact-card-label"><span data-i18n="ct_music"><span data-i18n="ct_music">Musique</span></span></span>
             <span class="contact-card-value">SoundCloud</span>
           </div>
         </a>
       </div>
 
       <div class="contact-cv-action">
-        <a href="CV_Max_Guillot.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+        <a href="Max guillot - CV FR.pdf" id="cv-link-2" target="_blank" rel="noopener" class="btn btn-ghost">
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-          Voir mon CV
+          <span data-i18n="btn_cv">Voir mon CV</span>
         </a>
       </div>
     </div>
@@ -1174,6 +1174,24 @@
   <script src="script.js"></script>
 
   <style>
+    /* Empêche le curseur de texte (I-beam) sur les éléments non éditables */
+    h1, h2, h3, h4, h5, p, li, label,
+    .hero-title, .hero-sub, .hero-label, .section-tag,
+    .project-body, .fmod-description, .viking-description,
+    .about-text, .contact-inner, footer {
+      cursor: default;
+      user-select: none;
+    }
+    /* Rétablir le curseur pointer sur les éléments cliquables */
+    a, button, [role="button"], .expand-btn, .project-expand-btn,
+    .fmod-subsection-toggle, .veilbound-subsection-toggle,
+    .vc-btn, .hero-player-play, .gl-nav-btn, .play-btn,
+    .video-play-btn, input[type="range"] {
+      cursor: pointer !important;
+    }
+    /* Rétablir la sélection sur les liens (utile pour copier une URL) */
+    a { user-select: text; }
+
     .contact-cv-action {
       margin-top: 2.5rem;
       display: flex;
@@ -1202,6 +1220,7 @@
       background: #0d0d0d;
       grid-row: 1 / 2;
       grid-column: 1 / 2;
+      position: relative;
     }
 
     .project-video-column {
@@ -1213,9 +1232,16 @@
     }
 
     .project-featured-meta {
+      position: absolute;
+      top: 1.25rem;
+      left: 2rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .project-featured-header h3 {
+      margin-top: 1.5rem;
     }
 
     .project-featured-meta .project-genre {
@@ -1385,7 +1411,7 @@
       flex-direction: column;
       gap: 0;
       border-radius: 16px;
-      overflow: hidden;
+      overflow: visible;
       background: #111;
       border: 1px solid rgba(122,179,232,0.25);
       box-shadow: 0 0 40px rgba(122,179,232,0.06);
@@ -1830,8 +1856,15 @@
     .fmod-subsection-body {
       overflow: hidden;
       transition: max-height 0.35s ease, opacity 0.3s ease;
-      max-height: 2000px;
+      max-height: 5000px;
       opacity: 1;
+      background: #0d0d0d;
+    }
+    .fmod-top-row, .fmod-left-column, .fmod-right-column,
+    .fmod-description, .fmod-main-video, .fmod-screenshot,
+    .viking-fmod-section, .viking-dl-section, .viking-dl-inner,
+    .fmod-subsection, .fmod-subsection--border-top {
+      background: #0d0d0d;
     }
     .fmod-subsection-body.collapsed {
       max-height: 0;
@@ -2887,7 +2920,7 @@
       [
         { btnId: 'footstepsToggle', bodyId: 'footstepsBody', videos: ['fmodFootVideo'] },
         { btnId: 'ambianceToggle',  bodyId: 'ambianceBody',  videos: [] },
-        { btnId: 'vbAdaptToggle',   bodyId: 'vbAdaptBody',   videos: ['veilboundAdaptVideo', 'veilboundAdaptOldVideo'] },
+        { btnId: 'vbAdaptToggle',    bodyId: 'vbAdaptBody',    videos: ['veilboundAdaptVideo', 'veilboundAdaptOldVideo'] },
         { btnId: 'vbAdaptOldToggle', bodyId: 'vbAdaptOldBody', videos: ['veilboundAdaptOldVideo'] },
         { btnId: 'vbShopToggle',    bodyId: 'vbShopBody',    videos: ['veilboundShopVideo'] },
         { btnId: 'vbOstToggle',     bodyId: 'vbOstBody',     videos: [], iframes: ['vbPlIframe'] },
@@ -2978,5 +3011,212 @@
       video.addEventListener('click', togglePlay);
     })();
   </script>
+
+<script>
+// ── i18n translations
+const i18n = {
+  fr: {
+    nav_projects: 'Projets', nav_about: 'À propos', nav_contact: 'Contact',
+    hero_label: 'Sound Designer · Game Audio',
+    hero_sub: 'Je crée des univers sonores immersifs pour les jeux vidéo - des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.',
+    btn_projects: 'Voir mes projets', btn_contact: 'Me contacter', btn_cv: 'Voir mon CV',
+    player_listening: '// en écoute', player_loading: 'Chargement…',
+    projects_sub_short: 'Une sélection de projets de sound design pour le jeu vidéo.',
+    gl_card_desc: 'Composition de l\'intégralité de la bande originale et sound design de la radio, mécanique narrative centrale du jeu.',
+    section_projects: 'Mes projets',
+    section_projects_sub: 'Sound design, musique et intégration audio pour jeux vidéo et cinématiques.',
+    btn_see_project: 'Voir le projet complet',
+    tag_wip: 'En développement',
+    card_vb: "Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en légendes.",
+    card_gl: "Sound design et composition musicale pour un jeu indépendant de type visual novel - identité sonore complète, narration et atmosphère.",
+    card_vk: "Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intégration FMOD et musique adaptative.",
+    card_sm: "Proposition d'un sound design du trailer de révélation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son précise.",
+    vb_intro: "Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers à travers un monde dark fantasy riche en histoires et en légendes. Le gameplay mêle gestion stratégique et combats de type auto-battler.",
+    vb_role: "Je suis en charge de l'intégralité du sound design du projet : composition des musiques, conception des ambiances sonores, création des effets sonores et implémentation technique complète dans le moteur de jeu.",
+    vb_adapt_title: 'Musique adaptative',
+    vb_system_title: 'Fonctionnement du système',
+    vb_adapt_p1: "Le système de musique adaptative de Veilbound a été conçu pour que la bande sonore des combats évolue en temps réel selon l'issue de l'affrontement. Si le joueur se retrouve en difficulté, la musique glisse vers des tonalités mélancoliques et oppressantes ; à l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure épique. Ce comportement est piloté par le paramètre <code>%écart</code>, visible sur la vidéo, qui reflète en permanence l'état du combat.",
+    vb_adapt_p2: "Dans cette nouvelle itération du système de musique adaptative de combat, l'ensemble de l'écoute tient en une seule boucle. Les transitions sont gérées au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrôlant l'entrée et la sortie des pistes. Cette approche permet aux transitions de s'opérer à n'importe quel instant de la lecture, sans dépendre d'un trigger temporel comme c'était le cas dans la version précédente.",
+    vb_old_title: 'Ancienne(s) version(s)',
+    vb_old_p1: 'À partir du paramètre <code>%écart</code>, de nombreux points de transition ont été définis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs précis. Ces transitions relient les différentes Loop Regions (en bleu) entre elles, couvrant l\'ensemble des états possibles du combat.',
+    vb_old_note: "Chaque transition dispose d'un crossfade paramétrable vers la boucle suivante, garantissant des passages fluides et cohérents avec l'évolution de l'affrontement.",
+    vb_shop_title: 'Menu Sound Design',
+    vb_shop_design_title: 'Conception',
+    vb_shop_p1: "Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.",
+    vb_shop_note: "L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.",
+    vb_ost_title: 'Bande originale',
+    btn_soundcloud: 'Voir sur SoundCloud',
+    gl_desc: "Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio - mécanique narrative centrale de Gaslighters - en lui apportant une attention particulière pour renforcer l'immersion.",
+    gl_dev_label: 'Développeur', gl_release_label: 'Sortie', gl_release_date: '20 juin 2025',
+    gl_genres_label: 'Genres', gl_genres: 'Aventure, Fiction interactive, Psychologique, Mystère',
+    gl_platform_label: 'Plateforme', btn_steam: 'Voir sur Steam',
+    vk_learn_more: 'En savoir plus',
+    vk_desc: "Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identité sonore cohérente, pensée de la prise de son jusqu'à l'intégration moteur.",
+    vk_p2: "Les sons ont été enregistrés et traités dans Ableton Live, puis spatialisés et intégrés à Unity via FMOD. Des paramètres globaux et locaux ont été mis en place pour adapter le sound design aux interactions et aux déplacements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intègre également des transitions musicales en fonction de la position du joueur.",
+    vk_asset_pre: "Ce travail a été réalisé sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset",
+    vk_asset_post: ", disponible sur l'Unity Asset Store.",
+    vk_event_title: "Fonctionnement de l'event",
+    vk_footsteps_p1: "L'event Footsteps repose sur un système de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur\n              ( <code>playerspeed</code> ), son contact avec le sol\n              ( <code>IsGrounded</code> ) et le type de surface sous ses pieds\n              ( <code>groundcheck</code> ).",
+    vk_footsteps_p2: "Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l'air ou à l'arrêt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nécessaire, une <strong>Loop Region intermédiaire</strong> est insérée pour assurer une transition fluide.",
+    vk_footsteps_p3: "Ce mode de fonctionnement permet à chaque sample de se lire en entier avant de se couper, évitant une interruption dérangeante du son.",
+    vk_footsteps_note: "<strong>Remarque :</strong> Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch - simulant l'intensification des pas à l'accélération, ainsi que la force des impacts au sol.",
+    vk_ambience_title: "Fonctionnement du système d'ambiances",
+    vk_ambience_p1: "Le système d'ambiances sonores de Viking Village repose sur des zones de déclenchement placées dans la scène Unity. Chaque zone est associée à un event FMOD joué en boucle, dont le volume s'adapte automatiquement en fonction de la distance du joueur par rapport à la zone.",
+    vk_ambience_script_pre: "Ce fonctionnement est rendu possible grâce à un script C# personnalisé",
+    vk_ambience_script_post: ", qui positionne en permanence la source sonore au point le plus proche du joueur à l'intérieur du collider de la zone. Ainsi, l'atténuation spatiale native de FMOD reproduit fidèlement la perception que le joueur aurait du son selon sa position.",
+    vk_zones_intro: "L'implémentation Unity se compose de trois zones aux ambiances distinctes :",
+    vk_zones_list: "la <strong>mer</strong>, la <strong>forêt</strong> et le <strong>village</strong>.",
+    vk_script_desc_pre: "Ce script gère le déplacement de l'émetteur vers le point d'une zone définie le plus proche du joueur. Il est issu de",
+    vk_script_desc_post: ", qui m'a inspiré dans la conception de ce système.",
+    vk_exec_title: 'Exécutable',
+    vk_dl_title: "Téléchargement de l'exécutable",
+    vk_dl_desc: "Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez télécharger l'exécutable de la scène ci-contre.",
+    sm_desc: "Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.",
+    sm_original: 'Version originale', sm_my_version: 'Ma version',
+    browser_no_video: 'Votre navigateur ne supporte pas la lecture vidéo.',
+    about_title: 'Son, jeu,<br />immersion.',
+    about_p1: 'Sound designer spécialisé dans le jeu vidéo, je travaille à la jonction entre la narration sonore et le game feel. Mon objectif : créer des expériences où le son renforce chaque émotion, chaque action, chaque monde.',
+    about_p2: "Issu d'une formation en acoustique du bâtiment, j'ai développé mon expertise en sound design pour le jeu vidéo en autodidacte, motivé par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.",
+    btn_see_contact: 'Voir mon contact',
+    about_skills_title: 'Compétences', skill_daw: 'Logiciels audio', skill_integration: 'Intégration audio',
+    skill_wwise: 'Intégration FMOD', skill_recording: 'Prise de son',
+    skill_composition: 'Composition musicale', skill_ambience: "Créations d'ambiances",
+    skill_processing: 'Traitement du son', about_tools_title: 'Outils',
+    ct_available: 'Disponible',
+    ct_desc: "Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.",
+    ct_network: 'Réseau professionnel', ct_music: 'Musique',
+    footer_made: 'Conçu et développé par Max Guillot', footer_rights: 'Tous droits réservés',
+  },
+  en: {
+    nav_projects: 'Projects', nav_about: 'About', nav_contact: 'Contact',
+    hero_label: 'Sound Designer · Game Audio',
+    hero_sub: 'I craft immersive soundscapes for video games - from atmospheric ambiences to hard-hitting sound effects, every sound tells a story.',
+    btn_projects: 'See my work', btn_contact: 'Contact me', btn_cv: 'View my resume',
+    player_listening: '// now playing', player_loading: 'Loading…',
+    projects_sub_short: 'A selection of sound design projects for video games.',
+    gl_card_desc: 'Composed the entire original soundtrack and handled the sound design of the radio - the central narrative mechanic of the game.',
+    section_projects: 'My projects',
+    section_projects_sub: 'Sound design, music and audio integration for video games and cinematics.',
+    btn_see_project: 'View full project',
+    tag_wip: 'In development',
+    card_vb: 'Sound design and adaptive music for a dark fantasy rogue-lite - troop management, auto-battler combat and a world rich in legends.',
+    card_gl: 'Sound design and music composition for an indie visual novel - complete sonic identity, narration and atmosphere.',
+    card_vk: 'Full sound design for a 3D Unity environment - ambience sounds, game feel, FMOD integration and adaptive music.',
+    card_sm: 'Sound design proposal for the reveal trailer - impact sounds, sonic atmosphere, fire and motion effects, precise audio/video sync.',
+    vb_intro: 'Veilbound is an adventure and management rogue-lite in which the player leads a group of adventurers through a rich dark fantasy world filled with stories and legends. The gameplay blends strategic management with auto-battler combat.',
+    vb_role: 'I am responsible for the entire sound design of the project: music composition, ambience design, sound effects creation and full technical implementation in the game engine.',
+    vb_adapt_title: 'Adaptive music',
+    vb_system_title: 'How the system works',
+    vb_adapt_p1: "Veilbound's adaptive music system was designed so that the combat soundtrack evolves in real time based on the outcome of the fight. If the player is struggling, the music shifts toward melancholic and oppressive tones; conversely, when victory is within reach, it builds in intensity and takes on an epic quality. This behavior is driven by the <code>%écart</code> parameter, visible in the video, which constantly reflects the state of the fight.",
+    vb_adapt_p2: 'In this new iteration of the combat adaptive music system, the entire listening experience is contained within a single loop. Transitions are handled at the individual track level, through volume automations controlling the entry and exit of each track. This approach allows transitions to occur at any point during playback, without relying on a temporal trigger as was the case in the previous version.',
+    vb_old_title: 'Previous version(s)',
+    vb_old_p1: 'From the <code>%écart</code> parameter, numerous transition points were defined - visible in green on the timeline - each active within a specific value range. These transitions connect the various Loop Regions (in blue), covering all possible combat states.',
+    vb_old_note: 'Each transition features a configurable crossfade to the next loop, ensuring smooth passages consistent with the progression of the fight.',
+    vb_shop_title: 'Menu Sound Design',
+    vb_shop_design_title: 'Design approach',
+    vb_shop_p1: 'In a management game, a large number of menu sounds are required, and they must be high-quality and satisfying to encourage the player to engage with the game mechanics. Here, the sound effects were designed entirely by me, from recording to engine implementation.',
+    vb_shop_note: 'The goal: to create a warm and immersive sonic space, conceived as a genuine moment of rest at the heart of an inn - a haven of peace in a dark and hostile world.',
+    vb_ost_title: 'Original soundtrack',
+    btn_soundcloud: 'Listen on SoundCloud',
+    gl_desc: 'In charge of composing the entire original soundtrack of the game, I also handled the sound design of the radio - the central narrative mechanic of Gaslighters - giving it special attention to reinforce immersion.',
+    gl_dev_label: 'Developer', gl_release_label: 'Release', gl_release_date: 'June 20, 2025',
+    gl_genres_label: 'Genres', gl_genres: 'Adventure, Interactive fiction, Psychological, Mystery',
+    gl_platform_label: 'Platform', btn_steam: 'View on Steam',
+    vk_learn_more: 'Learn more',
+    vk_desc: 'The goal of this project was to design a complete and functional sound design for a 3D Unity environment - with a coherent sonic identity, conceived from recording to engine integration.',
+    vk_p2: "Sounds were recorded and processed in Ableton Live, then spatialized and integrated into Unity via FMOD. Global and local parameters were set up to adapt the sound design to player interactions and movement in the space, particularly for motion effects. The project also features music transitions based on the player's position.",
+    vk_asset_pre: 'This work was created using a 3D environment and gameplay (player movement) from the asset',
+    vk_asset_post: ', available on the Unity Asset Store.',
+    vk_event_title: 'How the event works',
+    vk_footsteps_p1: "The Footsteps event relies on a Loop Regions system - visible in blue on the timeline - which activate or deactivate based on the values of three parameters: the player's speed\n              ( <code>playerspeed</code> ), their contact with the ground\n              ( <code>IsGrounded</code> ) and the type of surface underfoot\n              ( <code>groundcheck</code> ).",
+    vk_footsteps_p2: "Three Loop Regions follow one another: the first triggers footstep sounds on dirt, the second on wood, and the third is an empty Loop Region simulating the player in the air or at a standstill. When a transition between two non-adjacent Loop Regions is needed, an <strong>intermediate Loop Region</strong> is inserted to ensure a smooth transition.",
+    vk_footsteps_p3: 'This approach allows each sample to play in full before cutting, avoiding any jarring interruption of the sound.',
+    vk_footsteps_note: "<strong>Note:</strong> Two automations driven by the player's speed have been added to the volume and pitch - simulating the intensification of footsteps as speed increases, and the force of impacts on the ground.",
+    vk_ambience_title: 'How the ambience system works',
+    vk_ambience_p1: "The Viking Village sound ambience system relies on trigger zones placed within the Unity scene. Each zone is associated with a looping FMOD event, whose volume automatically adapts based on the player's distance from the zone.",
+    vk_ambience_script_pre: 'This behavior is made possible through a custom C# script',
+    vk_ambience_script_post: ", which continuously positions the sound source at the point closest to the player within the zone's collider. This way, FMOD's native spatial attenuation accurately reproduces the player's perceived sound based on their position.",
+    vk_zones_intro: 'The Unity implementation consists of three zones with distinct ambiences:',
+    vk_zones_list: 'the <strong>sea</strong>, the <strong>forest</strong> and the <strong>village</strong>.',
+    vk_script_desc_pre: 'This script handles the repositioning of the emitter to the closest point of a defined zone to the player. It is adapted from',
+    vk_script_desc_post: ', which inspired me in designing this system.',
+    vk_gameplay_title: 'Gameplay &amp; déplacements',
+    vk_gameplay_desc: 'Cette vidéo illustre le rendu sonore du point de vue du joueur en déplacement dans l\'environnement. On y perçoit les transitions entre les zones d\'ambiance, les effets de game feel liés aux mouvements, et l\'ensemble du sound design spatial en conditions réelles.',
+    vk_footsteps_p1: 'L\'event Footsteps repose sur un système de Loop Regions - visibles en bleu dans la timeline - qui s\'activent ou se désactivent selon les valeurs de trois paramètres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).',
+    vk_footsteps_p2: 'Trois Loop Regions se succèdent : la première déclenche le son des pas sur terre, la seconde sur bois, et la troisième est une Loop Region vide simulant le joueur en l\'air ou à l\'arrêt. Lorsqu\'un passage entre deux Loop Regions non adjacentes est nécessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne région.',
+    vk_remark_title: 'Remarque :',
+    vk_footsteps_note_text: 'Deux automations pilotées par la vitesse du joueur ont été ajoutées sur le volume et le pitch - simulant l\'intensification des pas à l\'accélération, ainsi que la force des impacts au sol.',
+    vk_ambiance_title: 'Ambiance Sound',
+    vk_ambience_p1_new: 'Pour les sons d\'ambiance, chaque émetteur est confiné dans une zone délimitée - représentée par les pavés verts -. Grâce au script <code>AmbienceSound</code>, l\'émetteur se repositionne en temps réel au point de la zone le plus proche du joueur.',
+    vk_ambience_p2_new: 'Ainsi, la spatialisation du son reflète directement la distance entre le joueur et la zone - plus il s\'en approche, plus le son monte en intensité, sans transition de durée prédéfinie. Cela renforce l\'immersion en rendant les ambiances sonores organiquement liées aux déplacements du joueur.',
+    vk_ambiance_script_title: 'Ambience Sound Script',
+    vk_this_video: 'this video',
+    vk_dl_btn: 'Downloads - View',
+    vk_dl_title: 'Download the executable',
+    tag_music: 'Music',
+    gl_genre: 'Action / Thriller · Indie',
+    btn_soundcloud: 'Listen on SoundCloud',
+    vk_gameplay_title: 'Gameplay &amp; movement',
+    vk_gameplay_desc: "This video illustrates the sound environment from the player's perspective while moving through the space. You can hear the transitions between ambience zones, the game feel effects tied to movement, and the full spatial sound design in real conditions.",
+    vk_footsteps_p1: "The Footsteps event relies on a Loop Regions system - visible in blue on the timeline - which activate or deactivate based on the values of three parameters: the player's speed (<code>playerspeed</code>), their contact with the ground (<code>IsGrounded</code>) and the type of surface underfoot (<code>groundcheck</code>).",
+    vk_footsteps_p2: "Three Loop Regions follow one another: the first triggers footstep sounds on dirt, the second on wood, and the third is an empty Loop Region simulating the player in the air or at a standstill. When a transition between two non-adjacent Loop Regions is needed, a transition - visible in green on the timeline - redirects playback to the correct region.",
+    vk_remark_title: 'Note:',
+    vk_footsteps_note_text: "Two automations driven by the player's speed have been added to the volume and pitch - simulating the intensification of footsteps as speed increases, and the force of impacts on the ground.",
+    vk_ambiance_title: 'Ambience Sound',
+    vk_ambience_p1_new: 'For ambience sounds, each emitter is confined within a delimited zone - represented by green tiles. Thanks to the <code>AmbienceSound</code> script, the emitter repositions itself in real time at the point of the zone closest to the player.',
+    vk_ambience_p2_new: "As a result, sound spatialization directly reflects the distance between the player and the zone - the closer they get, the louder the sound, with no predefined transition duration. This reinforces immersion by making the sonic ambiences organically tied to the player's movement.",
+    vk_exec_title: 'Executable',
+    vk_dl_desc: "To explore the sound environment from the player's perspective, you can download the scene executable here.",
+    sm_desc: 'A sound design proposal for the Ken and Incineroar reveal trailer in Super Smash Bros. Ultimate - impact sounds, sonic atmosphere, fire and motion effects, dramatic build-up and precise audio/video sync. All sounds in the cinematic were recorded and processed by me, except for the voices and music.',
+    sm_original: 'Original version', sm_my_version: 'My version',
+    browser_no_video: 'Your browser does not support video playback.',
+    about_title: 'Sound, game,<br />immersion.',
+    about_p1: 'A sound designer specializing in video games, I work at the intersection of audio storytelling and game feel. My goal: to create experiences where sound enhances every emotion, every action, every world.',
+    about_p2: 'Coming from a background in building acoustics, I developed my expertise in video game sound design self-taught, driven by my passion for the field. This dual scientific and artistic background now informs my approach across all my projects.',
+    btn_see_contact: 'Get in touch',
+    about_skills_title: 'Skills', skill_daw: 'Audio software', skill_integration: 'Audio integration',
+    skill_wwise: 'FMOD integration', skill_recording: 'Sound recording',
+    skill_composition: 'Music composition', skill_ambience: 'Ambience design',
+    skill_processing: 'Audio processing', about_tools_title: 'Tools',
+    ct_available: 'Available',
+    ct_desc: 'Currently available, I am looking for a professional opportunity in sound design, or any project drawing on my skills in interactive audio.',
+    ct_network: 'Professional network', ct_music: 'Music',
+    footer_made: 'Designed and developed by Max Guillot', footer_rights: 'All rights reserved',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+  // Mettre à jour le bouton
+  const btn = document.getElementById('lang-toggle');
+  if (btn) btn.textContent = lang === 'fr' ? '🇺🇸 EN' : '🇫🇷 FR';
+  // Mettre à jour les liens CV selon la langue
+  const cvFR = 'Max guillot - CV FR.pdf';
+  const cvEN = 'Max guillot - CV EN.pdf';
+  ['cv-link-1', 'cv-link-2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = lang === 'fr' ? cvFR : cvEN;
+  });
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'fr' ? 'en' : 'fr');
+}
+
+// Appliquer au chargement
+document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
+</script>
+
 </body>
 </html>
