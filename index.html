@@ -410,7 +410,7 @@
           <h3>Veilbound</h3>
           <p><span data-i18n="card_vb">Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en légendes.</span></p>
           <div class="project-tags">
-            <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span>Musique adaptive</span>
+            <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span data-i18n="tag_adaptive_music">Musique adaptive</span>
           </div>
           <button class="expand-btn project-expand-btn" style="color:#9b6ee8;background:rgba(155,110,232,0.08);border-color:rgba(155,110,232,0.3);" data-target="veilboundExpanded" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
@@ -705,7 +705,7 @@
           </div>
           <a href="https://store.steampowered.com/app/3628610/Gaslighters/" target="_blank" rel="noopener" class="steam-link-btn">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-            Voir sur Steam
+            <span data-i18n="btn_steam">Voir sur Steam</span>
           </a>
         </div>
         <div class="project-video-column">
@@ -889,7 +889,7 @@
         <div class="viking-fmod-trigger">
           <button class="fmod-expand-btn" id="fmodExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            Projet FMOD - Voir le détail
+            <span data-i18n="vk_fmod_btn">Projet FMOD - Voir le détail</span>
           </button>
         </div>
 
@@ -1863,8 +1863,9 @@
     .fmod-top-row, .fmod-left-column, .fmod-right-column,
     .fmod-description, .fmod-main-video, .fmod-screenshot,
     .viking-fmod-section, .viking-dl-section, .viking-dl-inner,
-    .fmod-subsection, .fmod-subsection--border-top {
-      background: #0d0d0d;
+    .fmod-subsection, .fmod-subsection--border-top,
+    .fmod-subsection-body {
+      background: #0d0d0d !important;
     }
     .fmod-subsection-body.collapsed {
       max-height: 0;
@@ -3069,6 +3070,7 @@ const i18n = {
     vk_script_desc_pre: "Ce script gère le déplacement de l'émetteur vers le point d'une zone définie le plus proche du joueur. Il est issu de",
     vk_script_desc_post: ", qui m'a inspiré dans la conception de ce système.",
     vk_exec_title: 'Exécutable',
+    vk_fmod_btn: 'Projet FMOD - Voir le détail',
     vk_dl_title: "Téléchargement de l'exécutable",
     vk_dl_desc: "Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez télécharger l'exécutable de la scène ci-contre.",
     sm_desc: "Proposition d'un sound design du trailer de révélation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montée dramatique et synchro image/son précise. Tous les sons présents dans la cinématique ont été enregistrés et traités par mes soins, à l'exception des voix et de la musique.",
@@ -3085,6 +3087,7 @@ const i18n = {
     ct_available: 'Disponible',
     ct_desc: "Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.",
     ct_network: 'Réseau professionnel', ct_music: 'Musique',
+    tag_adaptive_music: 'Musique adaptive',
     footer_made: 'Conçu et développé par Max Guillot', footer_rights: 'Tous droits réservés',
   },
   en: {
@@ -3152,9 +3155,10 @@ const i18n = {
     vk_ambiance_script_title: 'Ambience Sound Script',
     vk_this_video: 'this video',
     vk_dl_btn: 'Downloads - View',
+    vk_fmod_btn: 'FMOD Project - See details',
     vk_dl_title: 'Download the executable',
     tag_music: 'Music',
-    gl_genre: 'Action / Thriller · Indie',
+    tag_adaptive_music: 'Adaptive music',
     btn_soundcloud: 'Listen on SoundCloud',
     vk_gameplay_title: 'Gameplay &amp; movement',
     vk_gameplay_desc: "This video illustrates the sound environment from the player's perspective while moving through the space. You can hear the transitions between ambience zones, the game feel effects tied to movement, and the full spatial sound design in real conditions.",
@@ -3172,7 +3176,7 @@ const i18n = {
     browser_no_video: 'Your browser does not support video playback.',
     about_title: 'Sound, game,<br />immersion.',
     about_p1: 'A sound designer specializing in video games, I work at the intersection of audio storytelling and game feel. My goal: to create experiences where sound enhances every emotion, every action, every world.',
-    about_p2: 'Coming from a background in building acoustics, I developed my expertise in video game sound design self-taught, driven by my passion for the field. This dual scientific and artistic background now informs my approach across all my projects.',
+    about_p2: 'Coming from a background in building acoustics, I developed my expertise in video game sound design driven by my passion for the field. This dual scientific and artistic background now informs my approach across all my projects.',
     btn_see_contact: 'Get in touch',
     about_skills_title: 'Skills', skill_daw: 'Audio software', skill_integration: 'Audio integration',
     skill_wwise: 'FMOD integration', skill_recording: 'Sound recording',
