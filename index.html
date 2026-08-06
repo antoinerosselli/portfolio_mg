@@ -338,7 +338,7 @@
     <div class="section-header">
       <span class="section-tag">Portfolio</span>
       <h2>Projets</h2>
-      <p data-i18n="projects_sub_short">Une sélection de projets de sound design pour le jeu vidéo.</p>
+      <p data-i18n="projects_sub_short">Une sélection de mes projets d'audio design.</p>
     </div>
 
     <div class="projects-grid">
@@ -578,42 +578,81 @@
           </button>
 
           <div class="fmod-subsection-body collapsed" id="vbShopBody">
-          <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
-            <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
-              <div class="fmod-main-video">
-                <div class="project-video-wrapper" style="cursor:default;">
-                  <video id="veilboundShopVideo" class="project-video" preload="metadata" playsinline>
-                    <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/shop.mp4" type="video/mp4" />
-                  </video>
-                  <div class="video-overlay" id="veilboundShopOverlay">
-                    <button class="video-play-btn" id="veilboundShopPlayBtn" aria-label="Lire" style="background:rgba(155,110,232,0.9);">
-                      <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+
+            <!-- Rangée 1 : nouvelle vidéo + texte Conception -->
+            <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
+              <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+                <div class="fmod-main-video">
+                  <div class="project-video-wrapper" style="cursor:default;">
+                    <video id="veilboundShopVideo2" class="project-video" preload="metadata" playsinline>
+                      <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/BoD-1.mp4" type="video/mp4" />
+                    </video>
+                    <div class="video-overlay" id="veilboundShop2Overlay">
+                      <button class="video-play-btn" id="veilboundShop2PlayBtn" aria-label="Play" style="background:rgba(155,110,232,0.9);">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                    <button class="vc-btn" id="vbSh2Play">
+                      <svg id="vbSh2PlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                      <svg id="vbSh2PauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                    </button>
+                    <div class="vc-progress" id="vbSh2Progress"><div class="vc-progress-fill" id="vbSh2Fill" style="background:#9b6ee8;"></div></div>
+                    <span class="vc-time" id="vbSh2Time">0:00</span>
+                    <div class="vc-volume">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                      <input type="range" id="vbSh2Volume" min="0" max="1" step="0.01" value="1" />
+                    </div>
+                    <button class="vc-btn" id="vbSh2Fullscreen">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                     </button>
                   </div>
                 </div>
-                <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
-                  <button class="vc-btn" id="vbShPlay">
-                    <svg id="vbShPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-                    <svg id="vbShPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-                  </button>
-                  <div class="vc-progress" id="vbShProgress"><div class="vc-progress-fill" id="vbShFill" style="background:#9b6ee8;"></div></div>
-                  <span class="vc-time" id="vbShTime">0:00</span>
-                  <div class="vc-volume">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                    <input type="range" id="vbShVolume" min="0" max="1" step="0.01" value="1" />
-                  </div>
-                  <button class="vc-btn" id="vbShFullscreen">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                  </button>
-                </div>
+              </div>
+              <div class="fmod-description" style="justify-content:center;">
+                <h5 style="color:#9b6ee8;"><span data-i18n="vb_shop_design_title">Conception</span></h5>
+                <p><span data-i18n="vb_shop_p1">Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</span></p>
+                <p class="fmod-note"><span data-i18n="vb_shop_note2">Ce menu est présent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de départ qui lui sera destinée en manipulant les destins des aventuriers. L'idée de l'audio design de ce menu est de donner un aspect mystique et mystérieux à la scène, poussant le joueur à s'interroger sur le sens de ce qu'il fait. La musique a également été composée dans ce sens par mes soins.</span></p>
               </div>
             </div>
-            <div class="fmod-description">
-              <h5 style="color:#9b6ee8;"><span data-i18n="vb_shop_design_title">Conception</span></h5>
-              <p><span data-i18n="vb_shop_p1">Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.</span></p>
-              <p class="fmod-note"><span data-i18n="vb_shop_note">L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.</span></p>
+
+            <!-- Rangée 2 : vidéo shop.mp4 + texte objectif -->
+            <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.08);">
+              <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
+                <div class="fmod-main-video">
+                  <div class="project-video-wrapper" style="cursor:default;">
+                    <video id="veilboundShopVideo" class="project-video" preload="metadata" playsinline>
+                      <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/shop.mp4" type="video/mp4" />
+                    </video>
+                    <div class="video-overlay" id="veilboundShopOverlay">
+                      <button class="video-play-btn" id="veilboundShopPlayBtn" aria-label="Play" style="background:rgba(155,110,232,0.9);">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="video-controls" style="border-top-color:rgba(155,110,232,0.2);">
+                    <button class="vc-btn" id="vbShPlay">
+                      <svg id="vbShPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                      <svg id="vbShPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                    </button>
+                    <div class="vc-progress" id="vbShProgress"><div class="vc-progress-fill" id="vbShFill" style="background:#9b6ee8;"></div></div>
+                    <span class="vc-time" id="vbShTime">0:00</span>
+                    <div class="vc-volume">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                      <input type="range" id="vbShVolume" min="0" max="1" step="0.01" value="1" />
+                    </div>
+                    <button class="vc-btn" id="vbShFullscreen">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="fmod-description" style="justify-content:center;">
+                <p class="fmod-note"><span data-i18n="vb_shop_note">Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.</span></p>
+              </div>
             </div>
-          </div>
+
           </div>
         </div>
 
@@ -2466,6 +2505,59 @@
       video.addEventListener('click', togglePlay);
     })();
 
+    // ── Veilbound shop video 2 (troc menu) player ──
+    (function() {
+      const video     = document.getElementById('veilboundShopVideo2');
+      const overlay   = document.getElementById('veilboundShop2Overlay');
+      const bigBtn    = document.getElementById('veilboundShop2PlayBtn');
+      const playBtn   = document.getElementById('vbSh2Play');
+      const playIcon  = document.getElementById('vbSh2PlayIcon');
+      const pauseIcon = document.getElementById('vbSh2PauseIcon');
+      const progress  = document.getElementById('vbSh2Progress');
+      const fill      = document.getElementById('vbSh2Fill');
+      const time      = document.getElementById('vbSh2Time');
+      const volume    = document.getElementById('vbSh2Volume');
+      const fullBtn   = document.getElementById('vbSh2Fullscreen');
+      if (!video) return;
+      function fmt(s) { return Math.floor(s/60)+':'+Math.floor(s%60).toString().padStart(2,'0'); }
+      function togglePlay() {
+        if (video._playPending) return;
+        if (video.paused) {
+          video._playPending = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => { video._playPending = false; })
+             .catch(() => { video._playPending = false; });
+          } else {
+            video._playPending = false;
+          }
+        } else {
+          video.pause();
+        }
+      }
+      video.addEventListener('play',  () => { overlay.classList.add('hidden'); playIcon.style.display='none'; pauseIcon.style.display=''; });
+      video.addEventListener('pause', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('ended', () => { overlay.classList.remove('hidden'); playIcon.style.display=''; pauseIcon.style.display='none'; });
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+        time.textContent = fmt(video.currentTime);
+      });
+      progress.addEventListener('click', e => {
+        const r = progress.getBoundingClientRect();
+        video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * video.duration;
+      });
+      volume.addEventListener('input', function() { video.volume = parseFloat(this.value); video.muted = (this.value==='0'); });
+      fullBtn.addEventListener('click', () => {
+        const wrapper = video.closest('.fmod-main-video');
+        document.fullscreenElement ? document.exitFullscreen() : wrapper && wrapper.requestFullscreen && wrapper.requestFullscreen();
+      });
+      bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+      overlay.addEventListener('click', togglePlay);
+      playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+    })();
+
     // ── Veilbound shop video player ──
     (function() {
       const video     = document.getElementById('veilboundShopVideo');
@@ -2834,7 +2926,7 @@
         { panelId: 'gashlighterExpanded', videos: ['gashlighterVideo'],                                    iframes: ['glIframe'], displayVal: 'grid'  },
         { panelId: 'smashExpanded',       videos: ['smashVideo'],                                          iframes: [],           displayVal: 'grid'  },
         { panelId: 'vikingExpanded',      videos: ['vikingVolVideo','vikingMarcheVideo','fmodFootVideo'],   iframes: [],           displayVal: 'flex'  },
-        { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundAdaptOldVideo','veilboundShopVideo','veilboundPreviewVideo'], iframes: ['vbPlIframe'], displayVal: 'flex'  },
+        { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundAdaptOldVideo','veilboundShopVideo','veilboundShopVideo2','veilboundPreviewVideo'], iframes: ['vbPlIframe'], displayVal: 'flex'  },
       ];
 
       // Met en pause un lecteur SoundCloud (widget playlist Veilbound /
@@ -2923,7 +3015,7 @@
         { btnId: 'ambianceToggle',  bodyId: 'ambianceBody',  videos: [] },
         { btnId: 'vbAdaptToggle',    bodyId: 'vbAdaptBody',    videos: ['veilboundAdaptVideo', 'veilboundAdaptOldVideo'] },
         { btnId: 'vbAdaptOldToggle', bodyId: 'vbAdaptOldBody', videos: ['veilboundAdaptOldVideo'] },
-        { btnId: 'vbShopToggle',    bodyId: 'vbShopBody',    videos: ['veilboundShopVideo'] },
+        { btnId: 'vbShopToggle',    bodyId: 'vbShopBody',    videos: ['veilboundShopVideo', 'veilboundShopVideo2'] },
         { btnId: 'vbOstToggle',     bodyId: 'vbOstBody',     videos: [], iframes: ['vbPlIframe'] },
       ].forEach(function(cfg) {
         const btn  = document.getElementById(cfg.btnId);
@@ -3022,7 +3114,7 @@ const i18n = {
     hero_sub: 'Je crée des univers sonores immersifs pour les jeux vidéo - des ambiances atmosphériques aux effets percutants, chaque son raconte une histoire.',
     btn_projects: 'Voir mes projets', btn_contact: 'Me contacter', btn_cv: 'Voir mon CV',
     player_listening: '// en écoute', player_loading: 'Chargement…',
-    projects_sub_short: 'Une sélection de projets de sound design pour le jeu vidéo.',
+    projects_sub_short: 'Une sélection de mes projets d\'audio design.',
     gl_card_desc: 'Composition de l\'intégralité de la bande originale et sound design de la radio, mécanique narrative centrale du jeu.',
     section_projects: 'Mes projets',
     section_projects_sub: 'Sound design, musique et intégration audio pour jeux vidéo et cinématiques.',
@@ -3044,7 +3136,8 @@ const i18n = {
     vb_shop_title: 'Menu Sound Design',
     vb_shop_design_title: 'Conception',
     vb_shop_p1: "Dans un jeu de gestion, de nombreux sons de menu sont nécessaires, et ils se doivent d'être qualitatifs et satisfaisants pour encourager le joueur à s'intéresser aux mécaniques du jeu. Ici, les effets sonores ont été conçus par mes soins, de la prise de son jusqu'à l'implémentation dans le moteur.",
-    vb_shop_note: "L'objectif : offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.",
+    vb_shop_note: "Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pensé comme un véritable moment de repos au cœur d'une auberge - havre de paix dans un monde sombre et hostile.",
+    vb_shop_note2: "Ce menu est présent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de départ qui lui sera destinée en manipulant les destins des aventuriers. L'idée de l'audio design de ce menu est de donner un aspect mystique et mystérieux à la scène, poussant le joueur à s'interroger sur le sens de ce qu'il fait. La musique a également été composée dans ce sens par mes soins.",
     vb_ost_title: 'Bande originale',
     btn_soundcloud: 'Voir sur SoundCloud',
     gl_desc: "Responsable de la composition de l'intégralité de la bande originale du jeu, j'ai également assuré le sound design de la radio - mécanique narrative centrale de Gaslighters - en lui apportant une attention particulière pour renforcer l'immersion.",
@@ -3096,7 +3189,7 @@ const i18n = {
     hero_sub: 'I craft immersive soundscapes for video games - from atmospheric ambiences to hard-hitting sound effects, every sound tells a story.',
     btn_projects: 'See my work', btn_contact: 'Contact me', btn_cv: 'View my resume',
     player_listening: '// now playing', player_loading: 'Loading…',
-    projects_sub_short: 'A selection of sound design projects for video games.',
+    projects_sub_short: 'A selection of my audio design projects.',
     gl_card_desc: 'Composed the entire original soundtrack and handled the sound design of the radio - the central narrative mechanic of the game.',
     section_projects: 'My projects',
     section_projects_sub: 'Sound design, music and audio integration for video games and cinematics.',
@@ -3118,7 +3211,8 @@ const i18n = {
     vb_shop_title: 'Menu Sound Design',
     vb_shop_design_title: 'Design approach',
     vb_shop_p1: 'In a management game, a large number of menu sounds are required, and they must be high-quality and satisfying to encourage the player to engage with the game mechanics. Here, the sound effects were designed entirely by me, from recording to engine implementation.',
-    vb_shop_note: 'The goal: to create a warm and immersive sonic space, conceived as a genuine moment of rest at the heart of an inn - a haven of peace in a dark and hostile world.',
+    vb_shop_note: 'For this barter menu, the goal is to create a warm and immersive sonic space, conceived as a genuine moment of rest at the heart of an inn - a haven of peace in a dark and hostile world.',
+    vb_shop_note2: 'This menu appears at the start of each run. It lets the player influence their starting party by manipulating the fates of adventurers. The audio design concept aims to give the scene a mystical and mysterious quality, prompting the player to reflect on the meaning of what they are doing. The music was also composed with this idea in mind.',
     vb_ost_title: 'Original soundtrack',
     btn_soundcloud: 'Listen on SoundCloud',
     gl_desc: 'In charge of composing the entire original soundtrack of the game, I also handled the sound design of the radio - the central narrative mechanic of Gaslighters - giving it special attention to reinforce immersion.',
