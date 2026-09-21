@@ -419,6 +419,25 @@
         </div>
       </article>
 
+      <!-- HOP FOR GOLD -->
+      <article class="project-card" style="position:relative;">
+        <div class="project-thumb" data-accent="#86c06c" style="--thumb-accent:rgba(134,192,108,0.2);">
+          <span class="project-icon" style="color:#86c06c;">🎮</span>
+          <span class="project-genre" data-i18n="hfg_genre">Platformer · Game Jam</span>
+        </div>
+        <div class="project-body">
+          <h3>Hop for Gold</h3>
+          <p data-i18n="hfg_card_desc">Music &amp; SFX pour un platformer GB Jam 14, un pirate unijambiste à la recherche de l'or, réalisé en 10 jours avec GB Studio.</p>
+          <div class="project-tags">
+            <span data-i18n="tag_music">Musique</span><span>SFX</span><span>GB Studio</span><span data-i18n="tag_game_jam">Game Jam</span>
+          </div>
+          <button class="expand-btn project-expand-btn" style="color:#86c06c;background:rgba(134,192,108,0.08);border-color:rgba(134,192,108,0.3);" data-target="hopforGoldExpanded" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            <span data-i18n="btn_see_project">Voir le projet complet</span>
+          </button>
+        </div>
+      </article>
+
       <!-- VEILBOUND EXPANDED -->
       <article class="project-card project-card--veilbound project-expanded-panel" id="veilboundExpanded" style="display:none;grid-column:1/-1;">
 
@@ -1103,6 +1122,102 @@
             </button>
           </div>
         </div>
+      </article>
+
+      <!-- HOP FOR GOLD EXPANDED -->
+      <article class="project-card project-expanded-panel" id="hopforGoldExpanded" style="display:none;grid-column:1/-1;background:#141414;border:1px solid #242424;border-radius:12px;overflow:visible;">
+        <div style="padding:2rem 2rem 0;position:relative;">
+          <div style="position:absolute;top:1.25rem;left:2rem;display:flex;align-items:center;gap:1rem;">
+            <span class="project-genre" style="color:#86c06c;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;" data-i18n="hfg_genre">Platformer · Game Jam</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-top:1.5rem;margin-bottom:1rem;">Hop for Gold</h3>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;" data-i18n="hfg_desc">Réalisé lors de la GBJAM 14 en 10 jours (11–21 septembre 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le thème de la jam était <em>"Old Gold"</em>.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;margin-top:.75rem;" data-i18n="hfg_role">J'ai composé la musique et créé l'ensemble des effets sonores du jeu. Le moteur utilisé était <strong style="color:#86c06c;">GB Studio</strong>, que je découvrais pour la première fois, un moteur contraignant par nature, conçu pour émuler fidèlement le hardware Game Boy.</p>
+          <div class="project-tags" style="margin-top:1rem;">
+            <span data-i18n="tag_music">Musique</span><span>SFX</span><span>GB Studio</span><span data-i18n="tag_game_jam">Game Jam</span><span>Game Boy</span>
+          </div>
+        </div>
+
+        <!-- Crédits + Lien itch.io -->
+        <div style="padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;">
+          <div style="flex:1;min-width:220px;">
+            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.75rem;" data-i18n="hfg_credits_title">Crédits</p>
+            <p style="font-size:13px;color:#888;line-height:1.9;">
+              <span style="color:#f0f0f0;" data-i18n="hfg_credit_prog">Programmation / Game Design</span> : Trioud<br>
+              <span style="color:#f0f0f0;" data-i18n="hfg_credit_audio">Musique / SFX</span> : Max Guillot<br>
+              <span style="color:#f0f0f0;" data-i18n="hfg_credit_art">Sprites / Art</span> : Hiraya
+            </p>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.75rem;" data-i18n="hfg_jam_title">Game Jam</p>
+            <p style="font-size:13px;color:#888;line-height:1.9;">
+              GBJAM 14<br>
+              <span data-i18n="hfg_jam_theme_label">Thème</span> : <em>"Old Gold"</em><br>
+              <span data-i18n="hfg_jam_duration">10 jours · 11–21 septembre 2026</span>
+            </p>
+          </div>
+          <div style="flex:0 0 auto;display:flex;align-items:center;">
+            <a href="https://trioud.itch.io/hop-for-gold" target="_blank" rel="noopener" class="btn btn-ghost" style="color:#86c06c;border-color:rgba(134,192,108,0.4);background:rgba(134,192,108,0.06);gap:8px;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
+              <span data-i18n="hfg_btn_itch">Jouer sur itch.io</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Séparateur -->
+        <div style="border-top:1px solid #242424;margin:0 2rem;"></div>
+
+        <!-- Sous-section : Contraintes Game Boy -->
+        <div style="padding:1.5rem 2rem 0;">
+          <button class="fmod-subsection-toggle" id="hfgGbToggle" onclick="(function(){var b=document.getElementById('hfgGbBody');var i=document.getElementById('hfgGbToggle');var open=b.style.maxHeight&&b.style.maxHeight!=='0px';b.style.maxHeight=open?'0px':'2000px';b.style.opacity=open?'0':'1';i.setAttribute('aria-expanded',!open);})()" aria-expanded="false" style="display:flex;align-items:center;gap:.75rem;background:none;border:none;cursor:pointer;padding:.5rem 0;width:100%;">
+            <span class="fmod-subsection-tag" style="color:#86c06c;background:rgba(134,192,108,0.1);border:1px solid rgba(134,192,108,0.25);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:4px;" data-i18n="hfg_gb_section_title">Contraintes de la musique Game Boy</span>
+            <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="color:#86c06c;transition:transform .3s;flex-shrink:0;"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div id="hfgGbBody" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .3s ease;">
+            <div style="padding:.75rem 0 1.5rem;">
+              <p style="font-size:14px;color:#888;line-height:1.75;max-width:720px;margin-bottom:1.25rem;" data-i18n="hfg_gb_intro">Composer pour Game Boy (émulé via GB Studio) n'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fidèlement.</p>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c1_title">4 canaux audio seulement</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c1_desc">Le Game Boy ne dispose que de 4 canaux : 2 ondes carrées (mélodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes supplémentaires, pas de groupes, pas de bus.</p>
+                </div>
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c2_title">Samples limités et mémoire réduite</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c2_desc">La ROM Game Boy est limitée en taille. Les samples doivent être courts, mono et à basse résolution. GB Studio impose des contraintes strictes sur le nombre et la durée des sons pouvant être chargés simultanément.</p>
+                </div>
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c3_title">Pas de mixage dynamique</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c3_desc">Le volume de chaque canal est fixé à la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps réel. L'équilibre entre mélodie, harmonie, basse et percussions est figé dans la partition.</p>
+                </div>
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c4_title">Fréquences et timbres fixes</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c4_desc">Les ondes carrées ont des cycles de travail prédéfinis (12.5%, 25%, 50%, 75%). Le timbre est donc très limité. Le canal wave permet un peu plus de liberté mais reste basique. Pas de synthèse complexe, pas d'effets comme la réverb ou le delay.</p>
+                </div>
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c5_title">SFX vs musique : même ressource</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c5_desc">Les effets sonores utilisent les mêmes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l'interrompront.</p>
+                </div>
+
+                <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c6_title">Workflow tracker</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c6_desc">GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline linéaire. Un changement d'approche radical par rapport à Ableton Live.</p>
+                </div>
+
+              </div>
+
+              <p style="font-size:13px;color:#888;line-height:1.75;max-width:720px;margin-top:1.25rem;font-style:italic;border-left:2px solid rgba(134,192,108,0.4);padding-left:1rem;" data-i18n="hfg_gb_conclusion">Ces contraintes forcent à penser différemment : chaque note compte, chaque canal est précieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Padding bas -->
+        <div style="height:1.5rem;"></div>
       </article>
 
     </div>
@@ -2927,6 +3042,7 @@
         { panelId: 'smashExpanded',       videos: ['smashVideo'],                                          iframes: [],           displayVal: 'grid'  },
         { panelId: 'vikingExpanded',      videos: ['vikingVolVideo','vikingMarcheVideo','fmodFootVideo'],   iframes: [],           displayVal: 'flex'  },
         { panelId: 'veilboundExpanded',   videos: ['veilboundAdaptVideo','veilboundAdaptOldVideo','veilboundShopVideo','veilboundShopVideo2','veilboundPreviewVideo'], iframes: ['vbPlIframe'], displayVal: 'flex'  },
+        { panelId: 'hopforGoldExpanded',  videos: [],                                                                                                                   iframes: [],           displayVal: 'block' },
       ];
 
       // Met en pause un lecteur SoundCloud (widget playlist Veilbound /
@@ -3181,6 +3297,34 @@ const i18n = {
     ct_desc: "Actuellement disponible, je suis à la recherche d'une opportunité professionnelle dans le sound design, ou de tout projet faisant appel à mes compétences en audio interactif.",
     ct_network: 'Réseau professionnel', ct_music: 'Musique',
     tag_adaptive_music: 'Musique adaptive',
+    tag_game_jam: 'Game Jam',
+    hfg_genre: 'Platformer · Game Jam',
+    hfg_card_desc: "Music & SFX pour un platformer GB Jam 14, un pirate unijambiste à la recherche de l'or, réalisé en 10 jours avec GB Studio.",
+    hfg_desc: "Réalisé lors de la GBJAM 14 en 10 jours (11–21 septembre 2026), <strong style=\"color:#f0f0f0;\">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le thème de la jam était <em>\"Old Gold\"</em>.",
+    hfg_role: "J'ai composé la musique et créé l'ensemble des effets sonores du jeu. Le moteur utilisé était <strong style=\"color:#86c06c;\">GB Studio</strong>, que je découvrais pour la première fois, un moteur contraignant par nature, conçu pour émuler fidèlement le hardware Game Boy.",
+    hfg_credits_title: 'Crédits',
+    hfg_credit_prog: 'Programmation / Game Design',
+    hfg_credit_audio: 'Musique / SFX',
+    hfg_credit_art: 'Sprites / Art',
+    hfg_jam_title: 'Game Jam',
+    hfg_jam_theme_label: 'Thème',
+    hfg_jam_duration: '10 jours · 11–21 septembre 2026',
+    hfg_btn_itch: 'Jouer sur itch.io',
+    hfg_gb_section_title: 'Contraintes de la musique Game Boy',
+    hfg_gb_intro: 'Composer pour Game Boy (émulé via GB Studio) n\'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fidèlement.',
+    hfg_gb_c1_title: '4 canaux audio seulement',
+    hfg_gb_c1_desc: 'Le Game Boy ne dispose que de 4 canaux : 2 ondes carrées (mélodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes supplémentaires, pas de groupes, pas de bus.',
+    hfg_gb_c2_title: 'Samples limités et mémoire réduite',
+    hfg_gb_c2_desc: 'La ROM Game Boy est limitée en taille. Les samples doivent être courts, mono et à basse résolution. GB Studio impose des contraintes strictes sur le nombre et la durée des sons pouvant être chargés simultanément.',
+    hfg_gb_c3_title: 'Pas de mixage dynamique',
+    hfg_gb_c3_desc: "Le volume de chaque canal est fixé à la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps réel. L'équilibre entre mélodie, harmonie, basse et percussions est figé dans la partition.",
+    hfg_gb_c4_title: 'Fréquences et timbres fixes',
+    hfg_gb_c4_desc: 'Les ondes carrées ont des cycles de travail prédéfinis (12.5%, 25%, 50%, 75%). Le timbre est donc très limité. Le canal wave permet un peu plus de liberté mais reste basique. Pas de synthèse complexe, pas d\'effets comme la réverb ou le delay.',
+    hfg_gb_c5_title: 'SFX vs musique : même ressource',
+    hfg_gb_c5_desc: 'Les effets sonores utilisent les mêmes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l\'interrompront.',
+    hfg_gb_c6_title: 'Workflow tracker',
+    hfg_gb_c6_desc: 'GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline linéaire. Un changement d\'approche radical par rapport à Ableton Live.',
+    hfg_gb_conclusion: "Ces contraintes forcent à penser différemment : chaque note compte, chaque canal est précieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.",
     footer_made: 'Conçu et développé par Max Guillot', footer_rights: 'Tous droits réservés',
   },
   en: {
@@ -3279,6 +3423,34 @@ const i18n = {
     ct_available: 'Available',
     ct_desc: 'Currently available, I am looking for a professional opportunity in sound design, or any project drawing on my skills in interactive audio.',
     ct_network: 'Professional network', ct_music: 'Music',
+    tag_game_jam: 'Game Jam',
+    hfg_genre: 'Platformer · Game Jam',
+    hfg_card_desc: 'Music & SFX for a GBJAM 14 platformer, a one-legged pirate on a quest for gold, built in 10 days with GB Studio.',
+    hfg_desc: 'Made for GBJAM 14 in 10 days (September 11–21, 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> is a punishing and fun platformer where you play as a one-legged pirate on a quest for gold. The jam theme was <em>"Old Gold"</em>.',
+    hfg_role: 'I composed the music and created all the sound effects for the game. The engine used was <strong style="color:#86c06c;">GB Studio</strong>, which I was using for the first time, a by-design constrained engine built to faithfully emulate the original Game Boy hardware.',
+    hfg_credits_title: 'Credits',
+    hfg_credit_prog: 'Programming / Game Design',
+    hfg_credit_audio: 'Music / SFX',
+    hfg_credit_art: 'Sprites / Art',
+    hfg_jam_title: 'Game Jam',
+    hfg_jam_theme_label: 'Theme',
+    hfg_jam_duration: '10 days · September 11–21, 2026',
+    hfg_btn_itch: 'Play on itch.io',
+    hfg_gb_section_title: 'Game Boy Music Constraints',
+    hfg_gb_intro: 'Composing for Game Boy (emulated via GB Studio) is nothing like working in a regular DAW. The original hardware imposes strict physical limitations, and GB Studio faithfully replicates them.',
+    hfg_gb_c1_title: '4 audio channels only',
+    hfg_gb_c1_desc: 'The Game Boy has only 4 channels: 2 square waves (melody/harmony), 1 noise channel (percussion), 1 wave channel (bass/alternate lead). No additional tracks, no groups, no buses.',
+    hfg_gb_c2_title: 'Limited samples and reduced memory',
+    hfg_gb_c2_desc: 'Game Boy ROM size is limited. Samples must be short, mono, and low-resolution. GB Studio enforces strict constraints on the number and length of sounds that can be loaded simultaneously.',
+    hfg_gb_c3_title: 'No dynamic mixing',
+    hfg_gb_c3_desc: 'Channel volume is fixed at composition time. There are no faders, no real-time volume automation. The balance between melody, harmony, bass, and percussion is locked into the score.',
+    hfg_gb_c4_title: 'Fixed frequencies and timbres',
+    hfg_gb_c4_desc: 'Square waves have predefined duty cycles (12.5%, 25%, 50%, 75%). Timbre options are very limited. The wave channel allows a bit more flexibility but remains basic. No complex synthesis, no reverb or delay effects.',
+    hfg_gb_c5_title: 'SFX vs music: shared resource',
+    hfg_gb_c5_desc: 'Sound effects use the same channels as the music. When a SFX plays, it temporarily cuts the corresponding channel. Music must therefore be designed with the interrupting SFX in mind.',
+    hfg_gb_c6_title: 'Tracker workflow',
+    hfg_gb_c6_desc: 'GB Studio uses a tracker-style music format (similar to .mod). Music is entered note by note in a grid, with no linear timeline. A radical shift in approach compared to Ableton Live.',
+    hfg_gb_conclusion: 'These constraints force you to think differently: every note matters, every channel is precious. It\'s an almost classical compositional mindset, finding ways to make something expressive with minimal resources.',
     footer_made: 'Designed and developed by Max Guillot', footer_rights: 'All rights reserved',
   }
 };
