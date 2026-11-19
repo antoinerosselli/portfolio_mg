@@ -16,18 +16,18 @@
     <span class="nav-logo">MG</span>
     <ul class="nav-links">
       <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
-      <li><a href="#about" data-i18n="nav_about">Ã€ propos</a></li>
+      <li><a href="#about" data-i18n="nav_about">&#xC0; propos</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
-    <button id="lang-toggle" onclick="toggleLang()" title="Switch language" style="background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.35);cursor:pointer;font-size:1rem;padding:4px 10px;line-height:1;display:flex;align-items:center;gap:6px;border-radius:6px;color:var(--accent);font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.18)';this.style.borderColor='rgba(200,169,110,0.6)'" onmouseout="this.style.background='rgba(200,169,110,0.08)';this.style.borderColor='rgba(200,169,110,0.35)'">ðŸ‡ºðŸ‡¸ EN</button>
+    <button id="lang-toggle" onclick="toggleLang()" title="Switch language" style="background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.35);cursor:pointer;font-size:1rem;padding:4px 10px;line-height:1;display:flex;align-items:center;gap:6px;border-radius:6px;color:var(--accent);font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.18)';this.style.borderColor='rgba(200,169,110,0.6)'" onmouseout="this.style.background='rgba(200,169,110,0.08)';this.style.borderColor='rgba(200,169,110,0.35)'">&#x1F1FA;&#x1F1F8; EN</button>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-content">
-      <p class="hero-label" data-i18n="hero_label">Sound Designer Â· Game Audio</p>
+      <p class="hero-label" data-i18n="hero_label">Sound Designer &#xB7; Game Audio</p>
       <h1 class="hero-title">Max<br />Guillot</h1>
-      <p class="hero-sub" data-i18n="hero_sub">Je crÃ©e des univers sonores immersifs pour les jeux vidÃ©o - des ambiances atmosphÃ©riques aux effets percutants, chaque son raconte une histoire.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Je cr&#xE9;e des univers sonores immersifs pour les jeux vid&#xE9;o - des ambiances atmosph&#xE9;riques aux effets percutants, chaque son raconte une histoire.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary"><span data-i18n="btn_projects">Voir mes projets</span></a>
         <a href="#contact" class="btn btn-ghost"><span data-i18n="btn_contact">Me contacter</span></a>
@@ -42,8 +42,8 @@
         <div class="hero-player" id="heroPlayer">
           <div class="hero-player-top">
             <div class="hero-player-info">
-              <span class="hero-player-tag"><span data-i18n="player_listening">// en Ã©coute</span></span>
-              <a id="scTrackLink" href="#" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargementâ€¦</span></a>
+              <span class="hero-player-tag"><span data-i18n="player_listening">// en &#xE9;coute</span></span>
+              <a id="scTrackLink" href="#" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargement&#x2026;</span></a>
             </div>
             <button class="hero-player-play" id="heroPlayBtn" aria-label="Lecture / Pause">
               <svg id="heroPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -60,7 +60,7 @@
               <input type="range" id="heroVolume" min="0" max="100" step="1" value="100" aria-label="Volume" />
             </div>
             <div class="gl-track-nav">
-              <button class="gl-nav-btn" id="heroPrev" title="PrÃ©cÃ©dent">
+              <button class="gl-nav-btn" id="heroPrev" title="Pr&#xE9;c&#xE9;dent">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
               </button>
               <button class="gl-nav-btn" id="heroNext" title="Suivant">
@@ -69,11 +69,11 @@
             </div>
           </div>
         </div>
-        <!-- iframe cachÃ© pour le Widget API : taille rÃ©elle (300x166,
-             format standard SoundCloud) mais positionnÃ©e hors Ã©cran.
-             Compresser l'iframe Ã  0 ou 1px fait planter le rendu canvas
+        <!-- iframe cach&#xE9; pour le Widget API : taille r&#xE9;elle (300x166,
+             format standard SoundCloud) mais positionn&#xE9;e hors &#xE9;cran.
+             Compresser l'iframe &#xE0; 0 ou 1px fait planter le rendu canvas
              interne du widget (createPattern sur un canvas de taille
-             nulle) - on la garde donc Ã  taille normale et on la sort
+             nulle) - on la garde donc &#xE0; taille normale et on la sort
              simplement du champ visuel. -->
         <iframe id="scIframe" scrolling="no" frameborder="no" allow="autoplay"
           style="width:300px;height:166px;position:absolute;left:-9999px;top:-9999px;pointer-events:none;"></iframe>
@@ -86,16 +86,16 @@
       // URL de la playlist SoundCloud publique "site-boucle" (9 pistes).
       // On charge cette playlist UNE SEULE FOIS dans l'iframe, puis on
       // navigue entre les pistes avec widget.skip(index) - contrairement
-      // Ã  widget.load(url) (utilisÃ© avant), skip() ne recharge PAS
-      // l'iframe. Cela Ã©vite : la crÃ©ation d'une entrÃ©e d'historique de
-      // navigation Ã  chaque morceau (on pouvait "revenir en arriÃ¨re" dans
-      // le navigateur aprÃ¨s chaque piste), et la coupure du canal
+      // \u{E0} widget.load(url) (utilis\u{E9} avant), skip() ne recharge PAS
+      // l'iframe. Cela \u{E9}vite : la cr\u{E9}ation d'une entr\u{E9}e d'historique de
+      // navigation \u{E0} chaque morceau (on pouvait "revenir en arri\u{E8}re" dans
+      // le navigateur apr\u{E8}s chaque piste), et la coupure du canal
       // postMessage qui figeait l'interface du lecteur.
       const playlistUrl = 'https://soundcloud.com/user-585795485/sets/site-boucle';
 
-      // Labels personnalisÃ©s affichÃ©s dans l'UI, mappÃ©s par titre exact
-      // du morceau sur SoundCloud (utilisÃ©s pour prÃ©fÃ©rer un libellÃ©
-      // "propre" au titre brut renvoyÃ© par l'API si jamais ils diffÃ¨rent).
+      // Labels personnalis\u{E9}s affich\u{E9}s dans l'UI, mapp\u{E9}s par titre exact
+      // du morceau sur SoundCloud (utilis\u{E9}s pour pr\u{E9}f\u{E9}rer un libell\u{E9}
+      // "propre" au titre brut renvoy\u{E9} par l'API si jamais ils diff\u{E8}rent).
       const labelByTitle = {
         'Pluvio': 'Pluvio',
         'LFEC': 'LFEC',
@@ -135,15 +135,15 @@
       let widget = null;
       let duration = 0;
       let sounds = [];        // sons de la playlist, dans l'ordre SoundCloud
-      let order = [];         // ordre de lecture mÃ©langÃ© (indices dans `sounds`)
+      let order = [];         // ordre de lecture m\u{E9}lang\u{E9} (indices dans `sounds`)
       let orderPos = 0;       // position courante dans `order`
       let bound = false;
-      // Le widget SoundCloud peut, rarement, dÃ©marrer une lecture de
-      // quelques instants tout seul juste aprÃ¨s son premier READY, mÃªme
-      // avec auto_play=false (comportement instable cÃ´tÃ© widget, pas
-      // dÃ©clenchÃ© par notre code). Tant que la personne n'a pas
-      // explicitement cliquÃ© play, on traite tout PLAY inattendu comme
-      // un faux dÃ©clenchement et on le coupe immÃ©diatement.
+      // Le widget SoundCloud peut, rarement, d\u{E9}marrer une lecture de
+      // quelques instants tout seul juste apr\u{E8}s son premier READY, m\u{EA}me
+      // avec auto_play=false (comportement instable c\u{F4}t\u{E9} widget, pas
+      // d\u{E9}clench\u{E9} par notre code). Tant que la personne n'a pas
+      // explicitement cliqu\u{E9} play, on traite tout PLAY inattendu comme
+      // un faux d\u{E9}clenchement et on le coupe imm\u{E9}diatement.
       let userInteracted = false;
 
       function labelFor(sound) {
@@ -157,12 +157,12 @@
         trackLink.href        = sound.permalink_url;
       }
 
-      // Pour certaines pistes, le widget rÃ©pond parfois Ã  getCurrentSound()
-      // avec un titre encore vide juste aprÃ¨s un skip() - les mÃ©tadonnÃ©es
-      // de cette piste prÃ©cise n'ont pas fini de se charger cÃ´tÃ© widget.
-      // On rÃ©essaie automatiquement (quelques fois, avec un court dÃ©lai)
-      // jusqu'Ã  obtenir un titre non vide, plutÃ´t que d'afficher un champ
-      // blanc dÃ©finitivement.
+      // Pour certaines pistes, le widget r\u{E9}pond parfois \u{E0} getCurrentSound()
+      // avec un titre encore vide juste apr\u{E8}s un skip() - les m\u{E9}tadonn\u{E9}es
+      // de cette piste pr\u{E9}cise n'ont pas fini de se charger c\u{F4}t\u{E9} widget.
+      // On r\u{E9}essaie automatiquement (quelques fois, avec un court d\u{E9}lai)
+      // jusqu'\u{E0} obtenir un titre non vide, plut\u{F4}t que d'afficher un champ
+      // blanc d\u{E9}finitivement.
       function applyCurrentSoundRetry(attemptsLeft) {
         widget.getCurrentSound(function(sound) {
           if (sound && sound.title) {
@@ -170,15 +170,15 @@
           } else if (attemptsLeft > 0) {
             setTimeout(() => applyCurrentSoundRetry(attemptsLeft - 1), 250);
           } else if (sound) {
-            // Dernier recours : afficher ce qu'on a, mÃªme incomplet,
-            // plutÃ´t que de laisser "Chargementâ€¦" indÃ©finiment.
+            // Dernier recours : afficher ce qu'on a, m\u{EA}me incomplet,
+            // plut\u{F4}t que de laisser "Chargement\u{2026}" ind\u{E9}finiment.
             applySoundToUI(sound);
           }
         });
       }
 
-      // Construit un ordre alÃ©atoire de lecture sur les indices de la
-      // playlist, en Ã©vitant de rÃ©pÃ©ter le morceau qui vient de jouer
+      // Construit un ordre al\u{E9}atoire de lecture sur les indices de la
+      // playlist, en \u{E9}vitant de r\u{E9}p\u{E9}ter le morceau qui vient de jouer
       // en premier de la prochaine boucle.
       function buildOrder(excludeFirst) {
         const idxs = sounds.map((_, i) => i);
@@ -193,10 +193,10 @@
         timeEl.textContent = '0:00';
         widget.skip(soundIndex);
         // getSounds() peut renvoyer des objets son incomplets (titre
-        // manquant) tant qu'une piste n'a pas Ã©tÃ© chargÃ©e individuellement.
-        // getCurrentSound(), interrogÃ© juste aprÃ¨s skip(), retourne
-        // toujours les mÃ©tadonnÃ©es complÃ¨tes de la piste qui vient d'Ãªtre
-        // chargÃ©e - c'est donc la source fiable pour le titre affichÃ©.
+        // manquant) tant qu'une piste n'a pas \u{E9}t\u{E9} charg\u{E9}e individuellement.
+        // getCurrentSound(), interrog\u{E9} juste apr\u{E8}s skip(), retourne
+        // toujours les m\u{E9}tadonn\u{E9}es compl\u{E8}tes de la piste qui vient d'\u{EA}tre
+        // charg\u{E9}e - c'est donc la source fiable pour le titre affich\u{E9}.
         applyCurrentSoundRetry(4);
         if (autoplay) { userInteracted = true; widget.play(); }
       }
@@ -211,11 +211,11 @@
         playAtOrderPos(orderPos, autoplay);
       }
 
-      // Revient au morceau prÃ©cÃ©dent dans l'historique RÃ‰EL d'Ã©coute
-      // (order[orderPos - 1]), pas un nouveau tirage alÃ©atoire - c'est
-      // la diffÃ©rence avec playNext, qui avance vers un morceau alÃ©atoire
-      // inÃ©dit. Si on est dÃ©jÃ  au tout dÃ©but de l'historique, on relance
-      // simplement le morceau courant depuis 0 plutÃ´t que de ne rien faire.
+      // Revient au morceau pr\u{E9}c\u{E9}dent dans l'historique R\u{C9}EL d'\u{E9}coute
+      // (order[orderPos - 1]), pas un nouveau tirage al\u{E9}atoire - c'est
+      // la diff\u{E9}rence avec playNext, qui avance vers un morceau al\u{E9}atoire
+      // in\u{E9}dit. Si on est d\u{E9}j\u{E0} au tout d\u{E9}but de l'historique, on relance
+      // simplement le morceau courant depuis 0 plut\u{F4}t que de ne rien faire.
       function playPrev(autoplay) {
         if (orderPos > 0) orderPos--;
         playAtOrderPos(orderPos, autoplay);
@@ -229,7 +229,7 @@
             sounds = s || [];
             if (!sounds.length) return;
 
-            // Premier morceau choisi au hasard, le reste mÃ©langÃ© derriÃ¨re
+            // Premier morceau choisi au hasard, le reste m\u{E9}lang\u{E9} derri\u{E8}re
             const startIdx = Math.floor(Math.random() * sounds.length);
             order = [startIdx, ...buildOrder(startIdx)];
             orderPos = 0;
@@ -242,9 +242,9 @@
 
         widget.bind(SC.Widget.Events.PLAY, function() {
           if (!userInteracted) {
-            // DÃ©marrage de lecture jamais demandÃ© par la personne : on
-            // considÃ¨re que c'est le faux dÃ©clenchement occasionnel du
-            // widget, on coupe immÃ©diatement et on ignore le reste.
+            // D\u{E9}marrage de lecture jamais demand\u{E9} par la personne : on
+            // consid\u{E8}re que c'est le faux d\u{E9}clenchement occasionnel du
+            // widget, on coupe imm\u{E9}diatement et on ignore le reste.
             widget.pause();
             return;
           }
@@ -305,14 +305,14 @@
       };
       document.head.appendChild(script);
 
-      // L'iframe n'Ã©tant plus jamais rechargÃ©e aprÃ¨s le premier chargement
+      // L'iframe n'\u{E9}tant plus jamais recharg\u{E9}e apr\u{E8}s le premier chargement
       // (skip() remplace load()), le retour bfcache ne devrait plus casser
-      // la synchro postMessage. On garde malgrÃ© tout un rebind dÃ©fensif :
-      // s'il s'avÃ¨re inutile, il est inoffensif (READY ne fait que relire
-      // l'Ã©tat dÃ©jÃ  en cours).
-      // ExposÃ©e globalement pour pouvoir couper le lecteur hero depuis
-      // l'extÃ©rieur (ex: quand un projet est ouvert/dÃ©pliÃ© plus bas sur
-      // la page), sans avoir Ã  exporter toute l'IIFE.
+      // la synchro postMessage. On garde malgr\u{E9} tout un rebind d\u{E9}fensif :
+      // s'il s'av\u{E8}re inutile, il est inoffensif (READY ne fait que relire
+      // l'\u{E9}tat d\u{E9}j\u{E0} en cours).
+      // Expos\u{E9}e globalement pour pouvoir couper le lecteur hero depuis
+      // l'ext\u{E9}rieur (ex: quand un projet est ouvert/d\u{E9}pli\u{E9} plus bas sur
+      // la page), sans avoir \u{E0} exporter toute l'IIFE.
       window.pauseHeroPlayer = function() {
         if (widget) { try { widget.pause(); } catch (e) {} }
       };
@@ -338,7 +338,7 @@
     <div class="section-header">
       <span class="section-tag">Portfolio</span>
       <h2>Projets</h2>
-      <p data-i18n="projects_sub_short">Une sÃ©lection de mes projets d'audio design.</p>
+      <p data-i18n="projects_sub_short">Une s&#xE9;lection de mes projets d'audio design.</p>
     </div>
 
     <div class="projects-grid">
@@ -346,12 +346,12 @@
       <!-- GASLIGHTERS -->
       <article class="project-card project-card--expandable" id="gashlighterCard">
         <div class="project-thumb" data-accent="#e8564a">
-          <span class="project-icon">âš¡</span>
-          <span class="project-genre"><span data-i18n="gl_genre">Action / Thriller Â· IndÃ©pendant</span></span>
+          <span class="project-icon">&#x26A1;</span>
+          <span class="project-genre"><span data-i18n="gl_genre">Action / Thriller &#xB7; Ind&#xE9;pendant</span></span>
         </div>
         <div class="project-body">
           <h3>Gaslighters</h3>
-          <p data-i18n="gl_card_desc">Composition de l'intÃ©gralitÃ© de la bande originale et sound design de la radio, mÃ©canique narrative centrale du jeu.</p>
+          <p data-i18n="gl_card_desc">Composition de l'int&#xE9;gralit&#xE9; de la bande originale et sound design de la radio, m&#xE9;canique narrative centrale du jeu.</p>
           <div class="project-tags">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
           </div>
@@ -365,12 +365,12 @@
       <!-- SMASH BROS -->
       <article class="project-card project-card--expandable" id="smashCard">
         <div class="project-thumb" data-accent="#e8a600">
-          <span class="project-icon">âœ¦</span>
+          <span class="project-icon">&#x2726;</span>
           <span class="project-genre">Fighting / Nintendo</span>
         </div>
         <div class="project-body">
           <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
-          <p><span data-i18n="card_sm">Proposition d'un sound design du trailer de rÃ©vÃ©lation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son prÃ©cise.</span></p>
+          <p><span data-i18n="card_sm">Proposition d'un sound design du trailer de r&#xE9;v&#xE9;lation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son pr&#xE9;cise.</span></p>
           <div class="project-tags">
             <span>Trailer</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
@@ -384,12 +384,12 @@
       <!-- VIKING VILLAGE -->
       <article class="project-card project-card--expandable" id="vikingCard">
         <div class="project-thumb" data-accent="#7ab3e8">
-          <span class="project-icon">âš”</span>
+          <span class="project-icon">&#x2694;</span>
           <span class="project-genre">Unity / 3D Integration</span>
         </div>
         <div class="project-body">
           <h3>Unity Integration - Viking Village Sound Design</h3>
-          <p><span data-i18n="card_vk">Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intÃ©gration FMOD et musique adaptative.</span></p>
+          <p><span data-i18n="card_vk">Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, int&#xE9;gration FMOD et musique adaptative.</span></p>
           <div class="project-tags">
             <span>Unity</span><span>3D</span><span>FMOD</span><span>Ableton Live</span><span>Ambiances</span><span>Game Feel</span>
           </div>
@@ -403,12 +403,12 @@
       <!-- VEILBOUND -->
       <article class="project-card project-card--expandable" id="veilboundCard">
         <div class="project-thumb" data-accent="#9b6ee8">
-          <span class="project-icon">âœ§</span>
+          <span class="project-icon">&#x2727;</span>
           <span class="project-genre">Dark Fantasy / Rogue-lite</span>
         </div>
         <div class="project-body">
           <h3>Veilbound</h3>
-          <p><span data-i18n="card_vb">Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en lÃ©gendes.</span></p>
+          <p><span data-i18n="card_vb">Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en l&#xE9;gendes.</span></p>
           <div class="project-tags">
             <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span data-i18n="tag_adaptive_music">Musique adaptive</span>
           </div>
@@ -422,12 +422,12 @@
       <!-- HOP FOR GOLD -->
       <article class="project-card" style="position:relative;">
         <div class="project-thumb" data-accent="#86c06c" style="--thumb-accent:rgba(134,192,108,0.2);">
-          <span class="project-icon" style="color:#86c06c;">ðŸŽ®</span>
-          <span class="project-genre" data-i18n="hfg_genre">Platformer Â· Game Jam</span>
+          <span class="project-icon" style="color:#86c06c;">&#x1F3AE;</span>
+          <span class="project-genre" data-i18n="hfg_genre">Platformer &#xB7; Game Jam</span>
         </div>
         <div class="project-body">
           <h3>Hop for Gold</h3>
-          <p data-i18n="hfg_card_desc">Music &amp; SFX pour un platformer GB Jam 14, un pirate unijambiste Ã  la recherche de l'or, rÃ©alisÃ© en 10 jours avec GB Studio.</p>
+          <p data-i18n="hfg_card_desc">Music &amp; SFX pour un platformer GB Jam 14, un pirate unijambiste &#xE0; la recherche de l'or, r&#xE9;alis&#xE9; en 10 jours avec GB Studio.</p>
           <div class="project-tags">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>GB Studio</span><span data-i18n="tag_game_jam">Game Jam</span>
           </div>
@@ -441,12 +441,12 @@
       <!-- HOBOSS -->
       <article class="project-card" style="position:relative;">
         <div class="project-thumb" data-accent="#e07ab0" style="--thumb-accent:rgba(224,122,176,0.2);">
-          <span class="project-icon" style="color:#e07ab0;">â™«</span>
-          <span class="project-genre" data-i18n="hob_genre">Narratif / ComÃ©die Â· Game Jam</span>
+          <span class="project-icon" style="color:#e07ab0;">&#x266B;</span>
+          <span class="project-genre" data-i18n="hob_genre">Narratif / Com&#xE9;die &#xB7; Game Jam</span>
         </div>
         <div class="project-body">
           <h3>Hoboss - Curse under the bridge</h3>
-          <p data-i18n="hob_card_desc">Tout le son (musique, SFX, intÃ©gration FMOD) d'un jeu narratif absurde : un SDF immortel coincÃ© sous un pont voit dÃ©filer les Ã©poques. Un morceau par Ã¨re, rÃ©alisÃ© en 7 jours pour la Garbage Jam #7.</p>
+          <p data-i18n="hob_card_desc">Tout le son (musique, SFX, int&#xE9;gration FMOD) d'un jeu narratif absurde : un SDF immortel coinc&#xE9; sous un pont voit d&#xE9;filer les &#xE9;poques. Un morceau par &#xE8;re, r&#xE9;alis&#xE9; en 7 jours pour la Garbage Jam #7.</p>
           <div class="project-tags">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Godot</span><span>FMOD</span><span data-i18n="tag_game_jam">Game Jam</span>
           </div>
@@ -460,12 +460,12 @@
       <!-- 777 TRIAL -->
       <article class="project-card" style="position:relative;">
         <div class="project-thumb" data-accent="#4fb8a8" style="--thumb-accent:rgba(79,184,168,0.2);">
-          <span class="project-icon" style="color:#4fb8a8;">â—‰</span>
-          <span class="project-genre" data-i18n="t777_genre">Puzzle / Observation Â· Game Jam</span>
+          <span class="project-icon" style="color:#4fb8a8;">&#x25C9;</span>
+          <span class="project-genre" data-i18n="t777_genre">Puzzle / Observation &#xB7; Game Jam</span>
         </div>
         <div class="project-body">
           <h3>777 Trial</h3>
-          <p data-i18n="t777_card_desc">Sound design complet d'un jeu d'observation dans un dÃ©cor mÃ©diÃ©val inquiÃ©tant - SFX, ambiances, crÃ©ation des events et spatialisation, rÃ©alisÃ© en 7 jours pour l'Official 2026 Unity Game Jam.</p>
+          <p data-i18n="t777_card_desc">Sound design complet d'un jeu d'observation dans un d&#xE9;cor m&#xE9;di&#xE9;val inqui&#xE9;tant - SFX, ambiances, cr&#xE9;ation des events et spatialisation, r&#xE9;alis&#xE9; en 7 jours pour l'Official 2026 Unity Game Jam.</p>
           <div class="project-tags">
             <span>SFX</span><span data-i18n="tag_spatial">Spatialisation</span><span>Unity</span><span>FMOD</span><span data-i18n="tag_game_jam">Game Jam</span>
           </div>
@@ -482,14 +482,14 @@
         <div class="veilbound-header veilbound-header--split">
           <div class="veilbound-header-text">
             <div class="project-featured-meta veilbound-meta-top">
-              <span class="project-genre" style="color:#9b6ee8;">Dark Fantasy Â· Rogue-lite</span>
-              <span class="project-icon" style="color:#9b6ee8;">âœ§</span>
+              <span class="project-genre" style="color:#9b6ee8;">Dark Fantasy &#xB7; Rogue-lite</span>
+              <span class="project-icon" style="color:#9b6ee8;">&#x2727;</span>
             </div>
             <h3>Veilbound</h3>
-            <p><span data-i18n="vb_intro">Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers Ã  travers un monde dark fantasy riche en histoires et en lÃ©gendes. Le gameplay mÃªle gestion stratÃ©gique et combats de type auto-battler.</span></p>
-            <p><span data-i18n="vb_role">Je suis en charge de l'intÃ©gralitÃ© du sound design du projet : composition des musiques, conception des ambiances sonores, crÃ©ation des effets sonores et implÃ©mentation technique complÃ¨te dans le moteur de jeu.</span></p>
+            <p><span data-i18n="vb_intro">Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers &#xE0; travers un monde dark fantasy riche en histoires et en l&#xE9;gendes. Le gameplay m&#xEA;le gestion strat&#xE9;gique et combats de type auto-battler.</span></p>
+            <p><span data-i18n="vb_role">Je suis en charge de l'int&#xE9;gralit&#xE9; du sound design du projet : composition des musiques, conception des ambiances sonores, cr&#xE9;ation des effets sonores et impl&#xE9;mentation technique compl&#xE8;te dans le moteur de jeu.</span></p>
             <div class="project-tags">
-              <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span><span data-i18n="vb_adapt_title">Musique adaptative</span></span><span class="tag-wip"><span data-i18n="tag_wip">En dÃ©veloppement</span></span>
+              <span>Dark Fantasy</span><span>Rogue-lite</span><span>Godot</span><span>FMOD</span><span>Reaper</span><span>Ableton Live</span><span><span data-i18n="vb_adapt_title">Musique adaptative</span></span><span class="tag-wip"><span data-i18n="tag_wip">En d&#xE9;veloppement</span></span>
             </div>
           </div>
           <div class="veilbound-header-video">
@@ -525,7 +525,7 @@
         <div class="veilbound-section fmod-subsection">
           <button class="fmod-subsection-toggle veilbound-subsection-toggle" id="vbAdaptToggle" aria-expanded="false">
             <div class="veilbound-section-header fmod-subsection-header">
-              <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">SystÃ¨me FMOD</span>
+              <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);">Syst&#xE8;me FMOD</span>
               <h4><span data-i18n="vb_adapt_title">Musique adaptative</span></h4>
             </div>
             <svg class="fmod-toggle-arrow veilbound-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
@@ -565,9 +565,9 @@
                 </div>
               </div>
               <div class="fmod-description">
-                <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du systÃ¨me</span></h5>
-                <p><span data-i18n="vb_adapt_p1">Le systÃ¨me de musique adaptative de Veilbound a Ã©tÃ© conÃ§u pour que la bande sonore des combats Ã©volue en temps rÃ©el selon l'issue de l'affrontement. Si le joueur se retrouve en difficultÃ©, la musique glisse vers des tonalitÃ©s mÃ©lancoliques et oppressantes ; Ã  l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure Ã©pique. Ce comportement est pilotÃ© par le paramÃ¨tre <code>%Ã©cart</code>, visible sur la vidÃ©o, qui reflÃ¨te en permanence l'Ã©tat du combat.</span></p>
-                <p><span data-i18n="vb_adapt_p2">Dans cette nouvelle itÃ©ration du systÃ¨me de musique adaptative de combat, l'ensemble de l'Ã©coute tient en une seule boucle. Les transitions sont gÃ©rÃ©es au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrÃ´lant l'entrÃ©e et la sortie des pistes. Cette approche permet aux transitions de s'opÃ©rer Ã  n'importe quel instant de la lecture, sans dÃ©pendre d'un trigger temporel comme c'Ã©tait le cas dans la version prÃ©cÃ©dente.</span></p>
+                <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du syst&#xE8;me</span></h5>
+                <p><span data-i18n="vb_adapt_p1">Le syst&#xE8;me de musique adaptative de Veilbound a &#xE9;t&#xE9; con&#xE7;u pour que la bande sonore des combats &#xE9;volue en temps r&#xE9;el selon l'issue de l'affrontement. Si le joueur se retrouve en difficult&#xE9;, la musique glisse vers des tonalit&#xE9;s m&#xE9;lancoliques et oppressantes ; &#xE0; l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure &#xE9;pique. Ce comportement est pilot&#xE9; par le param&#xE8;tre <code>%&#xE9;cart</code>, visible sur la vid&#xE9;o, qui refl&#xE8;te en permanence l'&#xE9;tat du combat.</span></p>
+                <p><span data-i18n="vb_adapt_p2">Dans cette nouvelle it&#xE9;ration du syst&#xE8;me de musique adaptative de combat, l'ensemble de l'&#xE9;coute tient en une seule boucle. Les transitions sont g&#xE9;r&#xE9;es au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contr&#xF4;lant l'entr&#xE9;e et la sortie des pistes. Cette approche permet aux transitions de s'op&#xE9;rer &#xE0; n'importe quel instant de la lecture, sans d&#xE9;pendre d'un trigger temporel comme c'&#xE9;tait le cas dans la version pr&#xE9;c&#xE9;dente.</span></p>
               </div>
             </div>
 
@@ -575,7 +575,7 @@
             <div class="fmod-subsection fmod-subsection--border-top">
               <button class="fmod-subsection-toggle" id="vbAdaptOldToggle" aria-expanded="false" style="background:transparent;border-top:1px dashed rgba(155,110,232,0.2);opacity:0.65;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.65">
                 <div class="fmod-subsection-header">
-                  <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);font-size:10px;letter-spacing:0.08em;">SystÃ¨me FMOD</span>
+                  <span class="fmod-subsection-tag" style="color:#9b6ee8;background:rgba(155,110,232,0.1);border-color:rgba(155,110,232,0.2);font-size:10px;letter-spacing:0.08em;">Syst&#xE8;me FMOD</span>
                   <h4 style="font-size:0.85rem;font-weight:500;font-style:italic;color:#888;"><span data-i18n="vb_old_title">Ancienne(s) version(s)</span></h4>
                 </div>
                 <svg class="fmod-toggle-arrow" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="color:#444;"><path d="M7 10l5 5 5-5z"/></svg>
@@ -613,9 +613,9 @@
                     </div>
                   </div>
                   <div class="fmod-description">
-                    <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du systÃ¨me</span></h5>
-                    <p><span data-i18n="vb_old_p1">Ã€ partir du paramÃ¨tre <code>%Ã©cart</code>, de nombreux points de transition ont Ã©tÃ© dÃ©finis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs prÃ©cis. Ces transitions relient les diffÃ©rentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des Ã©tats possibles du combat.</span></p>
-                    <p class="fmod-note"><span data-i18n="vb_old_note">Chaque transition dispose d'un crossfade paramÃ©trable vers la boucle suivante, garantissant des passages fluides et cohÃ©rents avec l'Ã©volution de l'affrontement.</span></p>
+                    <h5 style="color:#9b6ee8;"><span data-i18n="vb_system_title">Fonctionnement du syst&#xE8;me</span></h5>
+                    <p><span data-i18n="vb_old_p1">&#xC0; partir du param&#xE8;tre <code>%&#xE9;cart</code>, de nombreux points de transition ont &#xE9;t&#xE9; d&#xE9;finis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs pr&#xE9;cis. Ces transitions relient les diff&#xE9;rentes Loop Regions (en bleu) entre elles, couvrant l'ensemble des &#xE9;tats possibles du combat.</span></p>
+                    <p class="fmod-note"><span data-i18n="vb_old_note">Chaque transition dispose d'un crossfade param&#xE9;trable vers la boucle suivante, garantissant des passages fluides et coh&#xE9;rents avec l'&#xE9;volution de l'affrontement.</span></p>
                   </div>
                 </div>
               </div>
@@ -636,7 +636,7 @@
 
           <div class="fmod-subsection-body collapsed" id="vbShopBody">
 
-            <!-- RangÃ©e 1 : nouvelle vidÃ©o + texte Conception -->
+            <!-- Rang&#xE9;e 1 : nouvelle vid&#xE9;o + texte Conception -->
             <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.1);">
               <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
                 <div class="fmod-main-video">
@@ -669,12 +669,12 @@
               </div>
               <div class="fmod-description" style="justify-content:center;">
                 <h5 style="color:#9b6ee8;"><span data-i18n="vb_shop_design_title">Conception</span></h5>
-                <p><span data-i18n="vb_shop_p1">Dans un jeu de gestion, de nombreux sons de menu sont nÃ©cessaires, et ils se doivent d'Ãªtre qualitatifs et satisfaisants pour encourager le joueur Ã  s'intÃ©resser aux mÃ©caniques du jeu. Ici, les effets sonores ont Ã©tÃ© conÃ§us par mes soins, de la prise de son jusqu'Ã  l'implÃ©mentation dans le moteur.</span></p>
-                <p class="fmod-note"><span data-i18n="vb_shop_note2">Ce menu est prÃ©sent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de dÃ©part qui lui sera destinÃ©e en manipulant les destins des aventuriers. L'idÃ©e de l'audio design de ce menu est de donner un aspect mystique et mystÃ©rieux Ã  la scÃ¨ne, poussant le joueur Ã  s'interroger sur le sens de ce qu'il fait. La musique a Ã©galement Ã©tÃ© composÃ©e dans ce sens par mes soins.</span></p>
+                <p><span data-i18n="vb_shop_p1">Dans un jeu de gestion, de nombreux sons de menu sont n&#xE9;cessaires, et ils se doivent d'&#xEA;tre qualitatifs et satisfaisants pour encourager le joueur &#xE0; s'int&#xE9;resser aux m&#xE9;caniques du jeu. Ici, les effets sonores ont &#xE9;t&#xE9; con&#xE7;us par mes soins, de la prise de son jusqu'&#xE0; l'impl&#xE9;mentation dans le moteur.</span></p>
+                <p class="fmod-note"><span data-i18n="vb_shop_note2">Ce menu est pr&#xE9;sent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de d&#xE9;part qui lui sera destin&#xE9;e en manipulant les destins des aventuriers. L'id&#xE9;e de l'audio design de ce menu est de donner un aspect mystique et myst&#xE9;rieux &#xE0; la sc&#xE8;ne, poussant le joueur &#xE0; s'interroger sur le sens de ce qu'il fait. La musique a &#xE9;galement &#xE9;t&#xE9; compos&#xE9;e dans ce sens par mes soins.</span></p>
               </div>
             </div>
 
-            <!-- RangÃ©e 2 : vidÃ©o shop.mp4 + texte objectif -->
+            <!-- Rang&#xE9;e 2 : vid&#xE9;o shop.mp4 + texte objectif -->
             <div class="fmod-top-row" style="border-top:1px solid rgba(155,110,232,0.08);">
               <div class="fmod-left-column" style="border-right:1px solid rgba(155,110,232,0.1);">
                 <div class="fmod-main-video">
@@ -706,7 +706,7 @@
                 </div>
               </div>
               <div class="fmod-description" style="justify-content:center;">
-                <p class="fmod-note"><span data-i18n="vb_shop_note">Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pensÃ© comme un vÃ©ritable moment de repos au cÅ“ur d'une auberge - havre de paix dans un monde sombre et hostile.</span></p>
+                <p class="fmod-note"><span data-i18n="vb_shop_note">Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pens&#xE9; comme un v&#xE9;ritable moment de repos au c&#x153;ur d'une auberge - havre de paix dans un monde sombre et hostile.</span></p>
               </div>
             </div>
 
@@ -732,8 +732,8 @@
               <div class="hero-player" style="border-color:rgba(155,110,232,0.25);box-shadow:0 0 20px rgba(155,110,232,0.05);">
                 <div class="hero-player-top">
                   <div class="hero-player-info">
-                    <span class="hero-player-tag" style="color:#9b6ee8;"><span data-i18n="player_listening">// en Ã©coute</span></span>
-                    <a id="vbTrackLink" href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargementâ€¦</span></a>
+                    <span class="hero-player-tag" style="color:#9b6ee8;"><span data-i18n="player_listening">// en &#xE9;coute</span></span>
+                    <a id="vbTrackLink" href="https://soundcloud.com/user-585795485/sets/veilbound-steam-2026" target="_blank" rel="noopener" class="hero-player-title"><span data-i18n="player_loading">Chargement&#x2026;</span></a>
                   </div>
                   <button class="hero-player-play" id="vbPlPlayBtn" style="color:#9b6ee8;background:rgba(155,110,232,0.12);border-color:rgba(155,110,232,0.4);">
                     <svg id="vbPlPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -750,7 +750,7 @@
                     <input type="range" id="vbPlVolume" min="0" max="100" step="1" value="100" />
                   </div>
                   <div class="gl-track-nav">
-                    <button class="gl-nav-btn" id="vbPlPrev" title="PrÃ©cÃ©dent">
+                    <button class="gl-nav-btn" id="vbPlPrev" title="Pr&#xE9;c&#xE9;dent">
                       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
                     </button>
                     <span class="gl-track-index" id="vbPlTrackIndex">1 / -</span>
@@ -774,16 +774,16 @@
       <article class="project-card project-card--featured project-card--expanded project-expanded-panel" id="gashlighterExpanded" style="display:none;grid-column:1/-1;">
         <div class="project-featured-header" style="border-left: 3px solid #e8564a;">
           <div class="project-featured-meta">
-            <span class="project-genre" style="color:#e8564a;"><span data-i18n="gl_genre">Action / Thriller Â· IndÃ©pendant</span></span>
+            <span class="project-genre" style="color:#e8564a;"><span data-i18n="gl_genre">Action / Thriller &#xB7; Ind&#xE9;pendant</span></span>
           </div>
           <h3>Gaslighters</h3>
-          <p><span data-i18n="gl_desc">Responsable de la composition de l'intÃ©gralitÃ© de la bande originale du jeu, j'ai Ã©galement assurÃ© le sound design de la radio - mÃ©canique narrative centrale de Gaslighters - en lui apportant une attention particuliÃ¨re pour renforcer l'immersion.</span></p>
+          <p><span data-i18n="gl_desc">Responsable de la composition de l'int&#xE9;gralit&#xE9; de la bande originale du jeu, j'ai &#xE9;galement assur&#xE9; le sound design de la radio - m&#xE9;canique narrative centrale de Gaslighters - en lui apportant une attention particuli&#xE8;re pour renforcer l'immersion.</span></p>
           <div class="project-tags">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span>
           </div>
           <div class="gashlighter-steam-info">
             <div class="steam-info-row">
-              <span class="steam-info-label"><span data-i18n="gl_dev_label">DÃ©veloppeur</span></span>
+              <span class="steam-info-label"><span data-i18n="gl_dev_label">D&#xE9;veloppeur</span></span>
               <span class="steam-info-value">Of Passage</span>
             </div>
             <div class="steam-info-row">
@@ -792,7 +792,7 @@
             </div>
             <div class="steam-info-row">
               <span class="steam-info-label"><span data-i18n="gl_genres_label">Genres</span></span>
-              <span class="steam-info-value"><span data-i18n="gl_genres">Aventure, Fiction interactive, Psychologique, MystÃ¨re</span></span>
+              <span class="steam-info-value"><span data-i18n="gl_genres">Aventure, Fiction interactive, Psychologique, Myst&#xE8;re</span></span>
             </div>
             <div class="steam-info-row">
               <span class="steam-info-label"><span data-i18n="gl_platform_label">Plateforme</span></span>
@@ -834,7 +834,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
               <input type="range" id="gVcVolume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
             </div>
-            <button class="vc-btn" id="gVcFullscreen" aria-label="Plein Ã©cran">
+            <button class="vc-btn" id="gVcFullscreen" aria-label="Plein &#xE9;cran">
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
             </button>
           </div>
@@ -853,8 +853,8 @@
             <div class="hero-player" style="border-color:rgba(232,86,74,0.25);box-shadow:0 0 20px rgba(232,86,74,0.05);">
               <div class="hero-player-top">
                 <div class="hero-player-info">
-                  <span class="hero-player-tag" style="color:#e8564a;"><span data-i18n="player_listening">// en Ã©coute</span></span>
-                  <a id="glTrackLink" href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="hero-player-title" style="color:#f0f0f0;"><span data-i18n="player_loading">Chargementâ€¦</span></a>
+                  <span class="hero-player-tag" style="color:#e8564a;"><span data-i18n="player_listening">// en &#xE9;coute</span></span>
+                  <a id="glTrackLink" href="https://soundcloud.com/user-585795485/sets/gaslighters" target="_blank" rel="noopener" class="hero-player-title" style="color:#f0f0f0;"><span data-i18n="player_loading">Chargement&#x2026;</span></a>
                 </div>
                 <button class="hero-player-play" id="glPlayBtn" style="color:#e8564a;background:rgba(232,86,74,0.12);border-color:rgba(232,86,74,0.4);">
                   <svg id="glPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
@@ -871,7 +871,7 @@
                   <input type="range" id="glVolume" min="0" max="100" step="1" value="100" />
                 </div>
                 <div class="gl-track-nav">
-                  <button class="gl-nav-btn" id="glPrev" title="PrÃ©cÃ©dent">
+                  <button class="gl-nav-btn" id="glPrev" title="Pr&#xE9;c&#xE9;dent">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
                   </button>
                   <span class="gl-track-index" id="glTrackIndex">1 / -</span>
@@ -893,11 +893,11 @@
       <!-- VIKING VILLAGE EXPANDED -->
       <article class="project-card project-card--viking project-expanded-panel" id="vikingExpanded" style="display:none;grid-column:1/-1;">
 
-        <!-- En-tÃªte compact avec titre et tags -->
+        <!-- En-t&#xEA;te compact avec titre et tags -->
         <div class="viking-header">
           <div class="project-featured-meta viking-meta-top">
             <span class="project-genre" style="color:#7ab3e8;">Unity / 3D Integration</span>
-            <span class="project-icon" style="color:#7ab3e8;">âš”</span>
+            <span class="project-icon" style="color:#7ab3e8;">&#x2694;</span>
           </div>
           <h3 style="margin-top:1.5rem;">Unity Integration - Viking Village Sound Design</h3>
           <div class="project-tags" style="margin-top:0.5rem;">
@@ -905,7 +905,7 @@
           </div>
         </div>
 
-        <!-- RangÃ©e 1 : vidÃ©o vol + description gÃ©nÃ©rale -->
+        <!-- Rang&#xE9;e 1 : vid&#xE9;o vol + description g&#xE9;n&#xE9;rale -->
         <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.12);">
           <div class="fmod-left-column" style="border-right:1px solid rgba(122,179,232,0.1);">
             <div class="fmod-main-video">
@@ -938,13 +938,13 @@
           </div>
           <div class="fmod-description">
             <h5 style="color:#7ab3e8;"><span data-i18n="vk_learn_more">En savoir plus</span></h5>
-            <p><span data-i18n="vk_desc">Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identitÃ© sonore cohÃ©rente, pensÃ©e de la prise de son jusqu'Ã  l'intÃ©gration moteur.</span></p>
-            <p><span data-i18n="vk_p2">Les sons ont Ã©tÃ© enregistrÃ©s et traitÃ©s dans Ableton Live, puis spatialisÃ©s et intÃ©grÃ©s Ã  Unity via FMOD. Des paramÃ¨tres globaux et locaux ont Ã©tÃ© mis en place pour adapter le sound design aux interactions et aux dÃ©placements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intÃ¨gre Ã©galement des transitions musicales en fonction de la position du joueur.</span></p>
-            <p><span data-i18n="vk_asset_pre">Ce travail a Ã©tÃ© rÃ©alisÃ© sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset</span> <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a><span data-i18n="vk_asset_post">, disponible sur l'Unity Asset Store.</span></p>
+            <p><span data-i18n="vk_desc">Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identit&#xE9; sonore coh&#xE9;rente, pens&#xE9;e de la prise de son jusqu'&#xE0; l'int&#xE9;gration moteur.</span></p>
+            <p><span data-i18n="vk_p2">Les sons ont &#xE9;t&#xE9; enregistr&#xE9;s et trait&#xE9;s dans Ableton Live, puis spatialis&#xE9;s et int&#xE9;gr&#xE9;s &#xE0; Unity via FMOD. Des param&#xE8;tres globaux et locaux ont &#xE9;t&#xE9; mis en place pour adapter le sound design aux interactions et aux d&#xE9;placements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet int&#xE8;gre &#xE9;galement des transitions musicales en fonction de la position du joueur.</span></p>
+            <p><span data-i18n="vk_asset_pre">Ce travail a &#xE9;t&#xE9; r&#xE9;alis&#xE9; sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset</span> <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140" target="_blank" rel="noopener" class="viking-asset-link">Viking Village URP</a><span data-i18n="vk_asset_post">, disponible sur l'Unity Asset Store.</span></p>
           </div>
         </div>
 
-        <!-- RangÃ©e 2 : vidÃ©o marche + contexte gameplay -->
+        <!-- Rang&#xE9;e 2 : vid&#xE9;o marche + contexte gameplay -->
         <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.08);">
           <div class="fmod-left-column" style="border-right:1px solid rgba(122,179,232,0.1);">
             <div class="fmod-main-video">
@@ -976,8 +976,8 @@
             </div>
           </div>
           <div class="fmod-description">
-            <h5 style="color:#7ab3e8;" data-i18n="vk_gameplay_title">Gameplay &amp; dÃ©placements</h5>
-            <p data-i18n="vk_gameplay_desc">Cette vidÃ©o illustre le rendu sonore du point de vue du joueur en dÃ©placement dans l'environnement. On y perÃ§oit les transitions entre les zones d'ambiance, les effets de game feel liÃ©s aux mouvements, et l'ensemble du sound design spatial en conditions rÃ©elles.</p>
+            <h5 style="color:#7ab3e8;" data-i18n="vk_gameplay_title">Gameplay &amp; d&#xE9;placements</h5>
+            <p data-i18n="vk_gameplay_desc">Cette vid&#xE9;o illustre le rendu sonore du point de vue du joueur en d&#xE9;placement dans l'environnement. On y per&#xE7;oit les transitions entre les zones d'ambiance, les effets de game feel li&#xE9;s aux mouvements, et l'ensemble du sound design spatial en conditions r&#xE9;elles.</p>
           </div>
         </div>
 
@@ -985,11 +985,11 @@
         <div class="viking-fmod-trigger">
           <button class="fmod-expand-btn" id="fmodExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            <span data-i18n="vk_fmod_btn">Projet FMOD - Voir le dÃ©tail</span>
+            <span data-i18n="vk_fmod_btn">Projet FMOD - Voir le d&#xE9;tail</span>
           </button>
         </div>
 
-        <!-- Section FMOD dÃ©roulante -->
+        <!-- Section FMOD d&#xE9;roulante -->
         <div class="viking-fmod-section" id="fmodSection" style="display:none;">
 
           <!-- Footsteps subsection -->
@@ -1033,19 +1033,19 @@
                     </div>
                   </div>
                   <div class="fmod-screenshot">
-                    <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps - paramÃ¨tres playerspeed, IsGrounded, groundcheck" />
+                    <img src="fmodscreenfootstep.PNG" alt="FMOD Event Footsteps - param&#xE8;tres playerspeed, IsGrounded, groundcheck" />
                   </div>
                 </div>
                 <div class="fmod-right-column" style="background:#0d0d0d;">
                   <div class="fmod-description fmod-description--half" style="background:#0d0d0d;">
                     <h5><span data-i18n="vk_event_title">Fonctionnement de l'event</span></h5>
-                    <p data-i18n="vk_footsteps_p1">L'event Footsteps repose sur un systÃ¨me de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se dÃ©sactivent selon les valeurs de trois paramÃ¨tres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
-                    <p data-i18n="vk_footsteps_p2">Trois Loop Regions se succÃ¨dent : la premiÃ¨re dÃ©clenche le son des pas sur terre, la seconde sur bois, et la troisiÃ¨me est une Loop Region vide simulant le joueur en l'air ou Ã  l'arrÃªt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nÃ©cessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne rÃ©gion.</p>
-                    <p class="fmod-note"><span data-i18n="vk_footsteps_p3">Ce mode de fonctionnement permet Ã  chaque sample de se lire en entier avant de se couper, Ã©vitant une interruption dÃ©rangeante du son.</span></p>
+                    <p data-i18n="vk_footsteps_p1">L'event Footsteps repose sur un syst&#xE8;me de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se d&#xE9;sactivent selon les valeurs de trois param&#xE8;tres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).</p>
+                    <p data-i18n="vk_footsteps_p2">Trois Loop Regions se succ&#xE8;dent : la premi&#xE8;re d&#xE9;clenche le son des pas sur terre, la seconde sur bois, et la troisi&#xE8;me est une Loop Region vide simulant le joueur en l'air ou &#xE0; l'arr&#xEA;t. Lorsqu'un passage entre deux Loop Regions non adjacentes est n&#xE9;cessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne r&#xE9;gion.</p>
+                    <p class="fmod-note"><span data-i18n="vk_footsteps_p3">Ce mode de fonctionnement permet &#xE0; chaque sample de se lire en entier avant de se couper, &#xE9;vitant une interruption d&#xE9;rangeante du son.</span></p>
                   </div>
                   <div class="fmod-description fmod-description--half fmod-description--border-top" style="background:#0d0d0d;">
                     <h6 class="fmod-remarque" data-i18n="vk_remark_title">Remarque :</h6>
-                    <p data-i18n="vk_footsteps_note_text">Deux automations pilotÃ©es par la vitesse du joueur ont Ã©tÃ© ajoutÃ©es sur le volume et le pitch - simulant l'intensification des pas Ã  l'accÃ©lÃ©ration, ainsi que la force des impacts au sol.</p>
+                    <p data-i18n="vk_footsteps_note_text">Deux automations pilot&#xE9;es par la vitesse du joueur ont &#xE9;t&#xE9; ajout&#xE9;es sur le volume et le pitch - simulant l'intensification des pas &#xE0; l'acc&#xE9;l&#xE9;ration, ainsi que la force des impacts au sol.</p>
                   </div>
                 </div>
               </div>
@@ -1066,7 +1066,7 @@
               <div class="fmod-top-row" style="background:#0d0d0d;">
                 <div class="fmod-left-column" style="background:#0d0d0d;">
                   <div class="fmod-screenshot fmod-screenshot--half" style="background:#0d0d0d;">
-                    <img src="unityscreensoundzone.PNG" alt="Unity - zone d'ambiance sonore avec Ã©metteur FMOD" />
+                    <img src="unityscreensoundzone.PNG" alt="Unity - zone d'ambiance sonore avec &#xE9;metteur FMOD" />
                   </div>
                   <div class="fmod-screenshot fmod-screenshot--half" style="border-top: 1px solid rgba(122,179,232,0.1);">
                     <img src="unityscreensoundzone2.PNG" alt="Script AmbienceSound C#" style="object-position: right center;" />
@@ -1074,19 +1074,19 @@
                 </div>
                 <div class="fmod-description">
                   <h5 data-i18n="vk_event_title">Fonctionnement de l'event</h5>
-                  <p data-i18n="vk_ambience_p1_new">Pour les sons d'ambiance, chaque Ã©metteur est confinÃ© dans une zone dÃ©limitÃ©e - reprÃ©sentÃ©e par les pavÃ©s verts -. GrÃ¢ce au script <code>AmbienceSound</code>, l'Ã©metteur se repositionne en temps rÃ©el au point de la zone le plus proche du joueur.</p>
-                  <p data-i18n="vk_ambience_p2_new">Ainsi, la spatialisation du son reflÃ¨te directement la distance entre le joueur et la zone - plus il s'en approche, plus le son monte en intensitÃ©, sans transition de durÃ©e prÃ©dÃ©finie. Cela renforce l'immersion en rendant les ambiances sonores organiquement liÃ©es aux dÃ©placements du joueur.</p>
+                  <p data-i18n="vk_ambience_p1_new">Pour les sons d'ambiance, chaque &#xE9;metteur est confin&#xE9; dans une zone d&#xE9;limit&#xE9;e - repr&#xE9;sent&#xE9;e par les pav&#xE9;s verts -. Gr&#xE2;ce au script <code>AmbienceSound</code>, l'&#xE9;metteur se repositionne en temps r&#xE9;el au point de la zone le plus proche du joueur.</p>
+                  <p data-i18n="vk_ambience_p2_new">Ainsi, la spatialisation du son refl&#xE8;te directement la distance entre le joueur et la zone - plus il s'en approche, plus le son monte en intensit&#xE9;, sans transition de dur&#xE9;e pr&#xE9;d&#xE9;finie. Cela renforce l'immersion en rendant les ambiances sonores organiquement li&#xE9;es aux d&#xE9;placements du joueur.</p>
                 </div>
               </div>
               <div class="fmod-top-row" style="border-top:1px solid rgba(122,179,232,0.1);background:#0d0d0d;">
                 <div class="fmod-left-column" style="background:#0d0d0d;">
                   <div class="fmod-screenshot" style="background:#0d0d0d;">
-                    <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# - dÃ©placement de l'Ã©metteur" />
+                    <img src="unityscreensoundzone3.PNG" alt="Script AmbienceSound C# - d&#xE9;placement de l'&#xE9;metteur" />
                   </div>
                 </div>
                 <div class="fmod-description">
                   <h6 class="fmod-remarque" data-i18n="vk_ambiance_script_title">Ambiance Sound Script</h6>
-                  <p><span data-i18n="vk_script_desc_pre">Ce script gÃ¨re le dÃ©placement de l'Ã©metteur vers le point d'une zone dÃ©finie le plus proche du joueur. Il est issu de</span> <a href="https://www.youtube.com/watch?v=8-SnHgtXV3k" target="_blank" rel="noopener" class="viking-asset-link" data-i18n="vk_this_video">cette vidÃ©o</a><span data-i18n="vk_script_desc_post">, qui m'a inspirÃ© dans la conception de ce systÃ¨me.</span></p>
+                  <p><span data-i18n="vk_script_desc_pre">Ce script g&#xE8;re le d&#xE9;placement de l'&#xE9;metteur vers le point d'une zone d&#xE9;finie le plus proche du joueur. Il est issu de</span> <a href="https://www.youtube.com/watch?v=8-SnHgtXV3k" target="_blank" rel="noopener" class="viking-asset-link" data-i18n="vk_this_video">cette vid&#xE9;o</a><span data-i18n="vk_script_desc_post">, qui m'a inspir&#xE9; dans la conception de ce syst&#xE8;me.</span></p>
                 </div>
               </div>
             </div>
@@ -1098,22 +1098,22 @@
           </div>
         </div>
 
-        <!-- Section TÃ©lÃ©chargement -->
+        <!-- Section T&#xE9;l&#xE9;chargement -->
         <div class="viking-fmod-trigger viking-dl-trigger">
           <button class="fmod-expand-btn viking-dl-btn" id="dlExpandBtn" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            <span data-i18n="vk_dl_btn">TÃ©lÃ©chargements - Voir</span>
+            <span data-i18n="vk_dl_btn">T&#xE9;l&#xE9;chargements - Voir</span>
           </button>
         </div>
 
         <div class="viking-fmod-section viking-dl-section" id="dlSection" style="display:none;">
           <div class="viking-dl-inner">
-            <span class="fmod-subsection-tag viking-dl-tag"><span data-i18n="vk_exec_title">ExÃ©cutable</span></span>
+            <span class="fmod-subsection-tag viking-dl-tag"><span data-i18n="vk_exec_title">Ex&#xE9;cutable</span></span>
             <a href="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/VikingVillage_Executable.zip" download class="viking-dl-item">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              <span data-i18n="vk_dl_title">TÃ©lÃ©chargement de l'exÃ©cutable</span>
+              <span data-i18n="vk_dl_title">T&#xE9;l&#xE9;chargement de l'ex&#xE9;cutable</span>
             </a>
-            <p class="viking-dl-text"><span data-i18n="vk_dl_desc">Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez tÃ©lÃ©charger l'exÃ©cutable de la scÃ¨ne ci-contre.</span></p>
+            <p class="viking-dl-text"><span data-i18n="vk_dl_desc">Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez t&#xE9;l&#xE9;charger l'ex&#xE9;cutable de la sc&#xE8;ne ci-contre.</span></p>
           </div>
         </div>
 
@@ -1125,7 +1125,7 @@
             <span class="project-genre">Fighting / Nintendo</span>
           </div>
           <h3>Super Smash Bros - Ken &amp; Incineroar Reveal Trailer</h3>
-          <p><span data-i18n="sm_desc">Proposition d'un sound design du trailer de rÃ©vÃ©lation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montÃ©e dramatique et synchro image/son prÃ©cise. Tous les sons prÃ©sents dans la cinÃ©matique ont Ã©tÃ© enregistrÃ©s et traitÃ©s par mes soins, Ã  l'exception des voix et de la musique.</span></p>
+          <p><span data-i18n="sm_desc">Proposition d'un sound design du trailer de r&#xE9;v&#xE9;lation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, mont&#xE9;e dramatique et synchro image/son pr&#xE9;cise. Tous les sons pr&#xE9;sents dans la cin&#xE9;matique ont &#xE9;t&#xE9; enregistr&#xE9;s et trait&#xE9;s par mes soins, &#xE0; l'exception des voix et de la musique.</span></p>
           <div class="project-tags">
             <span>Trailer</span><span>SFX</span><span>Reaper</span><span>Ableton Live</span><span>Serum</span>
           </div>
@@ -1134,7 +1134,7 @@
           <div class="project-video-wrapper" id="videoContainer">
             <video id="smashVideo" class="project-video" preload="metadata" playsinline>
               <source src="https://github.com/antoinerosselli/portfolio_mg/releases/download/v1.0-assets/Smash_scene_60.mp4" type="video/mp4" />
-              <span data-i18n="browser_no_video">Votre navigateur ne supporte pas la lecture vidÃ©o.</span>
+              <span data-i18n="browser_no_video">Votre navigateur ne supporte pas la lecture vid&#xE9;o.</span>
             </video>
             <div class="video-overlay" id="videoOverlay">
               <button class="video-play-btn" id="videoPlayBtn" aria-label="Play">
@@ -1166,20 +1166,20 @@
       <article class="project-card project-expanded-panel" id="hopforGoldExpanded" style="display:none;grid-column:1/-1;background:#141414;border:1px solid #242424;border-radius:12px;overflow:visible;">
         <div style="padding:2rem 2rem 0;position:relative;">
           <div style="position:absolute;top:1.25rem;left:2rem;display:flex;align-items:center;gap:1rem;">
-            <span class="project-genre" style="color:#86c06c;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;" data-i18n="hfg_genre">Platformer Â· Game Jam</span>
+            <span class="project-genre" style="color:#86c06c;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;" data-i18n="hfg_genre">Platformer &#xB7; Game Jam</span>
           </div>
           <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-top:1.5rem;margin-bottom:1rem;">Hop for Gold</h3>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;" data-i18n="hfg_desc">RÃ©alisÃ© lors de la GBJAM 14 en 10 jours (11â€“21 septembre 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le thÃ¨me de la jam Ã©tait <em>"Old Gold"</em>.</p>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;margin-top:.75rem;" data-i18n="hfg_role">J'ai composÃ© la musique et crÃ©Ã© l'ensemble des effets sonores du jeu. Le moteur utilisÃ© Ã©tait <strong style="color:#86c06c;">GB Studio</strong>, que je dÃ©couvrais pour la premiÃ¨re fois, un moteur contraignant par nature, conÃ§u pour Ã©muler fidÃ¨lement le hardware Game Boy.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;" data-i18n="hfg_desc">R&#xE9;alis&#xE9; lors de la GBJAM 14 en 10 jours (11&#x2013;21 septembre 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le th&#xE8;me de la jam &#xE9;tait <em>"Old Gold"</em>.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;margin-top:.75rem;" data-i18n="hfg_role">J'ai compos&#xE9; la musique et cr&#xE9;&#xE9; l'ensemble des effets sonores du jeu. Le moteur utilis&#xE9; &#xE9;tait <strong style="color:#86c06c;">GB Studio</strong>, que je d&#xE9;couvrais pour la premi&#xE8;re fois, un moteur contraignant par nature, con&#xE7;u pour &#xE9;muler fid&#xE8;lement le hardware Game Boy.</p>
           <div class="project-tags" style="margin-top:1rem;">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>GB Studio</span><span data-i18n="tag_game_jam">Game Jam</span><span>Game Boy</span>
           </div>
         </div>
 
-        <!-- CrÃ©dits + Lien itch.io -->
+        <!-- Cr&#xE9;dits + Lien itch.io -->
         <div style="padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;">
           <div style="flex:1;min-width:220px;">
-            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.75rem;" data-i18n="hfg_credits_title">CrÃ©dits</p>
+            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.75rem;" data-i18n="hfg_credits_title">Cr&#xE9;dits</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               <span style="color:#f0f0f0;" data-i18n="hfg_credit_prog">Programmation / Game Design</span> : Trioud<br>
               <span style="color:#f0f0f0;" data-i18n="hfg_credit_audio">Musique / SFX</span> : Max Guillot<br>
@@ -1190,8 +1190,8 @@
             <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.75rem;" data-i18n="hfg_jam_title">Game Jam</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               GBJAM 14<br>
-              <span data-i18n="hfg_jam_theme_label">ThÃ¨me</span> : <em>"Old Gold"</em><br>
-              <span data-i18n="hfg_jam_duration">10 jours Â· 11â€“21 septembre 2026</span>
+              <span data-i18n="hfg_jam_theme_label">Th&#xE8;me</span> : <em>"Old Gold"</em><br>
+              <span data-i18n="hfg_jam_duration">10 jours &#xB7; 11&#x2013;21 septembre 2026</span>
             </p>
           </div>
           <div style="flex:0 0 auto;display:flex;align-items:center;">
@@ -1202,7 +1202,7 @@
           </div>
         </div>
 
-        <!-- SÃ©parateur -->
+        <!-- S&#xE9;parateur -->
         <div style="border-top:1px solid #242424;margin:0 2rem;"></div>
 
         <!-- Sous-section : Contraintes Game Boy -->
@@ -1213,43 +1213,43 @@
           </button>
           <div id="hfgGbBody" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .3s ease;">
             <div style="padding:.75rem 0 1.5rem;">
-              <p style="font-size:14px;color:#888;line-height:1.75;max-width:720px;margin-bottom:1.25rem;" data-i18n="hfg_gb_intro">Composer pour Game Boy (Ã©mulÃ© via GB Studio) n'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fidÃ¨lement.</p>
+              <p style="font-size:14px;color:#888;line-height:1.75;max-width:720px;margin-bottom:1.25rem;" data-i18n="hfg_gb_intro">Composer pour Game Boy (&#xE9;mul&#xE9; via GB Studio) n'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fid&#xE8;lement.</p>
 
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c1_title">4 canaux audio seulement</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c1_desc">Le Game Boy ne dispose que de 4 canaux : 2 ondes carrÃ©es (mÃ©lodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes supplÃ©mentaires, pas de groupes, pas de bus.</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c1_desc">Le Game Boy ne dispose que de 4 canaux : 2 ondes carr&#xE9;es (m&#xE9;lodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes suppl&#xE9;mentaires, pas de groupes, pas de bus.</p>
                 </div>
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
-                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c2_title">Samples limitÃ©s et mÃ©moire rÃ©duite</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c2_desc">La ROM Game Boy est limitÃ©e en taille. Les samples doivent Ãªtre courts, mono et Ã  basse rÃ©solution. GB Studio impose des contraintes strictes sur le nombre et la durÃ©e des sons pouvant Ãªtre chargÃ©s simultanÃ©ment.</p>
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c2_title">Samples limit&#xE9;s et m&#xE9;moire r&#xE9;duite</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c2_desc">La ROM Game Boy est limit&#xE9;e en taille. Les samples doivent &#xEA;tre courts, mono et &#xE0; basse r&#xE9;solution. GB Studio impose des contraintes strictes sur le nombre et la dur&#xE9;e des sons pouvant &#xEA;tre charg&#xE9;s simultan&#xE9;ment.</p>
                 </div>
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c3_title">Pas de mixage dynamique</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c3_desc">Le volume de chaque canal est fixÃ© Ã  la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps rÃ©el. L'Ã©quilibre entre mÃ©lodie, harmonie, basse et percussions est figÃ© dans la partition.</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c3_desc">Le volume de chaque canal est fix&#xE9; &#xE0; la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps r&#xE9;el. L'&#xE9;quilibre entre m&#xE9;lodie, harmonie, basse et percussions est fig&#xE9; dans la partition.</p>
                 </div>
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
-                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c4_title">FrÃ©quences et timbres fixes</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c4_desc">Les ondes carrÃ©es ont des cycles de travail prÃ©dÃ©finis (12.5%, 25%, 50%, 75%). Le timbre est donc trÃ¨s limitÃ©. Le canal wave permet un peu plus de libertÃ© mais reste basique. Pas de synthÃ¨se complexe, pas d'effets comme la rÃ©verb ou le delay.</p>
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c4_title">Fr&#xE9;quences et timbres fixes</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c4_desc">Les ondes carr&#xE9;es ont des cycles de travail pr&#xE9;d&#xE9;finis (12.5%, 25%, 50%, 75%). Le timbre est donc tr&#xE8;s limit&#xE9;. Le canal wave permet un peu plus de libert&#xE9; mais reste basique. Pas de synth&#xE8;se complexe, pas d'effets comme la r&#xE9;verb ou le delay.</p>
                 </div>
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
-                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c5_title">SFX vs musique : mÃªme ressource</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c5_desc">Les effets sonores utilisent les mÃªmes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l'interrompront.</p>
+                  <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c5_title">SFX vs musique : m&#xEA;me ressource</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c5_desc">Les effets sonores utilisent les m&#xEA;mes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l'interrompront.</p>
                 </div>
 
                 <div style="background:#1c1c1c;border:1px solid #2a2a2a;border-radius:8px;padding:1rem 1.25rem;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#86c06c;margin-bottom:.5rem;" data-i18n="hfg_gb_c6_title">Workflow tracker</p>
-                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c6_desc">GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline linÃ©aire. Un changement d'approche radical par rapport Ã  Ableton Live.</p>
+                  <p style="font-size:13px;color:#888;line-height:1.65;" data-i18n="hfg_gb_c6_desc">GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline lin&#xE9;aire. Un changement d'approche radical par rapport &#xE0; Ableton Live.</p>
                 </div>
 
               </div>
 
-              <p style="font-size:13px;color:#888;line-height:1.75;max-width:720px;margin-top:1.25rem;font-style:italic;border-left:2px solid rgba(134,192,108,0.4);padding-left:1rem;" data-i18n="hfg_gb_conclusion">Ces contraintes forcent Ã  penser diffÃ©remment : chaque note compte, chaque canal est prÃ©cieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.</p>
+              <p style="font-size:13px;color:#888;line-height:1.75;max-width:720px;margin-top:1.25rem;font-style:italic;border-left:2px solid rgba(134,192,108,0.4);padding-left:1rem;" data-i18n="hfg_gb_conclusion">Ces contraintes forcent &#xE0; penser diff&#xE9;remment : chaque note compte, chaque canal est pr&#xE9;cieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.</p>
             </div>
           </div>
         </div>
@@ -1262,11 +1262,11 @@
       <article class="project-card project-expanded-panel" id="hobossExpanded" style="display:none;grid-column:1/-1;background:#141414;border:1px solid rgba(224,122,176,0.25);border-radius:12px;overflow:visible;box-shadow:0 0 40px rgba(224,122,176,0.06);">
         <div style="padding:2rem 2rem 0;position:relative;">
           <div style="position:absolute;top:1.25rem;left:2rem;display:flex;align-items:center;gap:1rem;">
-            <span class="project-genre" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;" data-i18n="hob_genre">Narratif / ComÃ©die Â· Game Jam</span>
+            <span class="project-genre" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;" data-i18n="hob_genre">Narratif / Com&#xE9;die &#xB7; Game Jam</span>
           </div>
           <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-top:1.5rem;margin-bottom:1rem;">Hoboss - Curse under the bridge</h3>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:760px;" data-i18n="hob_desc">RÃ©alisÃ© en 7 jours lors de la Garbage Jam #7 (21â€“28 septembre 2026) sur le thÃ¨me <em>"Out of Time"</em>, <strong style="color:#f0f0f0;">Hoboss</strong> est un jeu narratif et absurde : immortel mais coincÃ© sous un pont, le joueur incarne le Â« Hoboss Â», le SDF le plus classe du coin. Les passants lui jettent des objets depuis le pont, qu'il utilise pour gÃ©rer sa faim, son bonheur et son taux d'alcool, au fil de rencontres improbables et d'Ã©poques qui dÃ©filent, de l'AntiquitÃ© au futur.</p>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:760px;margin-top:.75rem;" data-i18n="hob_role">J'ai rÃ©alisÃ© l'intÃ©gralitÃ© du son du jeu : composition de la musique, crÃ©ation des effets sonores et intÃ©gration avec <strong style="color:#e07ab0;">FMOD</strong> dans <strong style="color:#e07ab0;">Godot</strong>. La bande originale suit la traversÃ©e des Ã©poques : chaque Ã¨re a son propre morceau, de l'AntiquitÃ© au post-apocalyptique, pour que le joueur ressente immÃ©diatement le saut dans le temps.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:760px;" data-i18n="hob_desc">R&#xE9;alis&#xE9; en 7 jours lors de la Garbage Jam #7 (21&#x2013;28 septembre 2026) sur le th&#xE8;me <em>"Out of Time"</em>, <strong style="color:#f0f0f0;">Hoboss</strong> est un jeu narratif et absurde : immortel mais coinc&#xE9; sous un pont, le joueur incarne le &#xAB; Hoboss &#xBB;, le SDF le plus classe du coin. Les passants lui jettent des objets depuis le pont, qu'il utilise pour g&#xE9;rer sa faim, son bonheur et son taux d'alcool, au fil de rencontres improbables et d'&#xE9;poques qui d&#xE9;filent, de l'Antiquit&#xE9; au futur.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:760px;margin-top:.75rem;" data-i18n="hob_role">J'ai r&#xE9;alis&#xE9; l'int&#xE9;gralit&#xE9; du son du jeu : composition de la musique, cr&#xE9;ation des effets sonores et int&#xE9;gration avec <strong style="color:#e07ab0;">FMOD</strong> dans <strong style="color:#e07ab0;">Godot</strong>. La bande originale suit la travers&#xE9;e des &#xE9;poques : chaque &#xE8;re a son propre morceau, de l'Antiquit&#xE9; au post-apocalyptique, pour que le joueur ressente imm&#xE9;diatement le saut dans le temps.</p>
           <div class="project-tags" style="margin-top:1rem;">
             <span data-i18n="tag_music">Musique</span><span>SFX</span><span>Godot</span><span>FMOD</span><span data-i18n="tag_game_jam">Game Jam</span>
           </div>
@@ -1281,7 +1281,7 @@
             <div class="hero-player" style="border-color:rgba(224,122,176,0.25);box-shadow:0 0 20px rgba(224,122,176,0.05);">
               <div class="hero-player-top">
                 <div class="hero-player-info">
-                  <span class="hero-player-tag" style="color:#e07ab0;"><span data-i18n="player_listening">// en Ã©coute</span></span>
+                  <span class="hero-player-tag" style="color:#e07ab0;"><span data-i18n="player_listening">// en &#xE9;coute</span></span>
                   <span class="hero-player-title" id="hobTitle">Moderne</span>
                 </div>
                 <button class="hero-player-play" id="hobPlayBtn" aria-label="Lecture / Pause" style="color:#e07ab0;background:rgba(224,122,176,0.12);border-color:rgba(224,122,176,0.4);">
@@ -1297,7 +1297,7 @@
                   <input type="range" id="hobVolume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
                 </div>
                 <div class="gl-track-nav">
-                  <button class="gl-nav-btn" id="hobPrev" title="PrÃ©cÃ©dent"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+                  <button class="gl-nav-btn" id="hobPrev" title="Pr&#xE9;c&#xE9;dent"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
                   <span class="gl-track-index" id="hobIndex">1 / 7</span>
                   <button class="gl-nav-btn" id="hobNext" title="Suivant"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zm2.5-6l-0 0zM14 6h2v12h-2z"/></svg></button>
                 </div>
@@ -1305,8 +1305,8 @@
             </div>
             <ol class="hob-tracklist" id="hobTracklist">
               <li><button class="hob-track" data-index="0" data-src="hoboss/moderne"><span class="hob-track-num">01</span><span class="hob-track-name" data-i18n="hob_t5">Moderne</span><span class="hob-track-dur">0:48</span></button></li>
-              <li><button class="hob-track" data-index="1" data-src="hoboss/antiquite"><span class="hob-track-num">02</span><span class="hob-track-name" data-i18n="hob_t1">AntiquitÃ©</span><span class="hob-track-dur">0:54</span></button></li>
-              <li><button class="hob-track" data-index="2" data-src="hoboss/medieval"><span class="hob-track-num">03</span><span class="hob-track-name" data-i18n="hob_t2">MÃ©diÃ©val</span><span class="hob-track-dur">0:40</span></button></li>
+              <li><button class="hob-track" data-index="1" data-src="hoboss/antiquite"><span class="hob-track-num">02</span><span class="hob-track-name" data-i18n="hob_t1">Antiquit&#xE9;</span><span class="hob-track-dur">0:54</span></button></li>
+              <li><button class="hob-track" data-index="2" data-src="hoboss/medieval"><span class="hob-track-num">03</span><span class="hob-track-name" data-i18n="hob_t2">M&#xE9;di&#xE9;val</span><span class="hob-track-dur">0:40</span></button></li>
               <li><button class="hob-track" data-index="3" data-src="hoboss/far_west"><span class="hob-track-num">04</span><span class="hob-track-name" data-i18n="hob_t3">Far West</span><span class="hob-track-dur">1:06</span></button></li>
               <li><button class="hob-track" data-index="4" data-src="hoboss/guerre"><span class="hob-track-num">05</span><span class="hob-track-name" data-i18n="hob_t4">Guerre</span><span class="hob-track-dur">0:38</span></button></li>
               <li><button class="hob-track" data-index="5" data-src="hoboss/futur"><span class="hob-track-num">06</span><span class="hob-track-name" data-i18n="hob_t6">Futur</span><span class="hob-track-dur">0:32</span></button></li>
@@ -1316,10 +1316,10 @@
           </div>
         </div>
 
-        <!-- CrÃ©dits + Jam + Lien itch.io -->
+        <!-- Cr&#xE9;dits + Jam + Lien itch.io -->
         <div style="padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;">
           <div style="flex:1;min-width:240px;">
-            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;margin-bottom:.75rem;" data-i18n="hfg_credits_title">CrÃ©dits</p>
+            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;margin-bottom:.75rem;" data-i18n="hfg_credits_title">Cr&#xE9;dits</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               <span style="color:#f0f0f0;">Behind the decks</span> : Max Guillot<br>
               <span style="color:#f0f0f0;">That guy with that artistic side</span> : Romain Garsiot<br>
@@ -1331,8 +1331,8 @@
             <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;margin-bottom:.75rem;" data-i18n="hfg_jam_title">Game Jam</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               Garbage Jam #7<br>
-              <span data-i18n="hfg_jam_theme_label">ThÃ¨me</span> : <em>"Out of Time"</em><br>
-              <span data-i18n="hob_jam_duration">7 jours Â· 21â€“28 septembre 2026 Â· Navigateur (HTML5)</span>
+              <span data-i18n="hfg_jam_theme_label">Th&#xE8;me</span> : <em>"Out of Time"</em><br>
+              <span data-i18n="hob_jam_duration">7 jours &#xB7; 21&#x2013;28 septembre 2026 &#xB7; Navigateur (HTML5)</span>
             </p>
           </div>
           <div style="flex:0 0 auto;display:flex;align-items:center;">
@@ -1343,10 +1343,10 @@
           </div>
         </div>
 
-        <!-- Captures d'Ã©cran -->
+        <!-- Captures d'&#xE9;cran -->
         <div style="border-top:1px solid #242424;margin:0 2rem;"></div>
         <div style="padding:1.5rem 2rem;">
-          <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;margin-bottom:1rem;" data-i18n="t777_gallery">Captures d'Ã©cran</p>
+          <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e07ab0;margin-bottom:1rem;" data-i18n="t777_gallery">Captures d'&#xE9;cran</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;">
             <a href="https://img.itch.zone/aW1hZ2UvNTA2NDkyNi8zMDMyMzQwOS5wbmc=/original/6CyuSI.png" target="_blank" rel="noopener" style="display:block;border-radius:6px;overflow:hidden;border:1px solid #2a2a2a;aspect-ratio:16/9;background:#000;"><img src="https://img.itch.zone/aW1hZ2UvNTA2NDkyNi8zMDMyMzQwOS5wbmc=/original/6CyuSI.png" alt="Hoboss - capture 1" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></a>
             <a href="https://img.itch.zone/aW1hZ2UvNTA2NDkyNi8zMDMyMzQyOC5wbmc=/original/%2F%2F5HRz.png" target="_blank" rel="noopener" style="display:block;border-radius:6px;overflow:hidden;border:1px solid #2a2a2a;aspect-ratio:16/9;background:#000;"><img src="https://img.itch.zone/aW1hZ2UvNTA2NDkyNi8zMDMyMzQyOC5wbmc=/original/%2F%2F5HRz.png" alt="Hoboss - capture 2" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></a>
@@ -1363,17 +1363,17 @@
         <div class="trial-header-split">
         <div style="padding:2rem 2rem 0;position:relative;">
           <div style="position:absolute;top:1.25rem;left:2rem;display:flex;align-items:center;gap:1rem;">
-            <span class="project-genre" style="color:#4fb8a8;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;" data-i18n="t777_genre">Puzzle / Observation Â· Game Jam</span>
+            <span class="project-genre" style="color:#4fb8a8;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;" data-i18n="t777_genre">Puzzle / Observation &#xB7; Game Jam</span>
           </div>
           <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-top:1.5rem;margin-bottom:1rem;">777 Trial</h3>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;" data-i18n="t777_desc">RÃ©alisÃ© en 7 jours lors de l'Official 2026 Unity Game Jam (5â€“14 novembre 2026), <strong style="color:#f0f0f0;">777 Trial</strong> est un jeu d'observation dans lequel le joueur explore un dÃ©cor mÃ©diÃ©val inquiÃ©tant, repÃ¨re ce qui a changÃ© autour de lui et consigne ses dÃ©couvertes sur une carte, guidÃ© par un vieux dieu aux explications volontairement incomplÃ¨tes.</p>
-          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;margin-top:.75rem;" data-i18n="t777_role">J'ai rÃ©alisÃ© l'intÃ©gralitÃ© du son du jeu : crÃ©ation des effets sonores et des ambiances, conception des events, spatialisation et intÃ©gration dans <strong style="color:#4fb8a8;">Unity</strong>. Dans un jeu oÃ¹ l'attention est la mÃ©canique centrale, le son devient un indice Ã  part entiÃ¨re : un bruit venant de la piÃ¨ce voisine doit pouvoir Ãªtre perÃ§u et localisÃ©. J'ai Ã©galement participÃ© au game design.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;" data-i18n="t777_desc">R&#xE9;alis&#xE9; en 7 jours lors de l'Official 2026 Unity Game Jam (5&#x2013;14 novembre 2026), <strong style="color:#f0f0f0;">777 Trial</strong> est un jeu d'observation dans lequel le joueur explore un d&#xE9;cor m&#xE9;di&#xE9;val inqui&#xE9;tant, rep&#xE8;re ce qui a chang&#xE9; autour de lui et consigne ses d&#xE9;couvertes sur une carte, guid&#xE9; par un vieux dieu aux explications volontairement incompl&#xE8;tes.</p>
+          <p style="font-size:14px;color:#888;line-height:1.7;max-width:700px;margin-top:.75rem;" data-i18n="t777_role">J'ai r&#xE9;alis&#xE9; l'int&#xE9;gralit&#xE9; du son du jeu : cr&#xE9;ation des effets sonores et des ambiances, conception des events, spatialisation et int&#xE9;gration dans <strong style="color:#4fb8a8;">Unity</strong>. Dans un jeu o&#xF9; l'attention est la m&#xE9;canique centrale, le son devient un indice &#xE0; part enti&#xE8;re : un bruit venant de la pi&#xE8;ce voisine doit pouvoir &#xEA;tre per&#xE7;u et localis&#xE9;. J'ai &#xE9;galement particip&#xE9; au game design.</p>
           <div class="project-tags" style="margin-top:1rem;">
             <span>SFX</span><span>Ambiances</span><span data-i18n="tag_spatial">Spatialisation</span><span>Unity</span><span>FMOD</span><span data-i18n="tag_game_jam">Game Jam</span>
           </div>
         </div>
 
-        <!-- VidÃ©o de prÃ©sentation -->
+        <!-- Vid&#xE9;o de pr&#xE9;sentation -->
         <div class="trial-header-video">
           <div class="project-video-wrapper" style="cursor:default;">
             <video id="trialVideo" class="project-video" preload="metadata" playsinline>
@@ -1396,28 +1396,28 @@
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
               <input type="range" id="t7Volume" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
             </div>
-            <button class="vc-btn" id="t7Fullscreen" aria-label="Plein Ã©cran">
+            <button class="vc-btn" id="t7Fullscreen" aria-label="Plein &#xE9;cran">
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
             </button>
           </div>
         </div>
         </div>
 
-        <!-- CrÃ©dits + Jam + Lien itch.io -->
+        <!-- Cr&#xE9;dits + Jam + Lien itch.io -->
         <div style="padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;">
           <div style="flex:1;min-width:220px;">
-            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4fb8a8;margin-bottom:.75rem;" data-i18n="hfg_credits_title">CrÃ©dits</p>
+            <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4fb8a8;margin-bottom:.75rem;" data-i18n="hfg_credits_title">Cr&#xE9;dits</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               <span style="color:#f0f0f0;" data-i18n="hfg_credit_prog">Programmation / Game Design</span> : Trioud<br>
               <span style="color:#f0f0f0;" data-i18n="t777_credit_sound">Sound Design / Game Design</span> : Max Guillot<br>
-              <span style="color:#f0f0f0;" data-i18n="t777_credit_3d">ModÃ©lisation 3D</span> : Eldenbraz
+              <span style="color:#f0f0f0;" data-i18n="t777_credit_3d">Mod&#xE9;lisation 3D</span> : Eldenbraz
             </p>
           </div>
           <div style="flex:1;min-width:220px;">
             <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4fb8a8;margin-bottom:.75rem;" data-i18n="hfg_jam_title">Game Jam</p>
             <p style="font-size:13px;color:#888;line-height:1.9;">
               Official 2026 Unity Game Jam<br>
-              <span data-i18n="t777_jam_duration">7 jours Â· 5â€“14 novembre 2026 Â· Navigateur (WebGL)</span>
+              <span data-i18n="t777_jam_duration">7 jours &#xB7; 5&#x2013;14 novembre 2026 &#xB7; Navigateur (WebGL)</span>
             </p>
           </div>
           <div style="flex:0 0 auto;display:flex;align-items:center;">
@@ -1428,10 +1428,10 @@
           </div>
         </div>
 
-        <!-- Captures d'Ã©cran -->
+        <!-- Captures d'&#xE9;cran -->
         <div style="border-top:1px solid #242424;margin:0 2rem;"></div>
         <div style="padding:1.5rem 2rem;">
-          <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4fb8a8;margin-bottom:1rem;" data-i18n="t777_gallery">Captures d'Ã©cran</p>
+          <p style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4fb8a8;margin-bottom:1rem;" data-i18n="t777_gallery">Captures d'&#xE9;cran</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;">
             <a href="https://img.itch.zone/aW1hZ2UvNTM1OTE0My8zMjI0MzgxMy5wbmc=/original/G8ZWY5.png" target="_blank" rel="noopener" style="display:block;border-radius:6px;overflow:hidden;border:1px solid #2a2a2a;aspect-ratio:16/9;background:#000;"><img src="https://img.itch.zone/aW1hZ2UvNTM1OTE0My8zMjI0MzgxMy5wbmc=/original/G8ZWY5.png" alt="777 Trial - capture 1" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></a>
             <a href="https://img.itch.zone/aW1hZ2UvNTM1OTE0My8zMjI0MzgxNC5wbmc=/original/f5QXvm.png" target="_blank" rel="noopener" style="display:block;border-radius:6px;overflow:hidden;border:1px solid #2a2a2a;aspect-ratio:16/9;background:#000;"><img src="https://img.itch.zone/aW1hZ2UvNTM1OTE0My8zMjI0MzgxNC5wbmc=/original/f5QXvm.png" alt="777 Trial - capture 2" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></a>
@@ -1451,22 +1451,22 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-text">
-        <span class="section-tag" data-i18n="nav_about">Ã€ propos</span>
+        <span class="section-tag" data-i18n="nav_about">&#xC0; propos</span>
         <h2><span data-i18n="about_title"><span data-i18n="about_title">Son, jeu,<br />immersion.</span></span></h2>
-        <p><span data-i18n="about_p1">Sound designer spÃ©cialisÃ© dans le jeu vidÃ©o, je travaille Ã  la jonction entre la narration sonore et le game feel. Mon objectif : crÃ©er des expÃ©riences oÃ¹ le son renforce chaque Ã©motion, chaque action, chaque monde.</span></p>
-        <p><span data-i18n="about_p2">Issu d'une formation en acoustique du bÃ¢timent, j'ai dÃ©veloppÃ© mon expertise en sound design pour le jeu vidÃ©o en autodidacte, motivÃ© par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.</span></p>
+        <p><span data-i18n="about_p1">Sound designer sp&#xE9;cialis&#xE9; dans le jeu vid&#xE9;o, je travaille &#xE0; la jonction entre la narration sonore et le game feel. Mon objectif : cr&#xE9;er des exp&#xE9;riences o&#xF9; le son renforce chaque &#xE9;motion, chaque action, chaque monde.</span></p>
+        <p><span data-i18n="about_p2">Issu d'une formation en acoustique du b&#xE2;timent, j'ai d&#xE9;velopp&#xE9; mon expertise en sound design pour le jeu vid&#xE9;o en autodidacte, motiv&#xE9; par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.</span></p>
         <a href="#contact" class="btn btn-primary"><span data-i18n="btn_see_contact"><span data-i18n="btn_see_contact">Voir mon contact</span></span></a>
       </div>
       <div class="about-skills">
         <div class="skills-block">
-          <h4><span data-i18n="about_skills_title">CompÃ©tences</span></h4>
+          <h4><span data-i18n="about_skills_title">Comp&#xE9;tences</span></h4>
           <ul class="skills-list">
             <li>
               <span><span data-i18n="skill_recording">Prise de son</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
             </li>
             <li>
-              <span><span data-i18n="skill_wwise">IntÃ©gration FMOD</span></span>
+              <span><span data-i18n="skill_wwise">Int&#xE9;gration FMOD</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
             </li>
             <li>
@@ -1474,7 +1474,7 @@
               <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
             </li>
             <li>
-              <span><span data-i18n="skill_ambience">CrÃ©ations d'ambiances</span></span>
+              <span><span data-i18n="skill_ambience">Cr&#xE9;ations d'ambiances</span></span>
               <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
             </li>
             <li>
@@ -1503,7 +1503,7 @@
     <div class="contact-inner">
       <span class="section-tag">Contact</span>
       <h2><span data-i18n="ct_available"><span data-i18n="ct_available">Disponible</span></span></h2>
-      <p class="contact-intro"><span data-i18n="ct_desc">Actuellement disponible, je suis Ã  la recherche d'une opportunitÃ© professionnelle dans le sound design, ou de tout projet faisant appel Ã  mes compÃ©tences en audio interactif.</span></p>
+      <p class="contact-intro"><span data-i18n="ct_desc">Actuellement disponible, je suis &#xE0; la recherche d'une opportunit&#xE9; professionnelle dans le sound design, ou de tout projet faisant appel &#xE0; mes comp&#xE9;tences en audio interactif.</span></p>
       <div class="contact-cards">
         <a href="mailto:max.guillot13@gmail.com" class="contact-card">
           <div class="contact-card-icon">
@@ -1519,7 +1519,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </div>
           <div class="contact-card-body">
-            <span class="contact-card-label"><span data-i18n="ct_network"><span data-i18n="ct_network">RÃ©seau professionnel</span></span></span>
+            <span class="contact-card-label"><span data-i18n="ct_network"><span data-i18n="ct_network">R&#xE9;seau professionnel</span></span></span>
             <span class="contact-card-value">LinkedIn</span>
           </div>
         </a>
@@ -1545,14 +1545,14 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>Â© 2026 Max Guillot</span>
-    <span>Sound Designer Â· Game Audio</span>
+    <span>&#xA9; 2026 Max Guillot</span>
+    <span>Sound Designer &#xB7; Game Audio</span>
   </footer>
 
   <script src="script.js"></script>
 
   <style>
-    /* EmpÃªche le curseur de texte (I-beam) sur les Ã©lÃ©ments non Ã©ditables */
+    /* Emp\EA che le curseur de texte (I-beam) sur les \E9 l\E9 ments non \E9 ditables */
     h1, h2, h3, h4, h5, p, li, label,
     .hero-title, .hero-sub, .hero-label, .section-tag,
     .project-body, .fmod-description, .viking-description,
@@ -1560,14 +1560,14 @@
       cursor: default;
       user-select: none;
     }
-    /* RÃ©tablir le curseur pointer sur les Ã©lÃ©ments cliquables */
+    /* R\E9 tablir le curseur pointer sur les \E9 l\E9 ments cliquables */
     a, button, [role="button"], .expand-btn, .project-expand-btn,
     .fmod-subsection-toggle, .veilbound-subsection-toggle,
     .vc-btn, .hero-player-play, .gl-nav-btn, .play-btn,
     .video-play-btn, input[type="range"] {
       cursor: pointer !important;
     }
-    /* RÃ©tablir la sÃ©lection sur les liens (utile pour copier une URL) */
+    /* R\E9 tablir la s\E9 lection sur les liens (utile pour copier une URL) */
     a { user-select: text; }
 
     .contact-cv-action {
@@ -1576,7 +1576,7 @@
       justify-content: center;
     }
 
-    /* â”€â”€ Featured project card (full-width) â”€â”€ */
+    /* \2500 \2500  Featured project card (full-width) \2500 \2500  */
     .project-card--featured {
       grid-column: 1 / -1;
       display: grid;
@@ -1650,7 +1650,7 @@
       margin: 0;
     }
 
-    /* â”€â”€ Video wrapper â”€â”€ */
+    /* \2500 \2500  Video wrapper \2500 \2500  */
     .project-video-wrapper {
       position: relative;
       background: #000;
@@ -1701,7 +1701,7 @@
       background: #e8a600;
     }
 
-    /* â”€â”€ Custom controls bar â”€â”€ */
+    /* \2500 \2500  Custom controls bar \2500 \2500  */
     .video-controls {
       display: flex;
       align-items: center;
@@ -1782,7 +1782,7 @@
       }
     }
 
-    /* â”€â”€ Viking Village card â”€â”€ */
+    /* \2500 \2500  Viking Village card \2500 \2500  */
     .project-card--viking {
       grid-column: 1 / -1;
       display: flex;
@@ -1888,7 +1888,7 @@
       }
     }
 
-    /* â”€â”€ Projet FMOD section â”€â”€ */
+    /* \2500 \2500  Projet FMOD section \2500 \2500  */
     .viking-fmod-trigger {
       padding: 1rem 2rem;
       background: #0a0a0a;
@@ -1993,7 +1993,7 @@
       border-left: 2px solid rgba(122,179,232,0.3);
       padding-left: 0.75rem !important;
     }
-    /* â”€â”€ Download section (orange) â”€â”€ */
+    /* \2500 \2500  Download section (orange) \2500 \2500  */
     .viking-dl-trigger {
       background: #0a0a0a;
       border-top: 1px solid rgba(232,140,60,0.12);
@@ -2045,7 +2045,7 @@
       font-style: italic;
     }
 
-    /* â”€â”€ Hero custom player â”€â”€ */
+    /* \2500 \2500  Hero custom player \2500 \2500  */
     .hero-player {
       width: 100%;
       background: rgba(255,255,255,0.04);
@@ -2359,7 +2359,7 @@
 
     /* Boutons toggle des sous-sections Veilbound : repris du pattern
        .fmod-subsection-toggle (Viking), avec quelques ajustements pour
-       s'intÃ©grer au header existant de Veilbound. */
+       s'int\E9 grer au header existant de Veilbound. */
     .veilbound-subsection-toggle {
       width: 100%;
       cursor: pointer;
@@ -2382,7 +2382,7 @@
 
     /* Section "Bande originale" : le toggle partage le header avec le
        lien externe "Voir sur SoundCloud", donc il reste compact/inline
-       plutÃ´t que pleine largeur. */
+       plut\F4 t que pleine largeur. */
     .veilbound-section-header--with-toggle {
       justify-content: space-between;
     }
@@ -2396,7 +2396,7 @@
     .veilbound-subsection-toggle--inline:hover .fmod-subsection-tag { color: #9b6ee8; }
     .veilbound-subsection-toggle--inline .veilbound-toggle-arrow { margin-left: 0; }
 
-    /* â”€â”€ Gaslighters playlist â”€â”€ */
+    /* \2500 \2500  Gaslighters playlist \2500 \2500  */
     .gaslighters-playlist {
       grid-column: 1 / -1;
       display: flex;
@@ -2478,7 +2478,7 @@
       border-color: rgba(255,255,255,0.25);
     }
 
-    /* â”€â”€ Gashlighter expanded placeholder â”€â”€ */
+    /* \2500 \2500  Gashlighter expanded placeholder \2500 \2500  */
     .gashlighter-placeholder {
       display: flex;
       align-items: center;
@@ -2509,7 +2509,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* â”€â”€ Steam info block â”€â”€ */
+    /* \2500 \2500  Steam info block \2500 \2500  */
     .gashlighter-steam-info {
       display: flex;
       flex-direction: column;
@@ -2553,7 +2553,7 @@
       color: #fff;
     }
 
-    /* â”€â”€ Hoboss : lecteur BO â”€â”€ */
+    /* \2500 \2500  Hoboss : lecteur BO \2500 \2500  */
     .hob-ost .hero-player { box-sizing: border-box; min-width: 0; }
     .hob-ost > * { min-width: 0; }
     .hob-ost { display: grid; grid-template-columns: minmax(280px, 420px) 1fr; gap: 1.25rem; align-items: start; }
@@ -2565,7 +2565,7 @@
     .hob-track-name { flex: 1; }
     .hob-track-dur { font-family: monospace; font-size: .72rem; color: #555; }
     @media (max-width: 768px) { .hob-ost { grid-template-columns: 1fr; } }
-    /* â”€â”€ 777 Trial : texte Ã  gauche, vidÃ©o Ã  droite â”€â”€ */
+    /* \2500 \2500  777 Trial : texte \E0  gauche, vid\E9 o \E0  droite \2500 \2500  */
     .trial-header-split {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
@@ -2611,13 +2611,13 @@
         return m + ':' + sec;
       }
 
-      // video.play() est asynchrone : sa Promise ne se rÃ©sout qu'une fois
-      // la lecture rÃ©ellement dÃ©marrÃ©e, et video.paused ne repasse Ã 
-      // false qu'Ã  ce moment-lÃ . Si togglePlay() est rappelÃ© entre-temps
-      // (double clic, clic + bubbling rÃ©siduel, etc.), pause() peut
+      // video.play() est asynchrone : sa Promise ne se r\u{E9}sout qu'une fois
+      // la lecture r\u{E9}ellement d\u{E9}marr\u{E9}e, et video.paused ne repasse \u{E0}
+      // false qu'\u{E0} ce moment-l\u{E0}. Si togglePlay() est rappel\u{E9} entre-temps
+      // (double clic, clic + bubbling r\u{E9}siduel, etc.), pause() peut
       // interrompre un play() encore en attente, ce qui annule la
       // lecture silencieusement. On ignore donc tout nouvel appel tant
-      // qu'un play() prÃ©cÃ©dent n'est pas rÃ©solu ou rejetÃ©.
+      // qu'un play() pr\u{E9}c\u{E9}dent n'est pas r\u{E9}solu ou rejet\u{E9}.
       let playPending = false;
       function togglePlay() {
         if (playPending) return;
@@ -2664,7 +2664,7 @@
       document.getElementById('videoOverlay').addEventListener('click', togglePlay);
       vcPlay.addEventListener('click', togglePlay);
       // Permet aussi de mettre en pause en cliquant directement sur la
-      // vidÃ©o pendant sa lecture (l'overlay, lui, est cachÃ© Ã  ce moment).
+      // vid\u{E9}o pendant sa lecture (l'overlay, lui, est cach\u{E9} \u{E0} ce moment).
       video.addEventListener('click', togglePlay);
       video.addEventListener('play',       onPlay);
       video.addEventListener('pause',      onPause);
@@ -2687,7 +2687,7 @@
   </script>
 
   <script>
-    // â”€â”€ Viking Village video players â”€â”€
+    // \u{2500}\u{2500} Viking Village video players \u{2500}\u{2500}
     (function() {
       function makePlayer(videoId, overlayId, bigBtnId, playBtnId, playIconId, pauseIconId, progressId, fillId, timeId, volumeId, fullBtnId) {
         const video    = document.getElementById(videoId);
@@ -2740,8 +2740,8 @@
         bigBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
         overlay.addEventListener('click', togglePlay);
         playBtn.addEventListener('click', togglePlay);
-        // Permet de mettre en pause en cliquant directement sur la vidÃ©o
-        // pendant la lecture (overlay cachÃ© Ã  ce moment-lÃ ).
+        // Permet de mettre en pause en cliquant directement sur la vid\u{E9}o
+        // pendant la lecture (overlay cach\u{E9} \u{E0} ce moment-l\u{E0}).
         video.addEventListener('click', togglePlay);
       }
 
@@ -2749,7 +2749,7 @@
       makePlayer('vikingMarcheVideo','vikingMarcheOverlay','vikingMarchePlayBtn','vv2Play','vv2PlayIcon','vv2PauseIcon','vv2Progress','vv2Fill','vv2Time','vv2Volume','vv2Fullscreen');
     })();
 
-    // â”€â”€ Gashlighter video player â”€â”€
+    // \u{2500}\u{2500} Gashlighter video player \u{2500}\u{2500}
     (function () {
       const video    = document.getElementById('gashlighterVideo');
       const overlay  = document.getElementById('gashlighterOverlay');
@@ -2824,7 +2824,7 @@
   </script>
 
   <script>
-    // â”€â”€ Veilbound preview video player â”€â”€
+    // \u{2500}\u{2500} Veilbound preview video player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('veilboundPreviewVideo');
       const overlay   = document.getElementById('veilboundPreviewOverlay');
@@ -2877,7 +2877,7 @@
       video.addEventListener('click', togglePlay);
     })();
 
-    // â”€â”€ Veilbound shop video 2 (troc menu) player â”€â”€
+    // \u{2500}\u{2500} Veilbound shop video 2 (troc menu) player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('veilboundShopVideo2');
       const overlay   = document.getElementById('veilboundShop2Overlay');
@@ -2930,7 +2930,7 @@
       video.addEventListener('click', togglePlay);
     })();
 
-    // â”€â”€ Veilbound shop video player â”€â”€
+    // \u{2500}\u{2500} Veilbound shop video player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('veilboundShopVideo');
       const overlay   = document.getElementById('veilboundShopOverlay');
@@ -2983,7 +2983,7 @@
       video.addEventListener('click', togglePlay);
     })();
 
-    // â”€â”€ Veilbound adaptive music video player â”€â”€
+    // \u{2500}\u{2500} Veilbound adaptive music video player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('veilboundAdaptVideo');
       const overlay   = document.getElementById('veilboundAdaptOverlay');
@@ -3040,7 +3040,7 @@
       video.addEventListener('click', togglePlay);
     })();
 
-    // â”€â”€ Veilbound adaptive music OLD version player â”€â”€
+    // \u{2500}\u{2500} Veilbound adaptive music OLD version player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('veilboundAdaptOldVideo');
       const overlay   = document.getElementById('veilboundAdaptOldOverlay');
@@ -3095,7 +3095,7 @@
       video.addEventListener('click', togglePlay);
     })();
 
-    // â”€â”€ Veilbound playlist player â”€â”€
+    // \u{2500}\u{2500} Veilbound playlist player \u{2500}\u{2500}
     (function() {
       const iframe    = document.getElementById('vbPlIframe');
       const playBtn   = document.getElementById('vbPlPlayBtn');
@@ -3189,7 +3189,7 @@
       initVbWidget();
     })();
 
-    // â”€â”€ Gaslighters playlist player â”€â”€
+    // \u{2500}\u{2500} Gaslighters playlist player \u{2500}\u{2500}
     (function() {
       const iframe    = document.getElementById('glIframe');
       const playBtn   = document.getElementById('glPlayBtn');
@@ -3293,7 +3293,7 @@
     })();
 
 
-    // â”€â”€ 777 Trial video player â”€â”€
+    // \u{2500}\u{2500} 777 Trial video player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('trialVideo');
       const overlay   = document.getElementById('trialOverlay');
@@ -3347,7 +3347,7 @@
     })();
 
 
-    // â”€â”€ Hoboss soundtrack player â”€â”€
+    // \u{2500}\u{2500} Hoboss soundtrack player \u{2500}\u{2500}
     (function() {
       const audio     = document.getElementById('hobAudio');
       const playBtn   = document.getElementById('hobPlayBtn');
@@ -3367,7 +3367,7 @@
       function select(i, autoplay) {
         current = (i + items.length) % items.length;
         items.forEach((b, k) => b.classList.toggle('active', k === current));
-        // Chaque morceau est cherchÃ© en .mp3, puis en .wav si le .mp3 n'existe pas.
+        // Chaque morceau est cherch\u{E9} en .mp3, puis en .wav si le .mp3 n'existe pas.
         audio.dataset.base = items[current].dataset.src;
         audio.dataset.ext = 'mp3';
         audio.src = audio.dataset.base + '.mp3';
@@ -3411,7 +3411,7 @@
         fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
         timeEl.textContent = fmt(audio.currentTime);
       });
-      // EnchaÃ®ne automatiquement sur le morceau suivant, s'arrÃªte aprÃ¨s le dernier.
+      // Encha\u{EE}ne automatiquement sur le morceau suivant, s'arr\u{EA}te apr\u{E8}s le dernier.
       audio.addEventListener('ended', () => {
         if (current < items.length - 1) select(current + 1, true);
         else { playIcon.style.display = ''; pauseIcon.style.display = 'none'; }
@@ -3419,7 +3419,7 @@
       items[0].classList.add('active');
     })();
 
-    // â”€â”€ Project accordion (one open at a time) â”€â”€
+    // \u{2500}\u{2500} Project accordion (one open at a time) \u{2500}\u{2500}
     document.addEventListener('DOMContentLoaded', function() {
       const configs = [
         { panelId: 'gashlighterExpanded', videos: ['gashlighterVideo'],                                    iframes: ['glIframe'], displayVal: 'grid'  },
@@ -3433,8 +3433,8 @@
 
       // Met en pause un lecteur SoundCloud (widget playlist Veilbound /
       // Gaslighters) en repassant par SC.Widget(iframe) - l'API renvoie
-      // la mÃªme instance dÃ©jÃ  initialisÃ©e ailleurs, pas besoin d'exposer
-      // de variable supplÃ©mentaire depuis ces IIFE.
+      // la m\u{EA}me instance d\u{E9}j\u{E0} initialis\u{E9}e ailleurs, pas besoin d'exposer
+      // de variable suppl\u{E9}mentaire depuis ces IIFE.
       function pauseSoundCloudIframe(iframeId) {
         const ifr = document.getElementById(iframeId);
         if (!ifr || typeof SC === 'undefined') return;
@@ -3460,8 +3460,8 @@
           const targetId = btn.dataset.target;
           const isOpen   = btn.getAttribute('aria-expanded') === 'true';
           closeAll();
-          // Coupe le lecteur SoundCloud du haut de page dÃ¨s qu'un projet
-          // est dÃ©pliÃ©, pour Ã©viter d'entendre deux sources en mÃªme temps.
+          // Coupe le lecteur SoundCloud du haut de page d\u{E8}s qu'un projet
+          // est d\u{E9}pli\u{E9}, pour \u{E9}viter d'entendre deux sources en m\u{EA}me temps.
           if (typeof window.pauseHeroPlayer === 'function') window.pauseHeroPlayer();
           if (!isOpen) {
             const panel  = document.getElementById(targetId);
@@ -3482,7 +3482,7 @@
       });
     });
 
-    // â”€â”€ Download section toggle â”€â”€
+    // \u{2500}\u{2500} Download section toggle \u{2500}\u{2500}
     (function() {
       const btn     = document.getElementById('dlExpandBtn');
       const section = document.getElementById('dlSection');
@@ -3495,10 +3495,10 @@
       });
     })();
 
-    // â”€â”€ Subsection toggles (Viking FMOD + Veilbound) â”€â”€
-    // Chaque sous-section coupe son mÃ©dia associÃ© (vidÃ©o ou iframe
-    // SoundCloud) quand elle est repliÃ©e, pour ne jamais laisser un son
-    // jouer "cachÃ©" derriÃ¨re un panneau fermÃ©.
+    // \u{2500}\u{2500} Subsection toggles (Viking FMOD + Veilbound) \u{2500}\u{2500}
+    // Chaque sous-section coupe son m\u{E9}dia associ\u{E9} (vid\u{E9}o ou iframe
+    // SoundCloud) quand elle est repli\u{E9}e, pour ne jamais laisser un son
+    // jouer "cach\u{E9}" derri\u{E8}re un panneau ferm\u{E9}.
     (function() {
       function pauseSubsectionMedia(videoIds, iframeIds) {
         (videoIds || []).forEach(function(id) {
@@ -3528,13 +3528,13 @@
           btn.setAttribute('aria-expanded', String(!isExpanded));
           body.classList.toggle('collapsed', isExpanded);
           // isExpanded === true signifie qu'on est en train de REPLIER :
-          // c'est Ã  ce moment qu'il faut couper le mÃ©dia.
+          // c'est \u{E0} ce moment qu'il faut couper le m\u{E9}dia.
           if (isExpanded) pauseSubsectionMedia(cfg.videos, cfg.iframes);
         });
       });
     })();
 
-    // â”€â”€ FMOD section toggle â”€â”€
+    // \u{2500}\u{2500} FMOD section toggle \u{2500}\u{2500}
     (function() {
       const btn     = document.getElementById('fmodExpandBtn');
       const section = document.getElementById('fmodSection');
@@ -3551,7 +3551,7 @@
       });
     })();
 
-    // â”€â”€ FMOD Footstep video player â”€â”€
+    // \u{2500}\u{2500} FMOD Footstep video player \u{2500}\u{2500}
     (function() {
       const video     = document.getElementById('fmodFootVideo');
       const overlay   = document.getElementById('fmodFootOverlay');
@@ -3608,133 +3608,133 @@
   </script>
 
 <script>
-// â”€â”€ i18n translations
+// \u{2500}\u{2500} i18n translations
 const i18n = {
   fr: {
-    nav_projects: 'Projets', nav_about: 'Ã€ propos', nav_contact: 'Contact',
-    hero_label: 'Sound Designer Â· Game Audio',
-    hero_sub: 'Je crÃ©e des univers sonores immersifs pour les jeux vidÃ©o - des ambiances atmosphÃ©riques aux effets percutants, chaque son raconte une histoire.',
+    nav_projects: 'Projets', nav_about: '\u{C0} propos', nav_contact: 'Contact',
+    hero_label: 'Sound Designer \u{B7} Game Audio',
+    hero_sub: 'Je cr\u{E9}e des univers sonores immersifs pour les jeux vid\u{E9}o - des ambiances atmosph\u{E9}riques aux effets percutants, chaque son raconte une histoire.',
     btn_projects: 'Voir mes projets', btn_contact: 'Me contacter', btn_cv: 'Voir mon CV',
-    player_listening: '// en Ã©coute', player_loading: 'Chargementâ€¦',
-    projects_sub_short: 'Une sÃ©lection de mes projets d\'audio design.',
-    gl_card_desc: 'Composition de l\'intÃ©gralitÃ© de la bande originale et sound design de la radio, mÃ©canique narrative centrale du jeu.',
+    player_listening: '// en \u{E9}coute', player_loading: 'Chargement\u{2026}',
+    projects_sub_short: 'Une s\u{E9}lection de mes projets d\'audio design.',
+    gl_card_desc: 'Composition de l\'int\u{E9}gralit\u{E9} de la bande originale et sound design de la radio, m\u{E9}canique narrative centrale du jeu.',
     section_projects: 'Mes projets',
-    section_projects_sub: 'Sound design, musique et intÃ©gration audio pour jeux vidÃ©o et cinÃ©matiques.',
+    section_projects_sub: 'Sound design, musique et int\u{E9}gration audio pour jeux vid\u{E9}o et cin\u{E9}matiques.',
     btn_see_project: 'Voir le projet complet',
-    tag_wip: 'En dÃ©veloppement',
-    card_vb: "Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en lÃ©gendes.",
-    card_gl: "Sound design et composition musicale pour un jeu indÃ©pendant de type visual novel - identitÃ© sonore complÃ¨te, narration et atmosphÃ¨re.",
-    card_vk: "Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, intÃ©gration FMOD et musique adaptative.",
-    card_sm: "Proposition d'un sound design du trailer de rÃ©vÃ©lation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son prÃ©cise.",
-    vb_intro: "Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers Ã  travers un monde dark fantasy riche en histoires et en lÃ©gendes. Le gameplay mÃªle gestion stratÃ©gique et combats de type auto-battler.",
-    vb_role: "Je suis en charge de l'intÃ©gralitÃ© du sound design du projet : composition des musiques, conception des ambiances sonores, crÃ©ation des effets sonores et implÃ©mentation technique complÃ¨te dans le moteur de jeu.",
+    tag_wip: 'En d\u{E9}veloppement',
+    card_vb: "Sound design et musique adaptative pour un rogue-lite dark fantasy - gestion de troupe, combats auto-battler et univers riche en l\u{E9}gendes.",
+    card_gl: "Sound design et composition musicale pour un jeu ind\u{E9}pendant de type visual novel - identit\u{E9} sonore compl\u{E8}te, narration et atmosph\u{E8}re.",
+    card_vk: "Sound design complet d'un environnement 3D sur Unity - sons d'ambiance, game feel, int\u{E9}gration FMOD et musique adaptative.",
+    card_sm: "Proposition d'un sound design du trailer de r\u{E9}v\u{E9}lation - sons d'impact, ambiance sonore, effets de feu et de mouvement, synchro image/son pr\u{E9}cise.",
+    vb_intro: "Veilbound est un rogue-lite d'aventure et de gestion dans lequel le joueur dirige une troupe d'aventuriers \u{E0} travers un monde dark fantasy riche en histoires et en l\u{E9}gendes. Le gameplay m\u{EA}le gestion strat\u{E9}gique et combats de type auto-battler.",
+    vb_role: "Je suis en charge de l'int\u{E9}gralit\u{E9} du sound design du projet : composition des musiques, conception des ambiances sonores, cr\u{E9}ation des effets sonores et impl\u{E9}mentation technique compl\u{E8}te dans le moteur de jeu.",
     vb_adapt_title: 'Musique adaptative',
-    vb_system_title: 'Fonctionnement du systÃ¨me',
-    vb_adapt_p1: "Le systÃ¨me de musique adaptative de Veilbound a Ã©tÃ© conÃ§u pour que la bande sonore des combats Ã©volue en temps rÃ©el selon l'issue de l'affrontement. Si le joueur se retrouve en difficultÃ©, la musique glisse vers des tonalitÃ©s mÃ©lancoliques et oppressantes ; Ã  l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure Ã©pique. Ce comportement est pilotÃ© par le paramÃ¨tre <code>%Ã©cart</code>, visible sur la vidÃ©o, qui reflÃ¨te en permanence l'Ã©tat du combat.",
-    vb_adapt_p2: "Dans cette nouvelle itÃ©ration du systÃ¨me de musique adaptative de combat, l'ensemble de l'Ã©coute tient en une seule boucle. Les transitions sont gÃ©rÃ©es au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contrÃ´lant l'entrÃ©e et la sortie des pistes. Cette approche permet aux transitions de s'opÃ©rer Ã  n'importe quel instant de la lecture, sans dÃ©pendre d'un trigger temporel comme c'Ã©tait le cas dans la version prÃ©cÃ©dente.",
+    vb_system_title: 'Fonctionnement du syst\u{E8}me',
+    vb_adapt_p1: "Le syst\u{E8}me de musique adaptative de Veilbound a \u{E9}t\u{E9} con\u{E7}u pour que la bande sonore des combats \u{E9}volue en temps r\u{E9}el selon l'issue de l'affrontement. Si le joueur se retrouve en difficult\u{E9}, la musique glisse vers des tonalit\u{E9}s m\u{E9}lancoliques et oppressantes ; \u{E0} l'inverse, lorsqu'une victoire se profile, elle monte en puissance et prend une tournure \u{E9}pique. Ce comportement est pilot\u{E9} par le param\u{E8}tre <code>%\u{E9}cart</code>, visible sur la vid\u{E9}o, qui refl\u{E8}te en permanence l'\u{E9}tat du combat.",
+    vb_adapt_p2: "Dans cette nouvelle it\u{E9}ration du syst\u{E8}me de musique adaptative de combat, l'ensemble de l'\u{E9}coute tient en une seule boucle. Les transitions sont g\u{E9}r\u{E9}es au niveau de chaque piste individuellement, par le biais d'automations - notamment d'automations de volume contr\u{F4}lant l'entr\u{E9}e et la sortie des pistes. Cette approche permet aux transitions de s'op\u{E9}rer \u{E0} n'importe quel instant de la lecture, sans d\u{E9}pendre d'un trigger temporel comme c'\u{E9}tait le cas dans la version pr\u{E9}c\u{E9}dente.",
     vb_old_title: 'Ancienne(s) version(s)',
-    vb_old_p1: 'Ã€ partir du paramÃ¨tre <code>%Ã©cart</code>, de nombreux points de transition ont Ã©tÃ© dÃ©finis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs prÃ©cis. Ces transitions relient les diffÃ©rentes Loop Regions (en bleu) entre elles, couvrant l\'ensemble des Ã©tats possibles du combat.',
-    vb_old_note: "Chaque transition dispose d'un crossfade paramÃ©trable vers la boucle suivante, garantissant des passages fluides et cohÃ©rents avec l'Ã©volution de l'affrontement.",
+    vb_old_p1: '\u{C0} partir du param\u{E8}tre <code>%\u{E9}cart</code>, de nombreux points de transition ont \u{E9}t\u{E9} d\u{E9}finis - visibles en vert sur la timeline - chacun actif dans un intervalle de valeurs pr\u{E9}cis. Ces transitions relient les diff\u{E9}rentes Loop Regions (en bleu) entre elles, couvrant l\'ensemble des \u{E9}tats possibles du combat.',
+    vb_old_note: "Chaque transition dispose d'un crossfade param\u{E9}trable vers la boucle suivante, garantissant des passages fluides et coh\u{E9}rents avec l'\u{E9}volution de l'affrontement.",
     vb_shop_title: 'Menu Sound Design',
     vb_shop_design_title: 'Conception',
-    vb_shop_p1: "Dans un jeu de gestion, de nombreux sons de menu sont nÃ©cessaires, et ils se doivent d'Ãªtre qualitatifs et satisfaisants pour encourager le joueur Ã  s'intÃ©resser aux mÃ©caniques du jeu. Ici, les effets sonores ont Ã©tÃ© conÃ§us par mes soins, de la prise de son jusqu'Ã  l'implÃ©mentation dans le moteur.",
-    vb_shop_note: "Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pensÃ© comme un vÃ©ritable moment de repos au cÅ“ur d'une auberge - havre de paix dans un monde sombre et hostile.",
-    vb_shop_note2: "Ce menu est prÃ©sent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de dÃ©part qui lui sera destinÃ©e en manipulant les destins des aventuriers. L'idÃ©e de l'audio design de ce menu est de donner un aspect mystique et mystÃ©rieux Ã  la scÃ¨ne, poussant le joueur Ã  s'interroger sur le sens de ce qu'il fait. La musique a Ã©galement Ã©tÃ© composÃ©e dans ce sens par mes soins.",
+    vb_shop_p1: "Dans un jeu de gestion, de nombreux sons de menu sont n\u{E9}cessaires, et ils se doivent d'\u{EA}tre qualitatifs et satisfaisants pour encourager le joueur \u{E0} s'int\u{E9}resser aux m\u{E9}caniques du jeu. Ici, les effets sonores ont \u{E9}t\u{E9} con\u{E7}us par mes soins, de la prise de son jusqu'\u{E0} l'impl\u{E9}mentation dans le moteur.",
+    vb_shop_note: "Pour ce menu de troc, l'objectif est d'offrir un espace sonore chaleureux et immersif, pens\u{E9} comme un v\u{E9}ritable moment de repos au c\u{153}ur d'une auberge - havre de paix dans un monde sombre et hostile.",
+    vb_shop_note2: "Ce menu est pr\u{E9}sent au lancement de chaque partie. Il permet au joueur d'influencer la troupe de d\u{E9}part qui lui sera destin\u{E9}e en manipulant les destins des aventuriers. L'id\u{E9}e de l'audio design de ce menu est de donner un aspect mystique et myst\u{E9}rieux \u{E0} la sc\u{E8}ne, poussant le joueur \u{E0} s'interroger sur le sens de ce qu'il fait. La musique a \u{E9}galement \u{E9}t\u{E9} compos\u{E9}e dans ce sens par mes soins.",
     vb_ost_title: 'Bande originale',
     btn_soundcloud: 'Voir sur SoundCloud',
-    gl_desc: "Responsable de la composition de l'intÃ©gralitÃ© de la bande originale du jeu, j'ai Ã©galement assurÃ© le sound design de la radio - mÃ©canique narrative centrale de Gaslighters - en lui apportant une attention particuliÃ¨re pour renforcer l'immersion.",
-    gl_dev_label: 'DÃ©veloppeur', gl_release_label: 'Sortie', gl_release_date: '20 juin 2025',
-    gl_genres_label: 'Genres', gl_genres: 'Aventure, Fiction interactive, Psychologique, MystÃ¨re',
+    gl_desc: "Responsable de la composition de l'int\u{E9}gralit\u{E9} de la bande originale du jeu, j'ai \u{E9}galement assur\u{E9} le sound design de la radio - m\u{E9}canique narrative centrale de Gaslighters - en lui apportant une attention particuli\u{E8}re pour renforcer l'immersion.",
+    gl_dev_label: 'D\u{E9}veloppeur', gl_release_label: 'Sortie', gl_release_date: '20 juin 2025',
+    gl_genres_label: 'Genres', gl_genres: 'Aventure, Fiction interactive, Psychologique, Myst\u{E8}re',
     gl_platform_label: 'Plateforme', btn_steam: 'Voir sur Steam',
     vk_learn_more: 'En savoir plus',
-    vk_desc: "Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identitÃ© sonore cohÃ©rente, pensÃ©e de la prise de son jusqu'Ã  l'intÃ©gration moteur.",
-    vk_p2: "Les sons ont Ã©tÃ© enregistrÃ©s et traitÃ©s dans Ableton Live, puis spatialisÃ©s et intÃ©grÃ©s Ã  Unity via FMOD. Des paramÃ¨tres globaux et locaux ont Ã©tÃ© mis en place pour adapter le sound design aux interactions et aux dÃ©placements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet intÃ¨gre Ã©galement des transitions musicales en fonction de la position du joueur.",
-    vk_asset_pre: "Ce travail a Ã©tÃ© rÃ©alisÃ© sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset",
+    vk_desc: "Ce projet avait pour objectif la conception d'un sound design complet et fonctionnel pour un environnement 3D sur Unity - avec une identit\u{E9} sonore coh\u{E9}rente, pens\u{E9}e de la prise de son jusqu'\u{E0} l'int\u{E9}gration moteur.",
+    vk_p2: "Les sons ont \u{E9}t\u{E9} enregistr\u{E9}s et trait\u{E9}s dans Ableton Live, puis spatialis\u{E9}s et int\u{E9}gr\u{E9}s \u{E0} Unity via FMOD. Des param\u{E8}tres globaux et locaux ont \u{E9}t\u{E9} mis en place pour adapter le sound design aux interactions et aux d\u{E9}placements du joueur dans l'espace, notamment pour les effets de mouvement. Le projet int\u{E8}gre \u{E9}galement des transitions musicales en fonction de la position du joueur.",
+    vk_asset_pre: "Ce travail a \u{E9}t\u{E9} r\u{E9}alis\u{E9} sur la base d'un environnement 3D et d'un gameplay (mouvements du joueur) issus de l'asset",
     vk_asset_post: ", disponible sur l'Unity Asset Store.",
     vk_event_title: "Fonctionnement de l'event",
-    vk_footsteps_p1: "L'event Footsteps repose sur un systÃ¨me de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se dÃ©sactivent selon les valeurs de trois paramÃ¨tres : la vitesse du joueur\n              ( <code>playerspeed</code> ), son contact avec le sol\n              ( <code>IsGrounded</code> ) et le type de surface sous ses pieds\n              ( <code>groundcheck</code> ).",
-    vk_footsteps_p2: "Trois Loop Regions se succÃ¨dent : la premiÃ¨re dÃ©clenche le son des pas sur terre, la seconde sur bois, et la troisiÃ¨me est une Loop Region vide simulant le joueur en l'air ou Ã  l'arrÃªt. Lorsqu'un passage entre deux Loop Regions non adjacentes est nÃ©cessaire, une <strong>Loop Region intermÃ©diaire</strong> est insÃ©rÃ©e pour assurer une transition fluide.",
-    vk_footsteps_p3: "Ce mode de fonctionnement permet Ã  chaque sample de se lire en entier avant de se couper, Ã©vitant une interruption dÃ©rangeante du son.",
-    vk_footsteps_note: "<strong>Remarque :</strong> Deux automations pilotÃ©es par la vitesse du joueur ont Ã©tÃ© ajoutÃ©es sur le volume et le pitch - simulant l'intensification des pas Ã  l'accÃ©lÃ©ration, ainsi que la force des impacts au sol.",
-    vk_ambience_title: "Fonctionnement du systÃ¨me d'ambiances",
-    vk_ambience_p1: "Le systÃ¨me d'ambiances sonores de Viking Village repose sur des zones de dÃ©clenchement placÃ©es dans la scÃ¨ne Unity. Chaque zone est associÃ©e Ã  un event FMOD jouÃ© en boucle, dont le volume s'adapte automatiquement en fonction de la distance du joueur par rapport Ã  la zone.",
-    vk_ambience_script_pre: "Ce fonctionnement est rendu possible grÃ¢ce Ã  un script C# personnalisÃ©",
-    vk_ambience_script_post: ", qui positionne en permanence la source sonore au point le plus proche du joueur Ã  l'intÃ©rieur du collider de la zone. Ainsi, l'attÃ©nuation spatiale native de FMOD reproduit fidÃ¨lement la perception que le joueur aurait du son selon sa position.",
-    vk_zones_intro: "L'implÃ©mentation Unity se compose de trois zones aux ambiances distinctes :",
-    vk_zones_list: "la <strong>mer</strong>, la <strong>forÃªt</strong> et le <strong>village</strong>.",
-    vk_script_desc_pre: "Ce script gÃ¨re le dÃ©placement de l'Ã©metteur vers le point d'une zone dÃ©finie le plus proche du joueur. Il est issu de",
-    vk_script_desc_post: ", qui m'a inspirÃ© dans la conception de ce systÃ¨me.",
-    vk_exec_title: 'ExÃ©cutable',
-    vk_fmod_btn: 'Projet FMOD - Voir le dÃ©tail',
-    vk_dl_title: "TÃ©lÃ©chargement de l'exÃ©cutable",
-    vk_dl_desc: "Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez tÃ©lÃ©charger l'exÃ©cutable de la scÃ¨ne ci-contre.",
-    sm_desc: "Proposition d'un sound design du trailer de rÃ©vÃ©lation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, montÃ©e dramatique et synchro image/son prÃ©cise. Tous les sons prÃ©sents dans la cinÃ©matique ont Ã©tÃ© enregistrÃ©s et traitÃ©s par mes soins, Ã  l'exception des voix et de la musique.",
+    vk_footsteps_p1: "L'event Footsteps repose sur un syst\u{E8}me de Loop Regions - visibles en bleu dans la timeline - qui s'activent ou se d\u{E9}sactivent selon les valeurs de trois param\u{E8}tres : la vitesse du joueur\n              ( <code>playerspeed</code> ), son contact avec le sol\n              ( <code>IsGrounded</code> ) et le type de surface sous ses pieds\n              ( <code>groundcheck</code> ).",
+    vk_footsteps_p2: "Trois Loop Regions se succ\u{E8}dent : la premi\u{E8}re d\u{E9}clenche le son des pas sur terre, la seconde sur bois, et la troisi\u{E8}me est une Loop Region vide simulant le joueur en l'air ou \u{E0} l'arr\u{EA}t. Lorsqu'un passage entre deux Loop Regions non adjacentes est n\u{E9}cessaire, une <strong>Loop Region interm\u{E9}diaire</strong> est ins\u{E9}r\u{E9}e pour assurer une transition fluide.",
+    vk_footsteps_p3: "Ce mode de fonctionnement permet \u{E0} chaque sample de se lire en entier avant de se couper, \u{E9}vitant une interruption d\u{E9}rangeante du son.",
+    vk_footsteps_note: "<strong>Remarque :</strong> Deux automations pilot\u{E9}es par la vitesse du joueur ont \u{E9}t\u{E9} ajout\u{E9}es sur le volume et le pitch - simulant l'intensification des pas \u{E0} l'acc\u{E9}l\u{E9}ration, ainsi que la force des impacts au sol.",
+    vk_ambience_title: "Fonctionnement du syst\u{E8}me d'ambiances",
+    vk_ambience_p1: "Le syst\u{E8}me d'ambiances sonores de Viking Village repose sur des zones de d\u{E9}clenchement plac\u{E9}es dans la sc\u{E8}ne Unity. Chaque zone est associ\u{E9}e \u{E0} un event FMOD jou\u{E9} en boucle, dont le volume s'adapte automatiquement en fonction de la distance du joueur par rapport \u{E0} la zone.",
+    vk_ambience_script_pre: "Ce fonctionnement est rendu possible gr\u{E2}ce \u{E0} un script C# personnalis\u{E9}",
+    vk_ambience_script_post: ", qui positionne en permanence la source sonore au point le plus proche du joueur \u{E0} l'int\u{E9}rieur du collider de la zone. Ainsi, l'att\u{E9}nuation spatiale native de FMOD reproduit fid\u{E8}lement la perception que le joueur aurait du son selon sa position.",
+    vk_zones_intro: "L'impl\u{E9}mentation Unity se compose de trois zones aux ambiances distinctes :",
+    vk_zones_list: "la <strong>mer</strong>, la <strong>for\u{EA}t</strong> et le <strong>village</strong>.",
+    vk_script_desc_pre: "Ce script g\u{E8}re le d\u{E9}placement de l'\u{E9}metteur vers le point d'une zone d\u{E9}finie le plus proche du joueur. Il est issu de",
+    vk_script_desc_post: ", qui m'a inspir\u{E9} dans la conception de ce syst\u{E8}me.",
+    vk_exec_title: 'Ex\u{E9}cutable',
+    vk_fmod_btn: 'Projet FMOD - Voir le d\u{E9}tail',
+    vk_dl_title: "T\u{E9}l\u{E9}chargement de l'ex\u{E9}cutable",
+    vk_dl_desc: "Pour explorer l'environnement sonore du point de vue du joueur, vous pouvez t\u{E9}l\u{E9}charger l'ex\u{E9}cutable de la sc\u{E8}ne ci-contre.",
+    sm_desc: "Proposition d'un sound design du trailer de r\u{E9}v\u{E9}lation de Ken et Incineroar pour Super Smash Bros Ultimate - sons d'impact, ambiance sonore, effets de feu et de mouvement, mont\u{E9}e dramatique et synchro image/son pr\u{E9}cise. Tous les sons pr\u{E9}sents dans la cin\u{E9}matique ont \u{E9}t\u{E9} enregistr\u{E9}s et trait\u{E9}s par mes soins, \u{E0} l'exception des voix et de la musique.",
     sm_original: 'Version originale', sm_my_version: 'Ma version',
-    browser_no_video: 'Votre navigateur ne supporte pas la lecture vidÃ©o.',
+    browser_no_video: 'Votre navigateur ne supporte pas la lecture vid\u{E9}o.',
     about_title: 'Son, jeu,<br />immersion.',
-    about_p1: 'Sound designer spÃ©cialisÃ© dans le jeu vidÃ©o, je travaille Ã  la jonction entre la narration sonore et le game feel. Mon objectif : crÃ©er des expÃ©riences oÃ¹ le son renforce chaque Ã©motion, chaque action, chaque monde.',
-    about_p2: "Issu d'une formation en acoustique du bÃ¢timent, j'ai dÃ©veloppÃ© mon expertise en sound design pour le jeu vidÃ©o en autodidacte, motivÃ© par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.",
+    about_p1: 'Sound designer sp\u{E9}cialis\u{E9} dans le jeu vid\u{E9}o, je travaille \u{E0} la jonction entre la narration sonore et le game feel. Mon objectif : cr\u{E9}er des exp\u{E9}riences o\u{F9} le son renforce chaque \u{E9}motion, chaque action, chaque monde.',
+    about_p2: "Issu d'une formation en acoustique du b\u{E2}timent, j'ai d\u{E9}velopp\u{E9} mon expertise en sound design pour le jeu vid\u{E9}o en autodidacte, motiv\u{E9} par ma passion pour ce domaine. Cette double culture scientifique et artistique nourrit aujourd'hui mon approche dans mes projets.",
     btn_see_contact: 'Voir mon contact',
-    about_skills_title: 'CompÃ©tences', skill_daw: 'Logiciels audio', skill_integration: 'IntÃ©gration audio',
-    skill_wwise: 'IntÃ©gration FMOD', skill_recording: 'Prise de son',
-    skill_composition: 'Composition musicale', skill_ambience: "CrÃ©ations d'ambiances",
+    about_skills_title: 'Comp\u{E9}tences', skill_daw: 'Logiciels audio', skill_integration: 'Int\u{E9}gration audio',
+    skill_wwise: 'Int\u{E9}gration FMOD', skill_recording: 'Prise de son',
+    skill_composition: 'Composition musicale', skill_ambience: "Cr\u{E9}ations d'ambiances",
     skill_processing: 'Traitement du son', about_tools_title: 'Outils',
     ct_available: 'Disponible',
-    ct_desc: "Actuellement disponible, je suis Ã  la recherche d'une opportunitÃ© professionnelle dans le sound design, ou de tout projet faisant appel Ã  mes compÃ©tences en audio interactif.",
-    ct_network: 'RÃ©seau professionnel', ct_music: 'Musique',
+    ct_desc: "Actuellement disponible, je suis \u{E0} la recherche d'une opportunit\u{E9} professionnelle dans le sound design, ou de tout projet faisant appel \u{E0} mes comp\u{E9}tences en audio interactif.",
+    ct_network: 'R\u{E9}seau professionnel', ct_music: 'Musique',
     tag_music: 'Musique',
     tag_adaptive_music: 'Musique adaptive',
     tag_game_jam: 'Game Jam',
-    hfg_genre: 'Platformer Â· Game Jam',
-    hfg_card_desc: "Music & SFX pour un platformer GB Jam 14, un pirate unijambiste Ã  la recherche de l'or, rÃ©alisÃ© en 10 jours avec GB Studio.",
-    hfg_desc: "RÃ©alisÃ© lors de la GBJAM 14 en 10 jours (11â€“21 septembre 2026), <strong style=\"color:#f0f0f0;\">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le thÃ¨me de la jam Ã©tait <em>\"Old Gold\"</em>.",
-    hfg_role: "J'ai composÃ© la musique et crÃ©Ã© l'ensemble des effets sonores du jeu. Le moteur utilisÃ© Ã©tait <strong style=\"color:#86c06c;\">GB Studio</strong>, que je dÃ©couvrais pour la premiÃ¨re fois, un moteur contraignant par nature, conÃ§u pour Ã©muler fidÃ¨lement le hardware Game Boy.",
-    hfg_credits_title: 'CrÃ©dits',
+    hfg_genre: 'Platformer \u{B7} Game Jam',
+    hfg_card_desc: "Music & SFX pour un platformer GB Jam 14, un pirate unijambiste \u{E0} la recherche de l'or, r\u{E9}alis\u{E9} en 10 jours avec GB Studio.",
+    hfg_desc: "R\u{E9}alis\u{E9} lors de la GBJAM 14 en 10 jours (11\u{2013}21 septembre 2026), <strong style=\"color:#f0f0f0;\">Hop for Gold</strong> est un platformer punitif et fun dans lequel le joueur incarne un pirate unijambiste partant chercher de l'or. Le th\u{E8}me de la jam \u{E9}tait <em>\"Old Gold\"</em>.",
+    hfg_role: "J'ai compos\u{E9} la musique et cr\u{E9}\u{E9} l'ensemble des effets sonores du jeu. Le moteur utilis\u{E9} \u{E9}tait <strong style=\"color:#86c06c;\">GB Studio</strong>, que je d\u{E9}couvrais pour la premi\u{E8}re fois, un moteur contraignant par nature, con\u{E7}u pour \u{E9}muler fid\u{E8}lement le hardware Game Boy.",
+    hfg_credits_title: 'Cr\u{E9}dits',
     hfg_credit_prog: 'Programmation / Game Design',
     hfg_credit_audio: 'Musique / SFX',
     hfg_credit_art: 'Sprites / Art',
     hfg_jam_title: 'Game Jam',
-    hfg_jam_theme_label: 'ThÃ¨me',
-    hfg_jam_duration: '10 jours Â· 11â€“21 septembre 2026',
+    hfg_jam_theme_label: 'Th\u{E8}me',
+    hfg_jam_duration: '10 jours \u{B7} 11\u{2013}21 septembre 2026',
     hfg_btn_itch: 'Jouer sur itch.io',
     hfg_gb_section_title: 'Contraintes de la musique Game Boy',
-    hfg_gb_intro: 'Composer pour Game Boy (Ã©mulÃ© via GB Studio) n\'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fidÃ¨lement.',
+    hfg_gb_intro: 'Composer pour Game Boy (\u{E9}mul\u{E9} via GB Studio) n\'est pas composer pour un DAW classique. Le hardware original impose des contraintes physiques strictes, et GB Studio les reproduit fid\u{E8}lement.',
     hfg_gb_c1_title: '4 canaux audio seulement',
-    hfg_gb_c1_desc: 'Le Game Boy ne dispose que de 4 canaux : 2 ondes carrÃ©es (mÃ©lodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes supplÃ©mentaires, pas de groupes, pas de bus.',
-    hfg_gb_c2_title: 'Samples limitÃ©s et mÃ©moire rÃ©duite',
-    hfg_gb_c2_desc: 'La ROM Game Boy est limitÃ©e en taille. Les samples doivent Ãªtre courts, mono et Ã  basse rÃ©solution. GB Studio impose des contraintes strictes sur le nombre et la durÃ©e des sons pouvant Ãªtre chargÃ©s simultanÃ©ment.',
+    hfg_gb_c1_desc: 'Le Game Boy ne dispose que de 4 canaux : 2 ondes carr\u{E9}es (m\u{E9}lodie/harmonie), 1 onde de bruit (percussions), 1 canal wave (basse/lead alternatif). Pas de pistes suppl\u{E9}mentaires, pas de groupes, pas de bus.',
+    hfg_gb_c2_title: 'Samples limit\u{E9}s et m\u{E9}moire r\u{E9}duite',
+    hfg_gb_c2_desc: 'La ROM Game Boy est limit\u{E9}e en taille. Les samples doivent \u{EA}tre courts, mono et \u{E0} basse r\u{E9}solution. GB Studio impose des contraintes strictes sur le nombre et la dur\u{E9}e des sons pouvant \u{EA}tre charg\u{E9}s simultan\u{E9}ment.',
     hfg_gb_c3_title: 'Pas de mixage dynamique',
-    hfg_gb_c3_desc: "Le volume de chaque canal est fixÃ© Ã  la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps rÃ©el. L'Ã©quilibre entre mÃ©lodie, harmonie, basse et percussions est figÃ© dans la partition.",
-    hfg_gb_c4_title: 'FrÃ©quences et timbres fixes',
-    hfg_gb_c4_desc: 'Les ondes carrÃ©es ont des cycles de travail prÃ©dÃ©finis (12.5%, 25%, 50%, 75%). Le timbre est donc trÃ¨s limitÃ©. Le canal wave permet un peu plus de libertÃ© mais reste basique. Pas de synthÃ¨se complexe, pas d\'effets comme la rÃ©verb ou le delay.',
-    hfg_gb_c5_title: 'SFX vs musique : mÃªme ressource',
-    hfg_gb_c5_desc: 'Les effets sonores utilisent les mÃªmes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l\'interrompront.',
+    hfg_gb_c3_desc: "Le volume de chaque canal est fix\u{E9} \u{E0} la composition. Il n'y a pas de fader, pas d'automatisation de volume en temps r\u{E9}el. L'\u{E9}quilibre entre m\u{E9}lodie, harmonie, basse et percussions est fig\u{E9} dans la partition.",
+    hfg_gb_c4_title: 'Fr\u{E9}quences et timbres fixes',
+    hfg_gb_c4_desc: 'Les ondes carr\u{E9}es ont des cycles de travail pr\u{E9}d\u{E9}finis (12.5%, 25%, 50%, 75%). Le timbre est donc tr\u{E8}s limit\u{E9}. Le canal wave permet un peu plus de libert\u{E9} mais reste basique. Pas de synth\u{E8}se complexe, pas d\'effets comme la r\u{E9}verb ou le delay.',
+    hfg_gb_c5_title: 'SFX vs musique : m\u{EA}me ressource',
+    hfg_gb_c5_desc: 'Les effets sonores utilisent les m\u{EA}mes canaux que la musique. Quand un SFX se joue, il coupe temporairement le canal correspondant. Il faut donc concevoir la musique en tenant compte des SFX qui l\'interrompront.',
     hfg_gb_c6_title: 'Workflow tracker',
-    hfg_gb_c6_desc: 'GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline linÃ©aire. Un changement d\'approche radical par rapport Ã  Ableton Live.',
-    hfg_gb_conclusion: "Ces contraintes forcent Ã  penser diffÃ©remment : chaque note compte, chaque canal est prÃ©cieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.",
+    hfg_gb_c6_desc: 'GB Studio utilise un format de musique de type tracker (similaire au format .mod). La musique est saisie note par note dans une grille, sans timeline lin\u{E9}aire. Un changement d\'approche radical par rapport \u{E0} Ableton Live.',
+    hfg_gb_conclusion: "Ces contraintes forcent \u{E0} penser diff\u{E9}remment : chaque note compte, chaque canal est pr\u{E9}cieux. C'est une approche presque compositionnelle au sens classique : trouver comment faire sonner quelque chose d'expressif avec un minimum de ressources.",
     tag_spatial: 'Spatialisation',
-    t777_genre: 'Puzzle / Observation Â· Game Jam',
-    t777_card_desc: "Sound design complet d'un jeu d'observation dans un dÃ©cor mÃ©diÃ©val inquiÃ©tant - SFX, ambiances, crÃ©ation des events et spatialisation, rÃ©alisÃ© en 7 jours pour l'Official 2026 Unity Game Jam.",
-    t777_desc: "RÃ©alisÃ© en 7 jours lors de l'Official 2026 Unity Game Jam (5â€“14 novembre 2026), <strong style=\"color:#f0f0f0;\">777 Trial</strong> est un jeu d'observation dans lequel le joueur explore un dÃ©cor mÃ©diÃ©val inquiÃ©tant, repÃ¨re ce qui a changÃ© autour de lui et consigne ses dÃ©couvertes sur une carte, guidÃ© par un vieux dieu aux explications volontairement incomplÃ¨tes.",
-    t777_role: "J'ai rÃ©alisÃ© l'intÃ©gralitÃ© du son du jeu : crÃ©ation des effets sonores et des ambiances, conception des events, spatialisation et intÃ©gration dans <strong style=\"color:#4fb8a8;\">Unity</strong>. Dans un jeu oÃ¹ l'attention est la mÃ©canique centrale, le son devient un indice Ã  part entiÃ¨re : un bruit venant de la piÃ¨ce voisine doit pouvoir Ãªtre perÃ§u et localisÃ©. J'ai Ã©galement participÃ© au game design.",
+    t777_genre: 'Puzzle / Observation \u{B7} Game Jam',
+    t777_card_desc: "Sound design complet d'un jeu d'observation dans un d\u{E9}cor m\u{E9}di\u{E9}val inqui\u{E9}tant - SFX, ambiances, cr\u{E9}ation des events et spatialisation, r\u{E9}alis\u{E9} en 7 jours pour l'Official 2026 Unity Game Jam.",
+    t777_desc: "R\u{E9}alis\u{E9} en 7 jours lors de l'Official 2026 Unity Game Jam (5\u{2013}14 novembre 2026), <strong style=\"color:#f0f0f0;\">777 Trial</strong> est un jeu d'observation dans lequel le joueur explore un d\u{E9}cor m\u{E9}di\u{E9}val inqui\u{E9}tant, rep\u{E8}re ce qui a chang\u{E9} autour de lui et consigne ses d\u{E9}couvertes sur une carte, guid\u{E9} par un vieux dieu aux explications volontairement incompl\u{E8}tes.",
+    t777_role: "J'ai r\u{E9}alis\u{E9} l'int\u{E9}gralit\u{E9} du son du jeu : cr\u{E9}ation des effets sonores et des ambiances, conception des events, spatialisation et int\u{E9}gration dans <strong style=\"color:#4fb8a8;\">Unity</strong>. Dans un jeu o\u{F9} l'attention est la m\u{E9}canique centrale, le son devient un indice \u{E0} part enti\u{E8}re : un bruit venant de la pi\u{E8}ce voisine doit pouvoir \u{EA}tre per\u{E7}u et localis\u{E9}. J'ai \u{E9}galement particip\u{E9} au game design.",
     t777_credit_sound: 'Sound Design / Game Design',
-    t777_credit_3d: 'ModÃ©lisation 3D',
-    t777_jam_duration: '7 jours Â· 5â€“14 novembre 2026 Â· Navigateur (WebGL)',
-    t777_gallery: "Captures d'Ã©cran",
-    hob_genre: 'Narratif / ComÃ©die Â· Game Jam',
-    hob_card_desc: "Tout le son (musique, SFX, intÃ©gration FMOD) d'un jeu narratif absurde : un SDF immortel coincÃ© sous un pont voit dÃ©filer les Ã©poques. Un morceau par Ã¨re, rÃ©alisÃ© en 7 jours pour la Garbage Jam #7.",
-    hob_desc: "RÃ©alisÃ© en 7 jours lors de la Garbage Jam #7 (21â€“28 septembre 2026) sur le thÃ¨me <em>\"Out of Time\"</em>, <strong style=\"color:#f0f0f0;\">Hoboss</strong> est un jeu narratif et absurde : immortel mais coincÃ© sous un pont, le joueur incarne le Â« Hoboss Â», le SDF le plus classe du coin. Les passants lui jettent des objets depuis le pont, qu'il utilise pour gÃ©rer sa faim, son bonheur et son taux d'alcool, au fil de rencontres improbables et d'Ã©poques qui dÃ©filent, de l'AntiquitÃ© au futur.",
-    hob_role: "J'ai rÃ©alisÃ© l'intÃ©gralitÃ© du son du jeu : composition de la musique, crÃ©ation des effets sonores et intÃ©gration avec <strong style=\"color:#e07ab0;\">FMOD</strong> dans <strong style=\"color:#e07ab0;\">Godot</strong>. La bande originale suit la traversÃ©e des Ã©poques : chaque Ã¨re a son propre morceau, de l'AntiquitÃ© au post-apocalyptique, pour que le joueur ressente immÃ©diatement le saut dans le temps.",
-    hob_jam_duration: '7 jours Â· 21â€“28 septembre 2026 Â· Navigateur (HTML5)',
-    hob_t1: 'AntiquitÃ©', hob_t2: 'MÃ©diÃ©val', hob_t3: 'Far West', hob_t4: 'Guerre', hob_t5: 'Moderne', hob_t6: 'Futur', hob_t7: 'Post-apo',
-    footer_made: 'ConÃ§u et dÃ©veloppÃ© par Max Guillot', footer_rights: 'Tous droits rÃ©servÃ©s',
+    t777_credit_3d: 'Mod\u{E9}lisation 3D',
+    t777_jam_duration: '7 jours \u{B7} 5\u{2013}14 novembre 2026 \u{B7} Navigateur (WebGL)',
+    t777_gallery: "Captures d'\u{E9}cran",
+    hob_genre: 'Narratif / Com\u{E9}die \u{B7} Game Jam',
+    hob_card_desc: "Tout le son (musique, SFX, int\u{E9}gration FMOD) d'un jeu narratif absurde : un SDF immortel coinc\u{E9} sous un pont voit d\u{E9}filer les \u{E9}poques. Un morceau par \u{E8}re, r\u{E9}alis\u{E9} en 7 jours pour la Garbage Jam #7.",
+    hob_desc: "R\u{E9}alis\u{E9} en 7 jours lors de la Garbage Jam #7 (21\u{2013}28 septembre 2026) sur le th\u{E8}me <em>\"Out of Time\"</em>, <strong style=\"color:#f0f0f0;\">Hoboss</strong> est un jeu narratif et absurde : immortel mais coinc\u{E9} sous un pont, le joueur incarne le \u{AB} Hoboss \u{BB}, le SDF le plus classe du coin. Les passants lui jettent des objets depuis le pont, qu'il utilise pour g\u{E9}rer sa faim, son bonheur et son taux d'alcool, au fil de rencontres improbables et d'\u{E9}poques qui d\u{E9}filent, de l'Antiquit\u{E9} au futur.",
+    hob_role: "J'ai r\u{E9}alis\u{E9} l'int\u{E9}gralit\u{E9} du son du jeu : composition de la musique, cr\u{E9}ation des effets sonores et int\u{E9}gration avec <strong style=\"color:#e07ab0;\">FMOD</strong> dans <strong style=\"color:#e07ab0;\">Godot</strong>. La bande originale suit la travers\u{E9}e des \u{E9}poques : chaque \u{E8}re a son propre morceau, de l'Antiquit\u{E9} au post-apocalyptique, pour que le joueur ressente imm\u{E9}diatement le saut dans le temps.",
+    hob_jam_duration: '7 jours \u{B7} 21\u{2013}28 septembre 2026 \u{B7} Navigateur (HTML5)',
+    hob_t1: 'Antiquit\u{E9}', hob_t2: 'M\u{E9}di\u{E9}val', hob_t3: 'Far West', hob_t4: 'Guerre', hob_t5: 'Moderne', hob_t6: 'Futur', hob_t7: 'Post-apo',
+    footer_made: 'Con\u{E7}u et d\u{E9}velopp\u{E9} par Max Guillot', footer_rights: 'Tous droits r\u{E9}serv\u{E9}s',
   },
   en: {
     nav_projects: 'Projects', nav_about: 'About', nav_contact: 'Contact',
-    hero_label: 'Sound Designer Â· Game Audio',
+    hero_label: 'Sound Designer \u{B7} Game Audio',
     hero_sub: 'I craft immersive soundscapes for video games - from atmospheric ambiences to hard-hitting sound effects, every sound tells a story.',
     btn_projects: 'See my work', btn_contact: 'Contact me', btn_cv: 'View my resume',
-    player_listening: '// now playing', player_loading: 'Loadingâ€¦',
+    player_listening: '// now playing', player_loading: 'Loading\u{2026}',
     projects_sub_short: 'A selection of my audio design projects.',
     gl_card_desc: 'Composed the entire original soundtrack and handled the sound design of the radio - the central narrative mechanic of the game.',
     section_projects: 'My projects',
@@ -3749,10 +3749,10 @@ const i18n = {
     vb_role: 'I am responsible for the entire sound design of the project: music composition, ambience design, sound effects creation and full technical implementation in the game engine.',
     vb_adapt_title: 'Adaptive music',
     vb_system_title: 'How the system works',
-    vb_adapt_p1: "Veilbound's adaptive music system was designed so that the combat soundtrack evolves in real time based on the outcome of the fight. If the player is struggling, the music shifts toward melancholic and oppressive tones; conversely, when victory is within reach, it builds in intensity and takes on an epic quality. This behavior is driven by the <code>%Ã©cart</code> parameter, visible in the video, which constantly reflects the state of the fight.",
+    vb_adapt_p1: "Veilbound's adaptive music system was designed so that the combat soundtrack evolves in real time based on the outcome of the fight. If the player is struggling, the music shifts toward melancholic and oppressive tones; conversely, when victory is within reach, it builds in intensity and takes on an epic quality. This behavior is driven by the <code>%\u{E9}cart</code> parameter, visible in the video, which constantly reflects the state of the fight.",
     vb_adapt_p2: 'In this new iteration of the combat adaptive music system, the entire listening experience is contained within a single loop. Transitions are handled at the individual track level, through volume automations controlling the entry and exit of each track. This approach allows transitions to occur at any point during playback, without relying on a temporal trigger as was the case in the previous version.',
     vb_old_title: 'Previous version(s)',
-    vb_old_p1: 'From the <code>%Ã©cart</code> parameter, numerous transition points were defined - visible in green on the timeline - each active within a specific value range. These transitions connect the various Loop Regions (in blue), covering all possible combat states.',
+    vb_old_p1: 'From the <code>%\u{E9}cart</code> parameter, numerous transition points were defined - visible in green on the timeline - each active within a specific value range. These transitions connect the various Loop Regions (in blue), covering all possible combat states.',
     vb_old_note: 'Each transition features a configurable crossfade to the next loop, ensuring smooth passages consistent with the progression of the fight.',
     vb_shop_title: 'Menu Sound Design',
     vb_shop_design_title: 'Design approach',
@@ -3783,15 +3783,15 @@ const i18n = {
     vk_zones_list: 'the <strong>sea</strong>, the <strong>forest</strong> and the <strong>village</strong>.',
     vk_script_desc_pre: 'This script handles the repositioning of the emitter to the closest point of a defined zone to the player. It is adapted from',
     vk_script_desc_post: ', which inspired me in designing this system.',
-    vk_gameplay_title: 'Gameplay &amp; dÃ©placements',
-    vk_gameplay_desc: 'Cette vidÃ©o illustre le rendu sonore du point de vue du joueur en dÃ©placement dans l\'environnement. On y perÃ§oit les transitions entre les zones d\'ambiance, les effets de game feel liÃ©s aux mouvements, et l\'ensemble du sound design spatial en conditions rÃ©elles.',
-    vk_footsteps_p1: 'L\'event Footsteps repose sur un systÃ¨me de Loop Regions - visibles en bleu dans la timeline - qui s\'activent ou se dÃ©sactivent selon les valeurs de trois paramÃ¨tres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).',
-    vk_footsteps_p2: 'Trois Loop Regions se succÃ¨dent : la premiÃ¨re dÃ©clenche le son des pas sur terre, la seconde sur bois, et la troisiÃ¨me est une Loop Region vide simulant le joueur en l\'air ou Ã  l\'arrÃªt. Lorsqu\'un passage entre deux Loop Regions non adjacentes est nÃ©cessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne rÃ©gion.',
+    vk_gameplay_title: 'Gameplay &amp; d\u{E9}placements',
+    vk_gameplay_desc: 'Cette vid\u{E9}o illustre le rendu sonore du point de vue du joueur en d\u{E9}placement dans l\'environnement. On y per\u{E7}oit les transitions entre les zones d\'ambiance, les effets de game feel li\u{E9}s aux mouvements, et l\'ensemble du sound design spatial en conditions r\u{E9}elles.',
+    vk_footsteps_p1: 'L\'event Footsteps repose sur un syst\u{E8}me de Loop Regions - visibles en bleu dans la timeline - qui s\'activent ou se d\u{E9}sactivent selon les valeurs de trois param\u{E8}tres : la vitesse du joueur (<code>playerspeed</code>), son contact avec le sol (<code>IsGrounded</code>) et le type de surface sous ses pieds (<code>groundcheck</code>).',
+    vk_footsteps_p2: 'Trois Loop Regions se succ\u{E8}dent : la premi\u{E8}re d\u{E9}clenche le son des pas sur terre, la seconde sur bois, et la troisi\u{E8}me est une Loop Region vide simulant le joueur en l\'air ou \u{E0} l\'arr\u{EA}t. Lorsqu\'un passage entre deux Loop Regions non adjacentes est n\u{E9}cessaire, une transition - visible en vert dans la timeline - redirige la lecture vers la bonne r\u{E9}gion.',
     vk_remark_title: 'Remarque :',
-    vk_footsteps_note_text: 'Deux automations pilotÃ©es par la vitesse du joueur ont Ã©tÃ© ajoutÃ©es sur le volume et le pitch - simulant l\'intensification des pas Ã  l\'accÃ©lÃ©ration, ainsi que la force des impacts au sol.',
+    vk_footsteps_note_text: 'Deux automations pilot\u{E9}es par la vitesse du joueur ont \u{E9}t\u{E9} ajout\u{E9}es sur le volume et le pitch - simulant l\'intensification des pas \u{E0} l\'acc\u{E9}l\u{E9}ration, ainsi que la force des impacts au sol.',
     vk_ambiance_title: 'Ambiance Sound',
-    vk_ambience_p1_new: 'Pour les sons d\'ambiance, chaque Ã©metteur est confinÃ© dans une zone dÃ©limitÃ©e - reprÃ©sentÃ©e par les pavÃ©s verts -. GrÃ¢ce au script <code>AmbienceSound</code>, l\'Ã©metteur se repositionne en temps rÃ©el au point de la zone le plus proche du joueur.',
-    vk_ambience_p2_new: 'Ainsi, la spatialisation du son reflÃ¨te directement la distance entre le joueur et la zone - plus il s\'en approche, plus le son monte en intensitÃ©, sans transition de durÃ©e prÃ©dÃ©finie. Cela renforce l\'immersion en rendant les ambiances sonores organiquement liÃ©es aux dÃ©placements du joueur.',
+    vk_ambience_p1_new: 'Pour les sons d\'ambiance, chaque \u{E9}metteur est confin\u{E9} dans une zone d\u{E9}limit\u{E9}e - repr\u{E9}sent\u{E9}e par les pav\u{E9}s verts -. Gr\u{E2}ce au script <code>AmbienceSound</code>, l\'\u{E9}metteur se repositionne en temps r\u{E9}el au point de la zone le plus proche du joueur.',
+    vk_ambience_p2_new: 'Ainsi, la spatialisation du son refl\u{E8}te directement la distance entre le joueur et la zone - plus il s\'en approche, plus le son monte en intensit\u{E9}, sans transition de dur\u{E9}e pr\u{E9}d\u{E9}finie. Cela renforce l\'immersion en rendant les ambiances sonores organiquement li\u{E9}es aux d\u{E9}placements du joueur.',
     vk_ambiance_script_title: 'Ambience Sound Script',
     vk_this_video: 'this video',
     vk_dl_btn: 'Downloads - View',
@@ -3826,9 +3826,9 @@ const i18n = {
     ct_desc: 'Currently available, I am looking for a professional opportunity in sound design, or any project drawing on my skills in interactive audio.',
     ct_network: 'Professional network', ct_music: 'Music',
     tag_game_jam: 'Game Jam',
-    hfg_genre: 'Platformer Â· Game Jam',
+    hfg_genre: 'Platformer \u{B7} Game Jam',
     hfg_card_desc: 'Music & SFX for a GBJAM 14 platformer, a one-legged pirate on a quest for gold, built in 10 days with GB Studio.',
-    hfg_desc: 'Made for GBJAM 14 in 10 days (September 11â€“21, 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> is a punishing and fun platformer where you play as a one-legged pirate on a quest for gold. The jam theme was <em>"Old Gold"</em>.',
+    hfg_desc: 'Made for GBJAM 14 in 10 days (September 11\u{2013}21, 2026), <strong style="color:#f0f0f0;">Hop for Gold</strong> is a punishing and fun platformer where you play as a one-legged pirate on a quest for gold. The jam theme was <em>"Old Gold"</em>.',
     hfg_role: 'I composed the music and created all the sound effects for the game. The engine used was <strong style="color:#86c06c;">GB Studio</strong>, which I was using for the first time, a by-design constrained engine built to faithfully emulate the original Game Boy hardware.',
     hfg_credits_title: 'Credits',
     hfg_credit_prog: 'Programming / Game Design',
@@ -3836,7 +3836,7 @@ const i18n = {
     hfg_credit_art: 'Sprites / Art',
     hfg_jam_title: 'Game Jam',
     hfg_jam_theme_label: 'Theme',
-    hfg_jam_duration: '10 days Â· September 11â€“21, 2026',
+    hfg_jam_duration: '10 days \u{B7} September 11\u{2013}21, 2026',
     hfg_btn_itch: 'Play on itch.io',
     hfg_gb_section_title: 'Game Boy Music Constraints',
     hfg_gb_intro: 'Composing for Game Boy (emulated via GB Studio) is nothing like working in a regular DAW. The original hardware imposes strict physical limitations, and GB Studio faithfully replicates them.',
@@ -3854,19 +3854,19 @@ const i18n = {
     hfg_gb_c6_desc: 'GB Studio uses a tracker-style music format (similar to .mod). Music is entered note by note in a grid, with no linear timeline. A radical shift in approach compared to Ableton Live.',
     hfg_gb_conclusion: 'These constraints force you to think differently: every note matters, every channel is precious. It\'s an almost classical compositional mindset, finding ways to make something expressive with minimal resources.',
     tag_spatial: 'Spatialization',
-    t777_genre: 'Puzzle / Observation Â· Game Jam',
+    t777_genre: 'Puzzle / Observation \u{B7} Game Jam',
     t777_card_desc: 'Full sound design for an observation game set in an unsettling medieval world - SFX, ambiences, event design and spatialization, made in 7 days for the Official 2026 Unity Game Jam.',
-    t777_desc: 'Made in 7 days for the Official 2026 Unity Game Jam (November 5â€“14, 2026), <strong style="color:#f0f0f0;">777 Trial</strong> is an observation game in which the player explores an unsettling medieval setting, spots what has changed around them and records their findings on a map, guided by an old god whose explanations always leave something out.',
+    t777_desc: 'Made in 7 days for the Official 2026 Unity Game Jam (November 5\u{2013}14, 2026), <strong style="color:#f0f0f0;">777 Trial</strong> is an observation game in which the player explores an unsettling medieval setting, spots what has changed around them and records their findings on a map, guided by an old god whose explanations always leave something out.',
     t777_role: 'I handled all of the game\'s audio: sound effects and ambience creation, event design, spatialization and integration into <strong style="color:#4fb8a8;">Unity</strong>. In a game where attention is the core mechanic, sound becomes a clue in its own right: a noise from the next room has to be heard and located. I also contributed to the game design.',
     t777_credit_sound: 'Sound Design / Game Design',
     t777_credit_3d: '3D Modeling',
-    t777_jam_duration: '7 days Â· November 5â€“14, 2026 Â· Browser (WebGL)',
+    t777_jam_duration: '7 days \u{B7} November 5\u{2013}14, 2026 \u{B7} Browser (WebGL)',
     t777_gallery: 'Screenshots',
-    hob_genre: 'Narrative / Comedy Â· Game Jam',
+    hob_genre: 'Narrative / Comedy \u{B7} Game Jam',
     hob_card_desc: "All the audio (music, SFX, FMOD integration) for an absurd narrative game: an immortal homeless guy stuck under a bridge watches the eras go by. One track per era, made in 7 days for Garbage Jam #7.",
-    hob_desc: "Made in 7 days for Garbage Jam #7 (September 21â€“28, 2026) on the theme <em>\"Out of Time\"</em>, <strong style=\"color:#f0f0f0;\">Hoboss</strong> is an absurd narrative game: immortal but stuck under a bridge, you play the â€œHobossâ€, the coolest homeless guy around. Passers-by throw items down from the bridge, which you use to manage your food, happiness and alcohol levels, through bizarre encounters and shifting eras, from Antiquity to the future.",
+    hob_desc: "Made in 7 days for Garbage Jam #7 (September 21\u{2013}28, 2026) on the theme <em>\"Out of Time\"</em>, <strong style=\"color:#f0f0f0;\">Hoboss</strong> is an absurd narrative game: immortal but stuck under a bridge, you play the \u{201C}Hoboss\u{201D}, the coolest homeless guy around. Passers-by throw items down from the bridge, which you use to manage your food, happiness and alcohol levels, through bizarre encounters and shifting eras, from Antiquity to the future.",
     hob_role: "I handled all of the game's audio: music composition, sound effects creation and integration with <strong style=\"color:#e07ab0;\">FMOD</strong> in <strong style=\"color:#e07ab0;\">Godot</strong>. The soundtrack follows the journey through time: each era has its own track, from Antiquity to the post-apocalypse, so the player instantly feels the jump in time.",
-    hob_jam_duration: '7 days Â· September 21â€“28, 2026 Â· Browser (HTML5)',
+    hob_jam_duration: '7 days \u{B7} September 21\u{2013}28, 2026 \u{B7} Browser (HTML5)',
     hob_t1: 'Antiquity', hob_t2: 'Medieval', hob_t3: 'Wild West', hob_t4: 'War', hob_t5: 'Modern', hob_t6: 'Future', hob_t7: 'Post-apocalypse',
     footer_made: 'Designed and developed by Max Guillot', footer_rights: 'All rights reserved',
   }
@@ -3885,10 +3885,10 @@ function applyLang(lang) {
       el.innerHTML = t[key];
     }
   });
-  // Mettre Ã  jour le bouton
+  // Mettre \u{E0} jour le bouton
   const btn = document.getElementById('lang-toggle');
-  if (btn) btn.textContent = lang === 'fr' ? 'ðŸ‡ºðŸ‡¸ EN' : 'ðŸ‡«ðŸ‡· FR';
-  // Mettre Ã  jour les liens CV selon la langue
+  if (btn) btn.textContent = lang === 'fr' ? '\u{1F1FA}\u{1F1F8} EN' : '\u{1F1EB}\u{1F1F7} FR';
+  // Mettre \u{E0} jour les liens CV selon la langue
   const cvFR = 'Max guillot - CV FR.pdf';
   const cvEN = 'Max guillot - CV EN.pdf';
   ['cv-link-1', 'cv-link-2'].forEach(id => {
